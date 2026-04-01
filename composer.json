@@ -1,0 +1,26 @@
+{
+    "name": "brunocfalcao/ai-bridge",
+    "description": "Reusable AI bridge for Laravel: multi-provider connectivity, chat streaming, knowledge/MCP server, and agent tools.",
+    "license": "MIT",
+    "type": "library",
+    "require": {
+        "php": "^8.4",
+        "laravel/framework": "^12.0 || ^13.0",
+        "laravel/ai": "^0.3",
+        "laravel/mcp": "^0.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "BrunoCFalcao\\AiBridge\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "BrunoCFalcao\\AiBridge\\AiBridgeServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
