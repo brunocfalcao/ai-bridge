@@ -12,7 +12,13 @@ return new class extends Migration
     {
         Schema::create('ai_api_configs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('team_id')->nullable()->constrained()->nullOnDelete();
+
+            if (Schema::hasTable('teams')) {
+                $table->foreignId('team_id')->nullable()->constrained()->nullOnDelete();
+            } else {
+                $table->unsignedBigInteger('team_id')->nullable();
+            }
+
             $table->string('purpose', 50)->default('chat');
             $table->string('provider');
             $table->text('api_key')->nullable();
