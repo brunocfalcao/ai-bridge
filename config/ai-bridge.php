@@ -4,17 +4,17 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Scope-Based AI Provider Resolution
+    | AI Connection Resolution
     |--------------------------------------------------------------------------
     |
-    | Maps business scopes to a "provider:model" string. The AiResolver
+    | Named AI connections map to a "provider:model" string. The AiResolver
     | parses the provider name before the first colon. Fallbacks define
     | a provider-level chain tried on quota/billing exhaustion.
     |
     */
 
     'resolver' => [
-        'scopes' => [],
+        'connections' => [],
         'fallbacks' => [],
         'default' => 'gemini:gemini-2.5-flash',
     ],

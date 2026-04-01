@@ -30,9 +30,19 @@ class AiBridgeServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
+        $this->registerCommands();
         $this->registerPublishing();
         $this->registerMigrations();
         $this->registerMcpRoutes();
+    }
+
+    protected function registerCommands(): void
+    {
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                Console\AiChatCommand::class,
+            ]);
+        }
     }
 
     protected function registerPublishing(): void

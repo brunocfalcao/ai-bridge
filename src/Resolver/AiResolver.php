@@ -7,7 +7,7 @@ namespace BrunoCFalcao\AiBridge\Resolver;
 class AiResolver
 {
     /**
-     * Resolve an AI scope to a provider array for Promptable::prompt(provider: $array).
+     * Resolve a named AI connection to a provider array for Promptable::prompt(provider: $array).
      *
      * The returned array is ordered: primary provider first, then the fallback chain.
      * Laravel AI's withModelFailover() will iterate this array, catching
@@ -16,12 +16,12 @@ class AiResolver
      *
      * @return array<string, string> Keys are provider names, values are model strings.
      */
-    public function resolve(string|\BackedEnum $scope): array
+    public function using(string|\BackedEnum $connection): array
     {
-        $scopeValue = $scope instanceof \BackedEnum ? $scope->value : $scope;
+        $name = $connection instanceof \BackedEnum ? $connection->value : $connection;
         $configKey = $this->configKey();
 
-        $primary = config("{$configKey}.scopes.{$scopeValue}")
+        $primary = config("{$configKey}.connections.{$name}")
             ?? config("{$configKey}.default");
 
         $providers = [];
@@ -46,25 +46,24 @@ class AiResolver
     }
 
     /**
-     * Resolve only the primary provider+model for direct Prism usage (e.g. OsintAgent).
+     * Resolve only the primary provider+model for direct Prism usage.
      *
      * @return array{0: string, 1: string} [providerName, modelName]
      */
-    public function resolveUsing(string|\BackedEnum $scope): array
+    public function primary(string|\BackedEnum $connection): array
     {
-        $scopeValue = $scope instanceof \BackedEnum ? $scope->value : $scope;
+        $name = $connection instanceof \BackedEnum ? $connection->value : $connection;
         $configKey = $this->configKey();
 
-        $primary = config("{$configKey}.scopes.{$scopeValue}")
+        $primary = config("{$configKey}.connections.{$name}")
             ?? config("{$configKey}.default");
 
         return $this->parse((string) $primary);
     }
 
     /**
-     * The config key where AI scope resolution lives.
+     * The config key where AI connection resolution lives.
      * Projects can override this by setting 'ai-bridge.ai_config_key'.
-     * Defaults to 'ai-bridge.ai'.
      */
     protected function configKey(): string
     {
