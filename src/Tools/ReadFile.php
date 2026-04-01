@@ -4,12 +4,15 @@ declare(strict_types=1);
 
 namespace BrunoCFalcao\AiBridge\Tools;
 
+use BrunoCFalcao\AiBridge\Tools\Concerns\ResolvesProjectPath;
 use Illuminate\Contracts\JsonSchema\JsonSchema;
 use Laravel\Ai\Contracts\Tool;
 use Laravel\Ai\Tools\Request;
 
 class ReadFile implements Tool
 {
+    use ResolvesProjectPath;
+
     public function __construct(
         protected string $projectPath,
     ) {}
@@ -83,16 +86,5 @@ class ReadFile implements Tool
                 ->integer()
                 ->description('Maximum number of lines to read. Default: 0 (all lines).'),
         ];
-    }
-
-    protected function resolvePath(string $relativePath): ?string
-    {
-        $full = realpath($this->projectPath.'/'.ltrim($relativePath, '/'));
-
-        if (! $full || ! str_starts_with($full, realpath($this->projectPath))) {
-            return null;
-        }
-
-        return $full;
     }
 }

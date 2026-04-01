@@ -71,12 +71,20 @@ class AiApiConfig extends Model
 
     public function team(): BelongsTo
     {
-        return $this->belongsTo(\App\Models\Team::class);
+        $model = config('ai-bridge.models.team');
+
+        return $model
+            ? $this->belongsTo($model)
+            : $this->belongsTo(static::class, 'id', 'id');
     }
 
     public function application(): BelongsTo
     {
-        return $this->belongsTo(\App\Models\Application::class);
+        $model = config('ai-bridge.models.application');
+
+        return $model
+            ? $this->belongsTo($model)
+            : $this->belongsTo(static::class, 'id', 'id');
     }
 
     public function scopeActive(Builder $query): Builder

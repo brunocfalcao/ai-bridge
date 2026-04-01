@@ -7,7 +7,8 @@
         "php": "^8.4",
         "laravel/framework": "^12.0 || ^13.0",
         "laravel/ai": "^0.3",
-        "laravel/mcp": "^0.6"
+        "laravel/mcp": "^0.6",
+        "prism-php/prism": "^0.71"
     },
     "autoload": {
         "psr-4": {

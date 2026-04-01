@@ -10,29 +10,39 @@ use Laravel\Ai\Tools\Request;
 
 class RunCommand implements Tool
 {
-    protected array $allowedCommands = [
-        'php', 'composer', 'npm', 'node', 'npx',
-        'git', 'ls', 'cat', 'head', 'tail', 'wc',
-        'find', 'grep', 'awk', 'sed', 'sort', 'uniq',
-        'diff', 'mkdir', 'cp', 'mv', 'touch',
-        'ps', 'top', 'free', 'df', 'du', 'uptime', 'whoami', 'hostname',
-    ];
+    protected array $allowedCommands;
 
     /** Sudo commands allowed with specific subcommands only. */
-    protected array $allowedSudoCommands = [
-        'supervisorctl' => ['status', 'start', 'stop', 'restart', 'reread', 'update', 'tail'],
-        'systemctl' => ['status', 'start', 'stop', 'restart', 'reload', 'list-units', 'is-active'],
-        'service' => ['status', 'start', 'stop', 'restart'],
-        'kill' => true,       // any args
-        'killall' => true,    // any args
-        'crontab' => ['-l'],  // list only
-        'nginx' => ['-t', '-s'],
-        'journalctl' => true, // any args (read-only)
-    ];
+    protected array $allowedSudoCommands;
+
+    protected array $dangerousPatterns;
 
     public function __construct(
         protected string $projectPath,
-    ) {}
+    ) {
+        $this->allowedCommands = config('ai-bridge.tools.allowed_commands', [
+            'php', 'composer', 'npm', 'node', 'npx',
+            'git', 'ls', 'cat', 'head', 'tail', 'wc',
+            'find', 'grep', 'awk', 'sed', 'sort', 'uniq',
+            'diff', 'mkdir', 'cp', 'mv', 'touch',
+            'ps', 'top', 'free', 'df', 'du', 'uptime', 'whoami', 'hostname',
+        ]);
+
+        $this->allowedSudoCommands = config('ai-bridge.tools.allowed_sudo_commands', [
+            'supervisorctl' => ['status', 'start', 'stop', 'restart', 'reread', 'update', 'tail'],
+            'systemctl' => ['status', 'start', 'stop', 'restart', 'reload', 'list-units', 'is-active'],
+            'service' => ['status', 'start', 'stop', 'restart'],
+            'kill' => true,
+            'killall' => true,
+            'crontab' => ['-l'],
+            'nginx' => ['-t', '-s'],
+            'journalctl' => true,
+        ]);
+
+        $this->dangerousPatterns = config('ai-bridge.tools.dangerous_patterns', [
+            'rm -rf /', 'rm -rf ~', '> /dev/', 'mkfs', 'dd if=', ':(){', 'chmod -R 777 /',
+        ]);
+    }
 
     public function description(): string
     {
@@ -45,6 +55,10 @@ class RunCommand implements Tool
 
         if (! $command) {
             return json_encode(['error' => 'Command is required.']);
+        }
+
+        if (preg_match('/[;&|`]|\$\(/', $command)) {
+            return 'Error: Command chaining and subshell operators are not allowed.';
         }
 
         $parts = preg_split('/\s+/', $command);
@@ -72,9 +86,7 @@ class RunCommand implements Tool
         }
 
         // Block dangerous patterns
-        $dangerous = ['rm -rf /', 'rm -rf ~', '> /dev/', 'mkfs', 'dd if=', ':(){', 'chmod -R 777 /'];
-
-        foreach ($dangerous as $pattern) {
+        foreach ($this->dangerousPatterns as $pattern) {
             if (str_contains($command, $pattern)) {
                 return json_encode(['error' => 'Command contains a dangerous pattern and was blocked.']);
             }
@@ -98,7 +110,9 @@ class RunCommand implements Tool
 
         fclose($pipes[0]);
 
-        // Set 30 second timeout
+        $timeout = config('ai-bridge.tools.command_timeout', 30);
+
+        // Set timeout
         $startTime = time();
         $stdout = '';
         $stderr = '';
@@ -116,13 +130,13 @@ class RunCommand implements Tool
                 break;
             }
 
-            if ((time() - $startTime) > 30) {
+            if ((time() - $startTime) > $timeout) {
                 proc_terminate($process);
                 fclose($pipes[1]);
                 fclose($pipes[2]);
 
                 return json_encode([
-                    'error' => 'Command timed out after 30 seconds.',
+                    'error' => "Command timed out after {$timeout} seconds.",
                     'stdout' => mb_substr($stdout, 0, 5000),
                 ]);
             }

@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 namespace BrunoCFalcao\AiBridge;
 
-use BrunoCFalcao\AiBridge\Ai\BearerAnthropic;
-use BrunoCFalcao\AiBridge\Mcp\Middleware\AuthenticateApiKey;
-use BrunoCFalcao\AiBridge\Mcp\Servers\KnowledgeServer;
-use BrunoCFalcao\AiBridge\Mcp\Services\SystemContext;
+use BrunoCFalcao\AiBridge\Knowledge\Middleware\AuthenticateApiKey;
+use BrunoCFalcao\AiBridge\Knowledge\Mcp\KnowledgeServer;
+use BrunoCFalcao\AiBridge\Knowledge\SystemContext;
+use BrunoCFalcao\AiBridge\Resolver\AiResolver;
+use BrunoCFalcao\AiBridge\Providers\BearerAnthropic;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
@@ -22,6 +23,7 @@ class AiBridgeServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__.'/../config/ai-bridge.php', 'ai-bridge');
 
         $this->app->singleton(SystemContext::class);
+        $this->app->singleton(AiResolver::class);
 
         $this->configurePrismOAuth();
     }
@@ -54,9 +56,14 @@ class AiBridgeServiceProvider extends ServiceProvider
 
     protected function registerMcpRoutes(): void
     {
-        // Dynamically register MCP routes from active applications with knowledge connections
+        $applicationModel = config('ai-bridge.models.application');
+
+        if (! $applicationModel) {
+            return;
+        }
+
         try {
-            $applications = \App\Models\Application::where('status', 'active')
+            $applications = $applicationModel::where('status', 'active')
                 ->whereNotNull('knowledge_connection')
                 ->get();
         } catch (\Throwable) {
@@ -81,7 +88,12 @@ class AiBridgeServiceProvider extends ServiceProvider
         // Register knowledge database connections (separate loop to avoid boot issues)
         foreach ($applications as $app) {
             if ($app->knowledge_connection && $app->knowledge_database) {
-                $this->registerKnowledgeConnection($app->knowledge_connection, $app->knowledge_database);
+                $this->registerKnowledgeConnection(
+                    $app->knowledge_connection,
+                    $app->knowledge_database,
+                    $app->knowledge_db_username ?? null,
+                    $app->knowledge_db_password ?? null,
+                );
             }
         }
 
@@ -89,34 +101,30 @@ class AiBridgeServiceProvider extends ServiceProvider
         config(['ai-bridge.mcp_systems' => $mcpSystems]);
     }
 
-    protected function registerKnowledgeConnection(string $connectionName, string $database): void
-    {
-        try {
-            $app = \App\Models\Application::where('knowledge_connection', $connectionName)->first();
-            $password = $app?->knowledge_db_password;
-        } catch (\Throwable) {
-            return;
-        }
-
+    protected function registerKnowledgeConnection(
+        string $connectionName,
+        string $database,
+        ?string $username,
+        ?string $password,
+    ): void {
         if (! $password) {
             return;
         }
 
-        // Derive username from connection name: codiant_knowledge_friday → codiant_friday
-        $username = str_replace('codiant_knowledge_', 'codiant_', $connectionName);
+        $dbConfig = config('ai-bridge.knowledge.db');
 
         Config::set("database.connections.{$connectionName}", [
-            'driver' => 'pgsql',
-            'host' => '127.0.0.1',
-            'port' => '5432',
+            'driver' => $dbConfig['driver'] ?? 'pgsql',
+            'host' => $dbConfig['host'] ?? '127.0.0.1',
+            'port' => $dbConfig['port'] ?? '5432',
             'database' => $database,
-            'username' => $username,
+            'username' => $username ?? $connectionName,
             'password' => $password,
-            'charset' => 'utf8',
+            'charset' => $dbConfig['charset'] ?? 'utf8',
             'prefix' => '',
             'prefix_indexes' => true,
             'search_path' => 'public',
-            'sslmode' => 'prefer',
+            'sslmode' => $dbConfig['sslmode'] ?? 'prefer',
         ]);
     }
 

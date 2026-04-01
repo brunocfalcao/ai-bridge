@@ -4,12 +4,15 @@ declare(strict_types=1);
 
 namespace BrunoCFalcao\AiBridge\Tools;
 
+use BrunoCFalcao\AiBridge\Tools\Concerns\ResolvesProjectPath;
 use Illuminate\Contracts\JsonSchema\JsonSchema;
 use Laravel\Ai\Contracts\Tool;
 use Laravel\Ai\Tools\Request;
 
 class WriteFile implements Tool
 {
+    use ResolvesProjectPath;
+
     public function __construct(
         protected string $projectPath,
     ) {}
@@ -24,20 +27,20 @@ class WriteFile implements Tool
         $relativePath = (string) $request->string('path');
         $content = (string) $request->string('content');
 
-        $full = $this->projectPath.'/'.ltrim($relativePath, '/');
         $realBase = realpath($this->projectPath);
-
-        // Ensure the resolved path stays within the project
+        $full = $this->projectPath.'/'.ltrim($relativePath, '/');
         $dir = dirname($full);
+
+        // Validate the target directory path before touching the filesystem.
+        // Use the normalized string path when the directory does not yet exist.
+        $checkDir = is_dir($dir) ? realpath($dir) : realpath(dirname($dir)).'/'.basename($dir);
+
+        if (! $checkDir || ! str_starts_with($checkDir, $realBase)) {
+            return json_encode(['error' => 'Path is outside the project directory.']);
+        }
 
         if (! is_dir($dir)) {
             mkdir($dir, 0755, true);
-        }
-
-        $realDir = realpath($dir);
-
-        if (! $realDir || ! str_starts_with($realDir, $realBase)) {
-            return json_encode(['error' => 'Path is outside the project directory.']);
         }
 
         file_put_contents($full, $content);

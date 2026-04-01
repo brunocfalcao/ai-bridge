@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace BrunoCFalcao\AiBridge\Tools;
 
-use BrunoCFalcao\AiBridge\Mcp\Models\KnowledgeChunk;
+use BrunoCFalcao\AiBridge\Knowledge\Models\KnowledgeChunk;
 use Illuminate\Contracts\JsonSchema\JsonSchema;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;

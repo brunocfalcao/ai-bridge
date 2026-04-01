@@ -4,12 +4,15 @@ declare(strict_types=1);
 
 namespace BrunoCFalcao\AiBridge\Tools;
 
+use BrunoCFalcao\AiBridge\Tools\Concerns\ResolvesProjectPath;
 use Illuminate\Contracts\JsonSchema\JsonSchema;
 use Laravel\Ai\Contracts\Tool;
 use Laravel\Ai\Tools\Request;
 
 class ListDirectory implements Tool
 {
+    use ResolvesProjectPath;
+
     public function __construct(
         protected string $projectPath,
     ) {}
@@ -72,16 +75,5 @@ class ListDirectory implements Tool
                 ->string()
                 ->description('Directory path relative to the project root. Default: "." (project root).'),
         ];
-    }
-
-    protected function resolvePath(string $relativePath): ?string
-    {
-        $full = realpath($this->projectPath.'/'.ltrim($relativePath, '/'));
-
-        if (! $full || ! str_starts_with($full, realpath($this->projectPath))) {
-            return null;
-        }
-
-        return $full;
     }
 }
