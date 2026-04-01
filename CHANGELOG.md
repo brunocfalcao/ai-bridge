@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.0.1 - 2026-04-01
+
+### Improvements
+
+- [IMPROVED] Rename `scope` to `connection` terminology throughout (config key `resolver.connections`, methods `using()` / `primary()`)
+- [IMPROVED] `ai:chat` command defaults to empty system instructions for model compatibility (Gemma doesn't support system prompts)
+- [IMPROVED] Conditional foreign keys in migrations — gracefully handles hosts without `teams` / `applications` tables
+- [IMPROVED] Widen `prism-php/prism` constraint to `^0.71 || ^0.99` for compatibility with `laravel/ai`
+
+### Features
+
+- [NEW FEATURE] `ai:chat` artisan command — quick terminal prompt with `--connection` option
+
 ## 1.0.0 - 2026-04-01
 
 ### Features

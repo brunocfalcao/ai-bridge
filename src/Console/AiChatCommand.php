@@ -45,7 +45,7 @@ class AiChatCommand extends Command
 
         $this->newLine();
 
-        $instructions = $system ?? config('ai-bridge.chat.default_instructions', 'You are a helpful AI assistant.');
+        $instructions = $system ?? '';
 
         try {
             $agent = \Laravel\Ai\agent(instructions: $instructions);
