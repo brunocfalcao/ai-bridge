@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.1.0 - 2026-04-12
+
+### Features
+
+- [NEW FEATURE] Claude Bridge provider — OpenAI-compatible proxy that routes requests through Claude Code CLI
+- [NEW FEATURE] `ClaudeBridgeClient` for local Claude Code integration
+- [NEW FEATURE] `ProcessBridgeChatMessage` job for bridge-based chat streaming
+
 ## 1.0.1 - 2026-04-01
 
 ### Improvements

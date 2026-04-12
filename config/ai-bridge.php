@@ -134,6 +134,22 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Claude Bridge (openclaw-claude-bridge)
+    |--------------------------------------------------------------------------
+    |
+    | OpenAI-compatible proxy that routes requests through Claude Code CLI.
+    | Requires the bridge to be running: cd bridge && node src/index.js
+    |
+    */
+
+    'claude_bridge' => [
+        'url' => env('CLAUDE_BRIDGE_URL', 'http://localhost:3456'),
+        'model' => env('CLAUDE_BRIDGE_MODEL', 'claude-opus-latest'),
+        'timeout' => (int) env('CLAUDE_BRIDGE_TIMEOUT', 120),
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
     | Chat Streaming
     |--------------------------------------------------------------------------
     */
