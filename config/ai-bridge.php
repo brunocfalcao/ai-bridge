@@ -17,6 +17,22 @@ return [
         'connections' => [],
         'fallbacks' => [],
         'default' => 'gemini:gemini-2.5-flash',
+
+        /*
+        |----------------------------------------------------------------------
+        | Embedding Connection
+        |----------------------------------------------------------------------
+        |
+        | Named embedding connection using the same "provider:model" format.
+        | The provider's API key is resolved from the ai.providers config
+        | (e.g. OPENAI_API_KEY for openai, GEMINI_API_KEY for gemini).
+        | Set embedding_dimensions to match the chosen model output size
+        | (e.g. 768 for gemini-embedding-001, 1536 for text-embedding-3-small).
+        |
+        */
+
+        'embedding' => env('AI_BRIDGE_EMBEDDING', 'gemini:gemini-embedding-001'),
+        'embedding_dimensions' => (int) env('AI_BRIDGE_EMBEDDING_DIMENSIONS', 768),
     ],
 
     /*
@@ -101,7 +117,8 @@ return [
                 'openai/text-embedding-3-large',
             ],
             'gemini' => [
-                'text-embedding-004',
+                'gemini-embedding-001',
+                'gemini-embedding-2-preview',
             ],
             'mistral' => [
                 'mistral-embed',

@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.2.1 - 2026-04-14
+
+### Features
+
+- [NEW FEATURE] `AiResolver::embed()` method for generating text embeddings via configured provider
+- [NEW FEATURE] `AiResolver::embeddingConnection()` method to expose the configured embedding provider and model
+- [NEW FEATURE] Embedding connection config (`resolver.embedding` and `resolver.embedding_dimensions`) following the same structured pattern as chat connections
+
+### Improvements
+
+- [IMPROVED] Added Gemini embedding models (`gemini-embedding-001`, `gemini-embedding-2-preview`) to supported embedding models list
+
 ## 1.2.0 - 2026-04-13
 
 ### Features

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace BrunoCFalcao\AiBridge\Resolver;
 
+use Illuminate\Support\Str;
+
 class AiResolver
 {
     /**
@@ -59,6 +61,37 @@ class AiResolver
             ?? config("{$configKey}.default");
 
         return $this->parse((string) $primary);
+    }
+
+    /**
+     * Generate an embedding vector for the given text.
+     *
+     * Resolves the provider and model from ai-bridge.resolver.embedding.
+     *
+     * @return array<float> The embedding vector.
+     */
+    public function embed(string $text, ?int $dimensions = null): array
+    {
+        $configKey = $this->configKey();
+        [$provider, $model] = $this->parse((string) config("{$configKey}.embedding"));
+
+        $dimensions ??= (int) config("{$configKey}.embedding_dimensions");
+
+        return Str::of($text)->toEmbeddings(
+            provider: $provider,
+            dimensions: $dimensions,
+            model: $model,
+        );
+    }
+
+    /**
+     * Get the configured embedding provider and model.
+     *
+     * @return array{0: string, 1: string} [providerName, modelName]
+     */
+    public function embeddingConnection(): array
+    {
+        return $this->parse((string) config("{$this->configKey()}.embedding"));
     }
 
     /**
