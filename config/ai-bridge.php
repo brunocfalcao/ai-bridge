@@ -51,6 +51,8 @@ return [
             'mistral',
             'xai',
             'openrouter',
+            'claude-cli',
+            'openclaw',
         ],
 
         'models' => [
@@ -134,18 +136,39 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Claude Bridge (openclaw-claude-bridge)
+    | Claude CLI Provider
     |--------------------------------------------------------------------------
     |
     | OpenAI-compatible proxy that routes requests through Claude Code CLI.
+    | Uses the Claude subscription (no API key needed).
     | Requires the bridge to be running: cd bridge && node src/index.js
+    |
+    | Connection string: claude-cli:opus
     |
     */
 
-    'claude_bridge' => [
-        'url' => env('CLAUDE_BRIDGE_URL', 'http://localhost:3456'),
-        'model' => env('CLAUDE_BRIDGE_MODEL', 'claude-opus-latest'),
-        'timeout' => (int) env('CLAUDE_BRIDGE_TIMEOUT', 120),
+    'claude_cli' => [
+        'url' => env('CLAUDE_CLI_URL', 'http://localhost:3456'),
+        'timeout' => (int) env('CLAUDE_CLI_TIMEOUT', 120),
+        'agent_name' => env('CLAUDE_CLI_AGENT_NAME'),
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | OpenClaw Provider
+    |--------------------------------------------------------------------------
+    |
+    | Routes through an OpenClaw gateway which handles agent routing,
+    | tools, and session management.
+    |
+    | Connection string: openclaw:agent-name
+    |
+    */
+
+    'openclaw' => [
+        'url' => env('OPENCLAW_URL', 'http://localhost:18789'),
+        'token' => env('OPENCLAW_TOKEN'),
+        'timeout' => (int) env('OPENCLAW_TIMEOUT', 120),
     ],
 
     /*

@@ -30,47 +30,57 @@ php artisan migrate
 
 ## What It Does
 
-### Scope-Based AI Provider Resolution
+### Connection-Based AI Provider Resolution
 
-Map business scopes to AI providers with automatic fallback chains:
+Map named connections to `provider:model` pairs with automatic fallback chains:
 
 ```php
 // config/ai-bridge.php
 'resolver' => [
-    'scopes' => [
-        'leads-discover' => 'openrouter:google/gemini-2.5-flash',
-        'study-full'     => 'openai:gpt-4.1',
+    'connections' => [
+        'cheap' => 'gemini:gemini-2.5-flash',
     ],
     'fallbacks' => [
-        'openai'     => 'openrouter:openai/gpt-4.1',
-        'openrouter' => 'gemini:gemini-2.5-flash',
-        'gemini'     => null,
+        'claude-cli' => 'openrouter:anthropic/claude-sonnet-4',
     ],
-    'default' => 'gemini:gemini-2.5-flash',
+    'default' => 'claude-cli:opus',
 ],
 ```
 
+### ChatManager — Unified Chat with Fallback
+
+All providers (Claude CLI bridge, OpenClaw, Anthropic, OpenAI, Gemini, etc.) go through `ChatManager`:
+
 ```php
-use BrunoCFalcao\AiBridge\Resolver\AiResolver;
+use BrunoCFalcao\AiBridge\Chat\ChatManager;
 
-$providers = app(AiResolver::class)->resolve('study-full');
-// ['openai' => 'gpt-4.1', 'openrouter' => 'openai/gpt-4.1', 'gemini' => 'gemini-2.5-flash']
+$chat = app(ChatManager::class);
 
-(new MyAgent)->prompt($text, provider: $providers);
+// Non-streaming
+$response = $chat->send($messages, connection: 'cheap');
+
+// Streaming with automatic fallback
+foreach ($chat->stream($messages) as $event) {
+    echo $event['content'];
+}
 ```
+
+Supported providers:
+- **claude-cli** — Routes through the openclaw-claude-bridge Node.js proxy (uses Claude subscription)
+- **openclaw** — Routes through an OpenClaw gateway (agent routing, tools, session management)
+- **Standard** (anthropic, openai, gemini, openrouter, etc.) — Uses Prism PHP
 
 ### Real-Time Chat Streaming
 
 Queue-based AI chat with WebSocket broadcasting:
 
 ```php
-use BrunoCFalcao\AiBridge\Chat\ProcessChatMessage;
+use BrunoCFalcao\AiBridge\Chat\ProcessBridgeChatMessage;
 
-ProcessChatMessage::dispatch(
+ProcessBridgeChatMessage::dispatch(
     userId: $user->id,
     message: $input,
     conversationId: $conversationId,
-    providerArray: $providers,
 );
 ```
 

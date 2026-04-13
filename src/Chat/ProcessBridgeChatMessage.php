@@ -10,7 +10,6 @@ use BrunoCFalcao\AiBridge\Chat\Events\ChatError;
 use BrunoCFalcao\AiBridge\Chat\Events\ChatInit;
 use BrunoCFalcao\AiBridge\Chat\Models\Conversation;
 use BrunoCFalcao\AiBridge\Chat\Models\ConversationMessage;
-use BrunoCFalcao\AiBridge\Providers\ClaudeBridge\ClaudeBridgeClient;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -47,8 +46,7 @@ class ProcessBridgeChatMessage implements ShouldQueue
         public string $message,
         public ?string $conversationId,
         public string $systemPrompt = '',
-        public ?string $bridgeUrl = null,
-        public ?string $bridgeModel = null,
+        public ?string $connection = null,
     ) {
         $this->onQueue(config('ai-bridge.chat.queue', 'chat'));
     }
@@ -61,10 +59,7 @@ class ProcessBridgeChatMessage implements ShouldQueue
         }
 
         try {
-            $client = new ClaudeBridgeClient(
-                baseUrl: $this->bridgeUrl,
-                model: $this->bridgeModel,
-            );
+            $chat = app(ChatManager::class);
 
             // Build message history
             $messages = $this->buildMessages();
@@ -81,17 +76,9 @@ class ProcessBridgeChatMessage implements ShouldQueue
 
             $fullContent = '';
 
-            foreach ($client->stream($messages) as $event) {
+            foreach ($chat->stream($messages, $this->connection, $this->conversationId) as $event) {
                 if ($this->isCancelled()) {
-                    ConversationMessage::query()->insert([
-                        'id' => (string) Str::uuid(),
-                        'conversation_id' => $this->conversationId,
-                        'user_id' => $this->userId,
-                        'role' => 'assistant',
-                        'content' => '*Chat stopped. Go ahead.*',
-                        'created_at' => now(),
-                        'updated_at' => now(),
-                    ]);
+                    $this->insertAssistantMessage('*Chat stopped. Go ahead.*');
 
                     break;
                 }
@@ -111,17 +98,8 @@ class ProcessBridgeChatMessage implements ShouldQueue
                 }
             }
 
-            // Save assistant response
             if ($fullContent) {
-                ConversationMessage::query()->insert([
-                    'id' => (string) Str::uuid(),
-                    'conversation_id' => $this->conversationId,
-                    'user_id' => $this->userId,
-                    'role' => 'assistant',
-                    'content' => $fullContent,
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ]);
+                $this->insertAssistantMessage($fullContent);
             }
 
             $this->resilientBroadcast(new ChatComplete(
@@ -187,6 +165,19 @@ class ProcessBridgeChatMessage implements ShouldQueue
         }
 
         return false;
+    }
+
+    protected function insertAssistantMessage(string $content): void
+    {
+        ConversationMessage::query()->insert([
+            'id' => (string) Str::uuid(),
+            'conversation_id' => $this->conversationId,
+            'user_id' => $this->userId,
+            'role' => 'assistant',
+            'content' => $content,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
     }
 
     protected function resilientBroadcast(object $event): void

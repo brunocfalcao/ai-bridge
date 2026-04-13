@@ -10,9 +10,18 @@
         "laravel/mcp": "^0.6",
         "prism-php/prism": "^0.71 || ^0.99"
     },
+    "require-dev": {
+        "pestphp/pest": "^3.0",
+        "orchestra/testbench": "^10.0"
+    },
     "autoload": {
         "psr-4": {
             "BrunoCFalcao\\AiBridge\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "BrunoCFalcao\\AiBridge\\Tests\\": "tests/"
         }
     },
     "extra": {
@@ -23,5 +32,10 @@
         }
     },
     "minimum-stability": "stable",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    }
 }

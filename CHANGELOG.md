@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.2.0 - 2026-04-13
+
+### Features
+
+- [NEW FEATURE] `ChatProvider` interface — unified contract for all AI providers (`stream()`, `send()`, `healthy()`)
+- [NEW FEATURE] `ChatManager` orchestrator — connection-based provider resolution with automatic fallback on failure
+- [NEW FEATURE] `ClaudeCliProvider` — dedicated provider for the Claude Code CLI bridge
+- [NEW FEATURE] `OpenClawProvider` — dedicated provider for the OpenClaw gateway
+- [NEW FEATURE] `PrismChatProvider` — wraps Prism for standard API providers (anthropic, openai, gemini, etc.)
+- [NEW FEATURE] `ParsesOpenAiSse` trait — shared SSE stream parsing with API error detection in first delta
+- [NEW FEATURE] `ChatProviderException` — base exception with static factories for error detection and fallback triggering
+- [NEW FEATURE] Pest test suite — 23 tests covering AiResolver, ClaudeCliProvider, OpenClawProvider, and ChatManager
+
+### Improvements
+
+- [IMPROVED] `ai:chat` command now uses `ChatManager` uniformly — no special-casing per provider
+- [IMPROVED] `ProcessBridgeChatMessage` job now uses `ChatManager` with automatic fallback support
+- [IMPROVED] Config restructured — `claude_bridge` replaced with separate `claude_cli` and `openclaw` top-level sections
+- [IMPROVED] Env vars renamed: `CLAUDE_BRIDGE_*` → `CLAUDE_CLI_*`, `OPENCLAW_GATEWAY_*` → `OPENCLAW_*`
+
+### Removed
+
+- [IMPROVED] Deleted `ClaudeBridgeClient` — replaced by separate `ClaudeCliProvider` and `OpenClawProvider`
+
 ## 1.1.0 - 2026-04-12
 
 ### Features

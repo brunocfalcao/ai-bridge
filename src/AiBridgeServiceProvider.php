@@ -4,17 +4,18 @@ declare(strict_types=1);
 
 namespace BrunoCFalcao\AiBridge;
 
-use BrunoCFalcao\AiBridge\Knowledge\Middleware\AuthenticateApiKey;
+use BrunoCFalcao\AiBridge\Chat\ChatManager;
 use BrunoCFalcao\AiBridge\Knowledge\Mcp\KnowledgeServer;
+use BrunoCFalcao\AiBridge\Knowledge\Middleware\AuthenticateApiKey;
 use BrunoCFalcao\AiBridge\Knowledge\SystemContext;
-use BrunoCFalcao\AiBridge\Resolver\AiResolver;
 use BrunoCFalcao\AiBridge\Providers\BearerAnthropic;
+use BrunoCFalcao\AiBridge\Resolver\AiResolver;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Mcp\Facades\Mcp;
-use Prism\Prism\Providers\Anthropic\Anthropic;
 use Prism\Prism\PrismManager;
+use Prism\Prism\Providers\Anthropic\Anthropic;
 
 class AiBridgeServiceProvider extends ServiceProvider
 {
@@ -24,6 +25,7 @@ class AiBridgeServiceProvider extends ServiceProvider
 
         $this->app->singleton(SystemContext::class);
         $this->app->singleton(AiResolver::class);
+        $this->app->singleton(ChatManager::class);
 
         $this->configurePrismOAuth();
     }
