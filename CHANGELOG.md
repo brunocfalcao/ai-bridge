@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.3.1 - 2026-04-19
+
+### Improvements
+
+- [IMPROVED] Added `tests/Feature/Browser/SidecarIntegrationTest.php` — 6 live-sidecar integration tests exercising `BrowserSidecarClient`, `TakeScreenshot`, `CaptureScreenshotTool`, container resolution, and `/mcp/browser` route registration against a real Playwright sidecar (auto-skipped when the sidecar is unreachable)
+- [IMPROVED] `phpunit.xml` and `tests/Pest.php` now discover the new `Feature` test suite
+
 ## 1.3.0 - 2026-04-19
 
 ### Features
