@@ -7,12 +7,12 @@ namespace BrunoCFalcao\AiBridge\Knowledge\Mcp\Resources;
 use BrunoCFalcao\AiBridge\Knowledge\Models\KnowledgeChunk;
 use BrunoCFalcao\AiBridge\Knowledge\SystemContext;
 use Illuminate\Support\Facades\Cache;
-use Laravel\Mcp\Attributes\MimeType;
-use Laravel\Mcp\Attributes\Name;
-use Laravel\Mcp\Attributes\Uri;
-use Laravel\Mcp\Server\Request;
+use Laravel\Mcp\Request;
+use Laravel\Mcp\Response;
+use Laravel\Mcp\Server\Attributes\MimeType;
+use Laravel\Mcp\Server\Attributes\Name;
+use Laravel\Mcp\Server\Attributes\Uri;
 use Laravel\Mcp\Server\Resource;
-use Laravel\Mcp\Server\Response;
 
 #[Name('topics')]
 #[Uri('knowledge://topics')]

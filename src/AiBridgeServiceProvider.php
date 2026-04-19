@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace BrunoCFalcao\AiBridge;
 
+use BrunoCFalcao\AiBridge\Browser\BrowserSidecarClient;
+use BrunoCFalcao\AiBridge\Browser\Mcp\BrowserServer;
 use BrunoCFalcao\AiBridge\Chat\ChatManager;
 use BrunoCFalcao\AiBridge\Knowledge\Mcp\KnowledgeServer;
 use BrunoCFalcao\AiBridge\Knowledge\Middleware\AuthenticateApiKey;
@@ -27,6 +29,16 @@ class AiBridgeServiceProvider extends ServiceProvider
         $this->app->singleton(AiResolver::class);
         $this->app->singleton(ChatManager::class);
 
+        $this->app->singleton(BrowserSidecarClient::class, function (Application $app) {
+            $config = $app['config']->get('ai-bridge.browser', []);
+
+            return new BrowserSidecarClient(
+                baseUrl: $config['sidecar_url'] ?? 'http://127.0.0.1:3100',
+                defaultSessionId: $config['default_session_id'] ?? 'ai-bridge',
+                timeout: (int) ($config['timeout'] ?? 30),
+            );
+        });
+
         $this->configurePrismOAuth();
     }
 
@@ -36,6 +48,18 @@ class AiBridgeServiceProvider extends ServiceProvider
         $this->registerPublishing();
         $this->registerMigrations();
         $this->registerMcpRoutes();
+        $this->registerBrowserMcpRoute();
+    }
+
+    protected function registerBrowserMcpRoute(): void
+    {
+        $path = config('ai-bridge.browser.mcp_path');
+
+        if (! $path) {
+            return;
+        }
+
+        Mcp::web($path, BrowserServer::class);
     }
 
     protected function registerCommands(): void

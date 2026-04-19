@@ -9,10 +9,10 @@ use BrunoCFalcao\AiBridge\Knowledge\Mcp\Resources\TopicsResource;
 use BrunoCFalcao\AiBridge\Knowledge\Mcp\Tools\ListTopicsTool;
 use BrunoCFalcao\AiBridge\Knowledge\Mcp\Tools\SearchKnowledgeTool;
 use BrunoCFalcao\AiBridge\Knowledge\Mcp\Tools\StoreKnowledgeTool;
-use Laravel\Mcp\Attributes\Instructions;
-use Laravel\Mcp\Attributes\Name;
-use Laravel\Mcp\Attributes\Version;
 use Laravel\Mcp\Server;
+use Laravel\Mcp\Server\Attributes\Instructions;
+use Laravel\Mcp\Server\Attributes\Name;
+use Laravel\Mcp\Server\Attributes\Version;
 
 #[Name('Knowledge Server')]
 #[Version('1.0.0')]

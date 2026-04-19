@@ -5,29 +5,26 @@ declare(strict_types=1);
 namespace BrunoCFalcao\AiBridge\Knowledge\Mcp\Tools;
 
 use BrunoCFalcao\AiBridge\Knowledge\Models\KnowledgeChunk;
+use Illuminate\Contracts\JsonSchema\JsonSchema;
 use Illuminate\Support\Str;
-use Laravel\Mcp\Attributes\IsReadOnly;
-use Laravel\Mcp\Attributes\Name;
-use Laravel\Mcp\Server\Request;
-use Laravel\Mcp\Server\Response;
+use Laravel\Mcp\Request;
+use Laravel\Mcp\Response;
+use Laravel\Mcp\Server\Attributes\Name;
 use Laravel\Mcp\Server\Tool;
+use Laravel\Mcp\Server\Tools\Annotations\IsReadOnly;
 
 #[Name('search-knowledge')]
 #[IsReadOnly]
 class SearchKnowledgeTool extends Tool
 {
     /** @return array<string, mixed> */
-    public function schema(): array
+    public function schema(JsonSchema $schema): array
     {
         return [
-            'type' => 'object',
-            'properties' => [
-                'query' => [
-                    'type' => 'string',
-                    'description' => 'The search query for finding relevant knowledge.',
-                ],
-            ],
-            'required' => ['query'],
+            'query' => $schema
+                ->string()
+                ->description('The search query for finding relevant knowledge.')
+                ->required(),
         ];
     }
 

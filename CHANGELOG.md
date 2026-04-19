@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.3.0 - 2026-04-19
+
+### Features
+
+- [NEW FEATURE] `Browser` subsystem — pooled Playwright sidecar client for screenshot capture without per-call chrome leaks
+- [NEW FEATURE] `BrowserSidecarClient` — HTTP client wrapping `/navigate`, `/screenshot`, and `/status` sidecar endpoints with per-session isolation via `X-Session-ID`
+- [NEW FEATURE] `TakeScreenshot` Laravel AI agent tool — exposes `capture(url, full_page, session_id)` returning JSON with base64 PNG payload
+- [NEW FEATURE] `BrowserServer` MCP server + `capture-screenshot` MCP tool — returns native MCP `image` content for vision-capable models
+- [NEW FEATURE] `browser` config block (`sidecar_url`, `default_session_id`, `timeout`, `mcp_path`) with environment variable overrides
+- [NEW FEATURE] 23 new Pest tests covering sidecar client, agent tool, and MCP tool paths
+
+### Fixes
+
+- [BUG FIX] Knowledge MCP classes migrated to `laravel/mcp` v0.6 namespaces — previous imports (`Laravel\Mcp\Attributes\*`, `Laravel\Mcp\Server\Request|Response`, `Laravel\Mcp\Contracts\HasUriTemplate`) were stale and caused fatal errors on load
+- [BUG FIX] `SearchKnowledgeTool`, `StoreKnowledgeTool`, `ListTopicsTool` — `schema()` signature updated to accept `JsonSchema $schema` and migrated to the JsonSchema builder pattern, resolving LSP-incompatibility fatals
+- [BUG FIX] `ChunkResource::uriTemplate()` now returns `UriTemplate` (not `string`) to match the `HasUriTemplate` contract
+
+### Documentation
+
+- [IMPROVED] Added `docs/browser.md` covering sidecar contract, configuration, Laravel AI tool usage, MCP tool wiring for Claude Code, and session isolation
+
 ## 1.2.1 - 2026-04-14
 
 ### Features

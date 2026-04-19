@@ -7,41 +7,37 @@ namespace BrunoCFalcao\AiBridge\Knowledge\Mcp\Tools;
 use BrunoCFalcao\AiBridge\Knowledge\ContentChunker;
 use BrunoCFalcao\AiBridge\Knowledge\Models\KnowledgeChunk;
 use BrunoCFalcao\AiBridge\Knowledge\SystemContext;
+use Illuminate\Contracts\JsonSchema\JsonSchema;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Str;
-use Laravel\Mcp\Attributes\Name;
-use Laravel\Mcp\Server\Request;
-use Laravel\Mcp\Server\Response;
+use Laravel\Mcp\Request;
+use Laravel\Mcp\Response;
+use Laravel\Mcp\Server\Attributes\Name;
 use Laravel\Mcp\Server\Tool;
 
 #[Name('store-knowledge')]
 class StoreKnowledgeTool extends Tool
 {
     /** @return array<string, mixed> */
-    public function schema(): array
+    public function schema(JsonSchema $schema): array
     {
         return [
-            'type' => 'object',
-            'properties' => [
-                'title' => [
-                    'type' => 'string',
-                    'description' => 'Title/topic for this knowledge entry.',
-                ],
-                'content' => [
-                    'type' => 'string',
-                    'description' => 'The content to store as knowledge.',
-                ],
-                'source_type' => [
-                    'type' => 'string',
-                    'enum' => ['web', 'file', 'chat'],
-                    'description' => 'Source type: web, file, or chat.',
-                ],
-                'source_url' => [
-                    'type' => 'string',
-                    'description' => 'Optional source URL.',
-                ],
-            ],
-            'required' => ['title', 'content', 'source_type'],
+            'title' => $schema
+                ->string()
+                ->description('Title/topic for this knowledge entry.')
+                ->required(),
+            'content' => $schema
+                ->string()
+                ->description('The content to store as knowledge.')
+                ->required(),
+            'source_type' => $schema
+                ->string()
+                ->enum(['web', 'file', 'chat'])
+                ->description('Source type: web, file, or chat.')
+                ->required(),
+            'source_url' => $schema
+                ->string()
+                ->description('Optional source URL.'),
         ];
     }
 

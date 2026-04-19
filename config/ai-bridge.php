@@ -266,6 +266,25 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Browser Sidecar (Playwright)
+    |--------------------------------------------------------------------------
+    |
+    | HTTP client configuration for a pooled Playwright sidecar used by the
+    | TakeScreenshot agent tool and the capture-screenshot MCP tool.
+    | Reuses an existing sidecar (e.g. friday-browser-sidecar.service) to
+    | avoid spawning leaky chrome processes per call.
+    |
+    */
+
+    'browser' => [
+        'sidecar_url' => env('AI_BRIDGE_BROWSER_SIDECAR_URL', 'http://127.0.0.1:3100'),
+        'default_session_id' => env('AI_BRIDGE_BROWSER_SESSION_ID', 'ai-bridge'),
+        'timeout' => (int) env('AI_BRIDGE_BROWSER_TIMEOUT', 30),
+        'mcp_path' => env('AI_BRIDGE_BROWSER_MCP_PATH', '/mcp/browser'),
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
     | MCP Systems (populated dynamically per project)
     |--------------------------------------------------------------------------
     */

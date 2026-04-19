@@ -6,24 +6,22 @@ namespace BrunoCFalcao\AiBridge\Knowledge\Mcp\Tools;
 
 use BrunoCFalcao\AiBridge\Knowledge\Models\KnowledgeChunk;
 use BrunoCFalcao\AiBridge\Knowledge\SystemContext;
+use Illuminate\Contracts\JsonSchema\JsonSchema;
 use Illuminate\Support\Facades\Cache;
-use Laravel\Mcp\Attributes\IsReadOnly;
-use Laravel\Mcp\Attributes\Name;
-use Laravel\Mcp\Server\Request;
-use Laravel\Mcp\Server\Response;
+use Laravel\Mcp\Request;
+use Laravel\Mcp\Response;
+use Laravel\Mcp\Server\Attributes\Name;
 use Laravel\Mcp\Server\Tool;
+use Laravel\Mcp\Server\Tools\Annotations\IsReadOnly;
 
 #[Name('list-topics')]
 #[IsReadOnly]
 class ListTopicsTool extends Tool
 {
     /** @return array<string, mixed> */
-    public function schema(): array
+    public function schema(JsonSchema $schema): array
     {
-        return [
-            'type' => 'object',
-            'properties' => [],
-        ];
+        return [];
     }
 
     public function handle(Request $request, SystemContext $context): Response

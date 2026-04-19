@@ -106,6 +106,7 @@ Full specification docs are in the [docs/](docs/) directory:
 - [Models & Migrations](docs/models.md)
 - [Contracts](docs/contracts.md)
 - [Security](docs/security.md)
+- [Browser (pooled screenshot & automation)](docs/browser.md)
 
 ## License
 
