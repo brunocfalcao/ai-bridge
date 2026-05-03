@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.3.2 - 2026-05-03
+
+### Bug Fixes
+
+- [BUG FIX] Renamed migration index `conversation_index` → `ai_conversation_index` on `ai_conversation_messages` to avoid PostgreSQL global-namespace collision with apps that already host an `agent_conversation_messages` table (laravel/ai's pre-existing index of the same name)
+
 ## 1.3.1 - 2026-04-19
 
 ### Improvements

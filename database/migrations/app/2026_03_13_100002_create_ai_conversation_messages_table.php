@@ -24,7 +24,7 @@ return new class extends Migration
             $table->text('meta')->nullable();
             $table->timestamps();
 
-            $table->index(['conversation_id', 'user_id', 'updated_at'], 'conversation_index');
+            $table->index(['conversation_id', 'user_id', 'updated_at'], 'ai_conversation_index');
         });
     }
 
