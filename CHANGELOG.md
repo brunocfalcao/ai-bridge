@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.4.0 - 2026-07-26
+
+### Features
+- [ADDED] `embedWithMeta()` returns the vector together with the provider:model that produced it. Embeddings are only comparable within one model, so callers that persist vectors can record their identity and refuse to compare across embedding spaces.
+- [ADDED] Embedding failover via `resolver.embedding_fallbacks`, walked candidate-by-candidate. Laravel AI keys its own failover list by provider name, which collapses two models of the same provider into one entry and silently drops the primary — this walks the chain itself so model-level fallbacks work. Each switch re-emits `ProviderFailedOver` so host alerting sees embedding failures exactly like text ones.
+
+### Changed
+- [CHANGED] `embed()` now delegates to `embedWithMeta()`. Same signature, same return type; existing callers are unaffected.
+
 ## 1.3.2 - 2026-05-03
 
 ### Bug Fixes
