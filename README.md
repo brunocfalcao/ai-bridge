@@ -38,7 +38,7 @@ Map named connections to `provider:model` pairs with automatic fallback chains:
 // config/ai-bridge.php
 'resolver' => [
     'connections' => [
-        'cheap' => 'gemini:gemini-2.5-flash',
+        'cheap' => 'gemini:gemini-3-flash-preview',
     ],
     'fallbacks' => [
         'claude-cli' => 'openrouter:anthropic/claude-sonnet-4',

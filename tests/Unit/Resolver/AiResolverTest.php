@@ -10,7 +10,7 @@ it('resolves a named connection to provider:model', function () {
     $chain = $resolver->using('cheap');
 
     expect($chain)->toHaveKey('gemini')
-        ->and($chain['gemini'])->toBe('gemini-2.5-flash');
+        ->and($chain['gemini'])->toBe('gemini-3-flash-preview');
 });
 
 it('falls back to default when connection not found', function () {
@@ -27,7 +27,7 @@ it('walks the fallback chain correctly', function () {
 
     $chain = $resolver->using('bridge');
 
-    // claude-cli:opus → fallback openrouter:anthropic/claude-sonnet-4 → fallback gemini:gemini-2.5-flash
+    // claude-cli:opus → fallback openrouter:anthropic/claude-sonnet-4 → fallback gemini:gemini-3-flash-preview
     expect($chain)->toHaveCount(3)
         ->and(array_keys($chain))->toBe(['claude-cli', 'openrouter', 'gemini']);
 });

@@ -12,9 +12,9 @@ The `AiResolver` maps business scopes (e.g. "leads-discover", "study-full") to A
 Connectivity strings use the `provider:model` format, split on the first colon:
 
 ```
-openrouter:google/gemini-2.5-flash    -> provider: openrouter, model: google/gemini-2.5-flash
+openrouter:google/gemini-3-flash-preview    -> provider: openrouter, model: google/gemini-3-flash-preview
 openai:gpt-4.1                        -> provider: openai, model: gpt-4.1
-gemini:gemini-2.5-flash               -> provider: gemini, model: gemini-2.5-flash
+gemini:gemini-3-flash-preview               -> provider: gemini, model: gemini-3-flash-preview
 openrouter:qwen/qwen3.6-plus:free     -> provider: openrouter, model: qwen/qwen3.6-plus:free
 ```
 
@@ -27,8 +27,8 @@ The provider name must match a key in Laravel's `config/ai.php` providers array.
 'resolver' => [
     'scopes' => [
         'leads-discover' => 'openrouter:qwen/qwen3.6-plus-preview:free',
-        'leads-osint'    => 'gemini:gemini-2.5-flash',
-        'leads-dispatch' => 'openrouter:google/gemini-2.5-flash',
+        'leads-osint'    => 'gemini:gemini-3-flash-preview',
+        'leads-dispatch' => 'openrouter:google/gemini-3-flash-preview',
         'wizard'         => 'openrouter:qwen/qwen3.6-plus-preview:free',
         'study-preview'  => 'openai:gpt-4.1',
         'study-full'     => 'openai:gpt-4.1',
@@ -37,11 +37,11 @@ The provider name must match a key in Laravel's `config/ai.php` providers array.
 
     'fallbacks' => [
         'openai'     => 'openrouter:openai/gpt-4.1',
-        'openrouter' => 'gemini:gemini-2.5-flash',
+        'openrouter' => 'gemini:gemini-3-flash-preview',
         'gemini'     => null,  // terminal - throws exception on failure
     ],
 
-    'default' => 'gemini:gemini-2.5-flash',
+    'default' => 'gemini:gemini-3-flash-preview',
 ],
 ```
 
@@ -55,7 +55,7 @@ Returns an ordered associative array for use with `Promptable::prompt(provider: 
 $resolver = app(AiResolver::class);
 
 $providers = $resolver->resolve('study-full');
-// ['openai' => 'gpt-4.1', 'openrouter' => 'openai/gpt-4.1', 'gemini' => 'gemini-2.5-flash']
+// ['openai' => 'gpt-4.1', 'openrouter' => 'openai/gpt-4.1', 'gemini' => 'gemini-3-flash-preview']
 
 // Pass directly to any Laravel AI agent:
 (new StudyAgent)->prompt($text, provider: $providers);
@@ -70,7 +70,7 @@ $providers = $resolver->resolve('study-full');
 **Example walkthrough for `study-full`:**
 - Primary: `openai:gpt-4.1` -> `['openai' => 'gpt-4.1']`
 - Fallback of `openai`: `openrouter:openai/gpt-4.1` -> append `['openrouter' => 'openai/gpt-4.1']`
-- Fallback of `openrouter`: `gemini:gemini-2.5-flash` -> append `['gemini' => 'gemini-2.5-flash']`
+- Fallback of `openrouter`: `gemini:gemini-3-flash-preview` -> append `['gemini' => 'gemini-3-flash-preview']`
 - Fallback of `gemini`: `null` -> stop
 - Result: 3-element array, tried in order
 
@@ -80,7 +80,7 @@ Returns only the primary provider and model as an indexed array. No fallback cha
 
 ```php
 [$provider, $model] = app(AiResolver::class)->resolveUsing('leads-osint');
-// $provider = 'gemini', $model = 'gemini-2.5-flash'
+// $provider = 'gemini', $model = 'gemini-3-flash-preview'
 
 Prism::text()
     ->using($provider, $model)

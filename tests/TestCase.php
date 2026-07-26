@@ -20,12 +20,12 @@ abstract class TestCase extends BaseTestCase
     {
         $app['config']->set('ai-bridge.resolver', [
             'connections' => [
-                'cheap' => 'gemini:gemini-2.5-flash',
+                'cheap' => 'gemini:gemini-3-flash-preview',
                 'bridge' => 'claude-cli:opus',
             ],
             'fallbacks' => [
                 'claude-cli' => 'openrouter:anthropic/claude-sonnet-4',
-                'openrouter' => 'gemini:gemini-2.5-flash',
+                'openrouter' => 'gemini:gemini-3-flash-preview',
             ],
             'default' => 'claude-cli:opus',
         ]);

@@ -12,9 +12,9 @@ Scope-based AI provider/model resolution. See [Resolver](resolver.md) for usage.
 
 | Key | Type | Default | Description |
 |---|---|---|---|
-| `resolver.scopes` | `array<string, string>` | `[]` | Maps scope strings to `provider:model` format. Example: `'leads-discover' => 'openrouter:google/gemini-2.5-flash'` |
+| `resolver.scopes` | `array<string, string>` | `[]` | Maps scope strings to `provider:model` format. Example: `'leads-discover' => 'openrouter:google/gemini-3-flash-preview'` |
 | `resolver.fallbacks` | `array<string, string\|null>` | `[]` | Provider-level fallback chain. `null` = terminal (throws on failure). Example: `'openai' => 'openrouter:openai/gpt-4.1'` |
-| `resolver.default` | `string` | `'gemini:gemini-2.5-flash'` | Default `provider:model` when no scope matches |
+| `resolver.default` | `string` | `'gemini:gemini-3-flash-preview'` | Default `provider:model` when no scope matches |
 | `ai_config_key` | `string` | _(not set)_ | Override the config path for scope resolution. Defaults to `'ai-bridge.resolver'`. Set to e.g. `'myapp.ai'` to use a different config root |
 
 ## Models

@@ -102,9 +102,9 @@ Host App
 Call Site
   -> AiResolver::resolve(AiScope::LeadsDiscover)
        -> config('ai-bridge.resolver.scopes.leads-discover')
-       -> parse 'openrouter:google/gemini-2.5-flash'
+       -> parse 'openrouter:google/gemini-3-flash-preview'
        -> walk fallbacks: openrouter -> gemini -> null (terminal)
-       -> return ['openrouter' => 'google/gemini-2.5-flash', 'gemini' => 'gemini-2.5-flash']
+       -> return ['openrouter' => 'google/gemini-3-flash-preview', 'gemini' => 'gemini-3-flash-preview']
   -> Agent::prompt($text, provider: $array)
        -> Laravel AI withModelFailover() tries each provider in order
        -> InsufficientCreditsException triggers next provider

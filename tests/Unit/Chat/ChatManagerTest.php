@@ -27,14 +27,14 @@ it('resolves standard providers to PrismChatProvider', function () {
 
     expect($manager->resolve('openrouter', 'anthropic/claude-sonnet-4'))->toBeInstanceOf(PrismChatProvider::class);
     expect($manager->resolve('anthropic', 'claude-opus-4-6'))->toBeInstanceOf(PrismChatProvider::class);
-    expect($manager->resolve('gemini', 'gemini-2.5-flash'))->toBeInstanceOf(PrismChatProvider::class);
+    expect($manager->resolve('gemini', 'gemini-3-flash-preview'))->toBeInstanceOf(PrismChatProvider::class);
 });
 
 it('falls back to next provider when primary throws ChatProviderException', function () {
     config()->set('ai-bridge.resolver', [
         'connections' => [],
         'fallbacks' => [
-            'claude-cli' => 'gemini:gemini-2.5-flash',
+            'claude-cli' => 'gemini:gemini-3-flash-preview',
         ],
         'default' => 'claude-cli:opus',
     ]);
@@ -56,7 +56,7 @@ it('falls back to next provider when primary throws ChatProviderException', func
         ->andReturn($failingProvider);
 
     $manager->shouldReceive('resolve')
-        ->with('gemini', 'gemini-2.5-flash')
+        ->with('gemini', 'gemini-3-flash-preview')
         ->andReturn($successProvider);
 
     $result = $manager->send([['role' => 'user', 'content' => 'Hi']]);
@@ -68,7 +68,7 @@ it('throws when all providers in chain fail', function () {
     config()->set('ai-bridge.resolver', [
         'connections' => [],
         'fallbacks' => [
-            'claude-cli' => 'gemini:gemini-2.5-flash',
+            'claude-cli' => 'gemini:gemini-3-flash-preview',
         ],
         'default' => 'claude-cli:opus',
     ]);
@@ -90,7 +90,7 @@ it('throws when all providers in chain fail', function () {
         ->andReturn($failingProvider1);
 
     $manager->shouldReceive('resolve')
-        ->with('gemini', 'gemini-2.5-flash')
+        ->with('gemini', 'gemini-3-flash-preview')
         ->andReturn($failingProvider2);
 
     $manager->send([['role' => 'user', 'content' => 'Hi']]);
