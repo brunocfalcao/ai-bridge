@@ -11,6 +11,10 @@ All notable changes to this project will be documented in this file.
 ### Changed
 - [CHANGED] `embed()` now delegates to `embedWithMeta()`. Same signature, same return type; existing callers are unaffected.
 
+### Verification
+- [VERIFIED] Laravel 13, Pest 5, and the local TIA release graph pass all 52
+  package tests and 105 assertions.
+
 ## 1.3.2 - 2026-05-03
 
 ### Bug Fixes
