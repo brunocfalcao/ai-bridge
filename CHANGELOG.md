@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.4.1 - 2026-09-17
+
+### Compatibility
+
+- [IMPROVED] Upgrade the browser MCP integration to Laravel MCP v1 and cover
+  the v1 discovery handshake, including its required transport headers.
+
 ## 1.4.0 - 2026-07-26
 
 ### Features
