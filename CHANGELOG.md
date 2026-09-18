@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.4.2 - 2026-09-18
+
+### Compatibility
+
+- [IMPROVED] Support Laravel AI v1 in host applications.
+
 ## 1.4.1 - 2026-09-17
 
 ### Compatibility
