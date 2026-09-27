@@ -46,6 +46,13 @@ it('prevents circular fallback chains', function () {
         ->and(array_keys($chain))->toBe(['claude-cli', 'openrouter']);
 });
 
+it('rejects a different fallback model on the same provider instead of replacing the primary', function () {
+    config()->set('ai-bridge.resolver.fallbacks.gemini', 'gemini:gemini-3.1-pro-preview');
+
+    expect(fn () => app(AiResolver::class)->using('cheap'))
+        ->toThrow(InvalidArgumentException::class, 'same provider');
+});
+
 it('parses model with slashes for openrouter', function () {
     $resolver = app(AiResolver::class);
 

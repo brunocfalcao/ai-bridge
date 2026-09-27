@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.4.2 - 2026-09-27
+
+### Fixes
+
+- [BUG FIX] Reject text fallback chains that reuse one provider with a different model instead of silently replacing the primary model.
+
 ## 1.4.1 - 2026-09-17
 
 ### Compatibility
