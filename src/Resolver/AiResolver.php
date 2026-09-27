@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace BrunoCFalcao\AiBridge\Resolver;
 
+use InvalidArgumentException;
 use Laravel\Ai\Ai;
 use Laravel\Ai\Embeddings;
 use Laravel\Ai\Events\ProviderFailedOver;
@@ -35,6 +36,11 @@ class AiResolver
 
         while ($current !== '' && ! isset($seen[$current])) {
             [$provider, $model] = $this->parse($current);
+
+            if (isset($providers[$provider]) && $providers[$provider] !== $model) {
+                throw new InvalidArgumentException("Text fallback uses the same provider [{$provider}] with a different model; Laravel AI cannot represent that chain.");
+            }
+
             $providers[$provider] = $model;
             $seen[$current] = true;
 

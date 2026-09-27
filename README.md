@@ -2,13 +2,17 @@
 
 Reusable AI bridge for Laravel: multi-provider connectivity, chat streaming, knowledge/MCP server, and agent tools.
 
+## Changes in v1.4.3
+
+Text fallback chains now reject a second model on the same provider instead of replacing the primary model. The package continues to support Laravel AI v1.
+
 ## Requirements
 
 - PHP ^8.4
 - Laravel ^12.0 || ^13.0
-- [laravel/ai](https://github.com/laravel/ai) ^0.3
-- [laravel/mcp](https://github.com/laravel/mcp) ^0.6
-- [prism-php/prism](https://github.com/prism-php/prism) ^0.71
+- [laravel/ai](https://github.com/laravel/ai) ^1.0
+- [laravel/mcp](https://github.com/laravel/mcp) ^1.0
+- [prism-php/prism](https://github.com/prism-php/prism) ^0.71 || ^0.99
 
 ## Installation
 
@@ -46,6 +50,11 @@ Map named connections to `provider:model` pairs with automatic fallback chains:
     'default' => 'claude-cli:opus',
 ],
 ```
+
+Text fallback chains must use distinct provider names for different models.
+`AiResolver::using()` throws `InvalidArgumentException` when a later model would
+overwrite an earlier model on the same provider. Embedding fallbacks retain
+their separate model-level traversal.
 
 ### ChatManager — Unified Chat with Fallback
 
