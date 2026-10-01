@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.4.3-p2 - 2026-10-01
+
+### Compatibility
+
+- [IMPROVED] Accept both the laravel/ai 0.3 line and the 1.x line, so an application can upgrade without forcing the bridge to move first.
+
 ## 1.4.2 - 2026-09-27
 
 ### Fixes

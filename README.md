@@ -6,7 +6,7 @@ Reusable AI bridge for Laravel: multi-provider connectivity, chat streaming, kno
 
 - PHP ^8.4
 - Laravel ^12.0 || ^13.0
-- [laravel/ai](https://github.com/laravel/ai) ^0.3
+- [laravel/ai](https://github.com/laravel/ai) ^0.3 || ^1.0.1
 - [laravel/mcp](https://github.com/laravel/mcp) ^1.0
 - [prism-php/prism](https://github.com/prism-php/prism) ^0.71 || ^0.99
 
