@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace BrunoCFalcao\AiBridge\Tests;
 
 use BrunoCFalcao\AiBridge\AiBridgeServiceProvider;
+use Laravel\Ai\AiServiceProvider;
 use Orchestra\Testbench\TestCase as BaseTestCase;
 
 abstract class TestCase extends BaseTestCase
@@ -12,6 +13,7 @@ abstract class TestCase extends BaseTestCase
     protected function getPackageProviders($app): array
     {
         return [
+            AiServiceProvider::class,
             AiBridgeServiceProvider::class,
         ];
     }

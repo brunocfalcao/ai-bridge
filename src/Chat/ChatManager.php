@@ -31,7 +31,7 @@ class ChatManager
 
         foreach ($chain as $provider => $model) {
             try {
-                $client = $this->resolve($provider, $model);
+                $client = $this->resolve($provider, $model, $this->resolver->effort($connection ?? '__default__', $provider));
 
                 yield from $client->stream($messages, $conversationId);
 
@@ -60,7 +60,7 @@ class ChatManager
 
         foreach ($chain as $provider => $model) {
             try {
-                $client = $this->resolve($provider, $model);
+                $client = $this->resolve($provider, $model, $this->resolver->effort($connection ?? '__default__', $provider));
 
                 return $client->send($messages, $conversationId);
             } catch (ChatProviderException $e) {
@@ -88,7 +88,7 @@ class ChatManager
     /**
      * Resolve a provider instance from provider name and model.
      */
-    public function resolve(string $provider, string $model): ChatProvider
+    public function resolve(string $provider, string $model, ?string $effort = null): ChatProvider
     {
         return match ($provider) {
             'claude-cli' => new ClaudeCliProvider(
@@ -106,6 +106,7 @@ class ChatManager
             default => new PrismChatProvider(
                 provider: $provider,
                 model: $model,
+                effort: $effort,
             ),
         };
     }

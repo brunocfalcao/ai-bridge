@@ -4,11 +4,16 @@ declare(strict_types=1);
 
 namespace BrunoCFalcao\AiBridge\Resolver;
 
+use BrunoCFalcao\AiBridge\Agents\ConfiguredAgent;
+use BrunoCFalcao\AiBridge\Agents\ConfiguredStructuredAgent;
+use Closure;
 use InvalidArgumentException;
 use Laravel\Ai\Ai;
+use Laravel\Ai\AnonymousAgent;
 use Laravel\Ai\Embeddings;
 use Laravel\Ai\Events\ProviderFailedOver;
 use Laravel\Ai\Exceptions\FailoverableException;
+use Laravel\Ai\StructuredAnonymousAgent;
 
 class AiResolver
 {
@@ -29,6 +34,16 @@ class AiResolver
 
         $primary = config("{$configKey}.connections.{$name}")
             ?? config("{$configKey}.default");
+
+        // A connection can name its own fallback chain, which then replaces
+        // the provider-level `fallbacks` for that connection only. Two
+        // connections on the same provider can so fail over to different
+        // places.
+        $own = config("{$configKey}.connection_fallbacks.{$name}");
+
+        if ($own !== null) {
+            return $this->chainOf([(string) $primary, ...array_map('strval', (array) $own)]);
+        }
 
         $providers = [];
         $seen = [];
@@ -51,6 +66,136 @@ class AiResolver
             }
 
             $current = (string) $next;
+        }
+
+        return $providers;
+    }
+
+    /**
+     * An ad-hoc agent for a named connection, carrying the provider options
+     * (reasoning effort, thinking level, …) configured for that connection.
+     * Prompt it with `->prompt($text, provider: $resolver->using($connection))`.
+     */
+    public function agent(
+        string|\BackedEnum $connection,
+        string $instructions = '',
+        iterable $messages = [],
+        iterable $tools = [],
+        ?Closure $schema = null,
+    ): AnonymousAgent {
+        // Laravel AI fakes agents by exact class. Code under test that fakes
+        // the plain `agent()` classes keeps working: when only those are
+        // faked, hand back the plain class (options do not matter to a fake).
+        $plain = $schema ? StructuredAnonymousAgent::class : AnonymousAgent::class;
+        $configured = $schema ? ConfiguredStructuredAgent::class : ConfiguredAgent::class;
+
+        if (Ai::hasFakeGatewayFor($plain) && ! Ai::hasFakeGatewayFor($configured)) {
+            return $schema
+                ? new StructuredAnonymousAgent($instructions, $messages, $tools, $schema)
+                : new AnonymousAgent($instructions, $messages, $tools);
+        }
+
+        $agent = $schema
+            ? new ConfiguredStructuredAgent($instructions, $messages, $tools, $schema)
+            : new ConfiguredAgent($instructions, $messages, $tools);
+
+        return $agent->withConnectionOptions($this->connectionOptions($connection));
+    }
+
+    /**
+     * The reasoning effort configured for one provider of a connection
+     * (`efforts.{connection}.{provider}`: low | medium | high), or null for
+     * the model's own default.
+     */
+    public function effort(string|\BackedEnum $connection, string $provider): ?string
+    {
+        $name = $connection instanceof \BackedEnum ? $connection->value : $connection;
+        $effort = config("{$this->configKey()}.efforts.{$name}.{$provider}");
+
+        return is_string($effort) && $effort !== '' ? $effort : null;
+    }
+
+    /**
+     * Laravel AI provider options for every provider of a connection: the
+     * configured effort in each provider's own request shape, merged with
+     * any raw `options.{connection}.{provider}` override.
+     *
+     * @return array<string, array<string, mixed>>
+     */
+    public function connectionOptions(string|\BackedEnum $connection): array
+    {
+        $name = $connection instanceof \BackedEnum ? $connection->value : $connection;
+        $configKey = $this->configKey();
+        $options = [];
+
+        foreach ((array) config("{$configKey}.efforts.{$name}", []) as $provider => $effort) {
+            $mapped = is_string($effort) && $effort !== '' ? $this->effortOptions((string) $provider, $effort) : [];
+
+            if ($mapped !== []) {
+                $options[$provider] = $mapped;
+            }
+        }
+
+        foreach ((array) config("{$configKey}.options.{$name}", []) as $provider => $raw) {
+            $options[$provider] = array_replace_recursive($options[$provider] ?? [], (array) $raw);
+        }
+
+        return $options;
+    }
+
+    /**
+     * Provider options for one provider of a connection.
+     *
+     * @return array<string, mixed>
+     */
+    public function providerOptions(string|\BackedEnum $connection, string $provider): array
+    {
+        return (array) ($this->connectionOptions($connection)[$provider] ?? []);
+    }
+
+    /**
+     * A reasoning effort in the request shape each provider's API expects
+     * through Laravel AI: OpenAI and OpenRouter `reasoning.effort` (Responses
+     * API), Gemini `generation_config.thinking_level` (Interactions API),
+     * Anthropic `output_config.effort`. Providers without an effort setting
+     * get nothing.
+     *
+     * @return array<string, mixed>
+     */
+    public function effortOptions(string $provider, string $effort): array
+    {
+        return match ($provider) {
+            'openai', 'openrouter' => ['reasoning' => ['effort' => $effort]],
+            'gemini' => ['thinking_level' => $effort],
+            'anthropic' => ['output_config' => ['effort' => $effort]],
+            default => [],
+        };
+    }
+
+    /**
+     * @param  list<string>  $entries  "provider:model" in order
+     * @return array<string, string>
+     */
+    private function chainOf(array $entries): array
+    {
+        $providers = [];
+
+        foreach ($entries as $entry) {
+            if ($entry === '') {
+                continue;
+            }
+
+            [$provider, $model] = $this->parse($entry);
+
+            if (isset($providers[$provider])) {
+                if ($providers[$provider] !== $model) {
+                    throw new InvalidArgumentException("Text fallback uses the same provider [{$provider}] with a different model; Laravel AI cannot represent that chain.");
+                }
+
+                continue;
+            }
+
+            $providers[$provider] = $model;
         }
 
         return $providers;
@@ -118,11 +263,17 @@ class AiResolver
                 // provider/model identity this method exists to report.
                 $request = Embeddings::for([$text]);
 
+                // A model that cannot produce the stored size is asked for
+                // its own size (`embedding_request_dimensions`) and the
+                // vector is zero-padded below; padding with zeros leaves
+                // cosine distances between that model's vectors unchanged.
+                $requested = (int) (config("{$configKey}.embedding_request_dimensions.{$candidate}") ?? $dimensions);
+
                 // Only constrain dimensions when the host actually configured
                 // them. Passing 0 would override the provider's own default
                 // for consumers that never set `embedding_dimensions`.
-                if ($dimensions > 0) {
-                    $request->dimensions($dimensions);
+                if ($requested > 0) {
+                    $request->dimensions($requested);
                 }
 
                 $response = $request->generate(provider: [$provider => $model]);
@@ -131,7 +282,7 @@ class AiResolver
                 $usedModel = (string) ($response->meta->model ?? $model);
 
                 return [
-                    'vector' => $response->first(),
+                    'vector' => $this->padVector($response->first(), $dimensions),
                     'provider' => $usedProvider,
                     'model' => $usedModel,
                     'identity' => $usedProvider.':'.$usedModel,
@@ -209,6 +360,17 @@ class AiResolver
     public function embeddingConnection(): array
     {
         return $this->parse((string) config("{$this->configKey()}.embedding"));
+    }
+
+    /**
+     * @param  array<float>  $vector
+     * @return array<float>
+     */
+    private function padVector(array $vector, int $dimensions): array
+    {
+        $missing = $dimensions - count($vector);
+
+        return $missing > 0 ? [...$vector, ...array_fill(0, $missing, 0.0)] : $vector;
     }
 
     /**

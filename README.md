@@ -51,6 +51,11 @@ Map named connections to `provider:model` pairs with automatic fallback chains:
 ],
 ```
 
+A connection may also carry its own fallback chain, which replaces the provider-level
+chain for that connection only, and a reasoning effort per provider
+(`efforts.{connection}.{provider}`: `low`, `medium` or `high`) that is applied to
+chat, streaming and ad-hoc agents.
+
 Text fallback chains must use distinct provider names for different models.
 `AiResolver::using()` throws `InvalidArgumentException` when a later model would
 overwrite an earlier model on the same provider. Embedding fallbacks retain

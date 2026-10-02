@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.5.0 - 2026-10-02
+
+### Features
+
+- [NEW FEATURE] Configure reasoning effort per connection and provider, applied to chat, streaming and ad-hoc agents.
+- [NEW FEATURE] Let a connection name its own fallback chain, replacing the provider-level chain for that connection only.
+- [NEW FEATURE] Build ad-hoc agents for a named connection that carry the connection's provider options.
+
 ## 1.4.3 - 2026-09-27
 
 ### Fixes

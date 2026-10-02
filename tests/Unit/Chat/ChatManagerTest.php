@@ -52,11 +52,11 @@ it('falls back to next provider when primary throws ChatProviderException', func
     $manager = Mockery::mock(ChatManager::class, [$resolver])->makePartial();
 
     $manager->shouldReceive('resolve')
-        ->with('claude-cli', 'opus')
+        ->with('claude-cli', 'opus', null)
         ->andReturn($failingProvider);
 
     $manager->shouldReceive('resolve')
-        ->with('gemini', 'gemini-3-flash-preview')
+        ->with('gemini', 'gemini-3-flash-preview', null)
         ->andReturn($successProvider);
 
     $result = $manager->send([['role' => 'user', 'content' => 'Hi']]);
@@ -86,11 +86,11 @@ it('throws when all providers in chain fail', function () {
     $manager = Mockery::mock(ChatManager::class, [$resolver])->makePartial();
 
     $manager->shouldReceive('resolve')
-        ->with('claude-cli', 'opus')
+        ->with('claude-cli', 'opus', null)
         ->andReturn($failingProvider1);
 
     $manager->shouldReceive('resolve')
-        ->with('gemini', 'gemini-3-flash-preview')
+        ->with('gemini', 'gemini-3-flash-preview', null)
         ->andReturn($failingProvider2);
 
     $manager->send([['role' => 'user', 'content' => 'Hi']]);

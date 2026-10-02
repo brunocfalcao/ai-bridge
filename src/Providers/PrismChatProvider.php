@@ -22,6 +22,7 @@ class PrismChatProvider implements ChatProvider
         protected string $provider,
         protected string $model,
         protected ?string $apiKey = null,
+        protected ?string $effort = null,
     ) {
         $this->apiKey ??= config("ai.providers.{$this->provider}.key");
     }
@@ -32,7 +33,7 @@ class PrismChatProvider implements ChatProvider
             $request = Prism::text()
                 ->using($this->provider, $this->model, $this->providerConfig());
 
-            $request = $this->applyMessages($request, $messages);
+            $request = $this->applyEffort($this->applyMessages($request, $messages));
 
             foreach ($request->asStream() as $event) {
                 if ($event instanceof TextDeltaEvent) {
@@ -57,7 +58,7 @@ class PrismChatProvider implements ChatProvider
             $request = Prism::text()
                 ->using($this->provider, $this->model, $this->providerConfig());
 
-            $request = $this->applyMessages($request, $messages);
+            $request = $this->applyEffort($this->applyMessages($request, $messages));
 
             return $request->asText()->text;
         } catch (ChatProviderException $e) {
@@ -85,6 +86,21 @@ class PrismChatProvider implements ChatProvider
         }
 
         return $config;
+    }
+
+    /**
+     * The configured reasoning effort in Prism's own option names. Prism has
+     * no effort setting for Anthropic, so that provider keeps its default.
+     */
+    protected function applyEffort(mixed $request): mixed
+    {
+        $options = match ($this->effort === null ? null : $this->provider) {
+            'openai', 'openrouter' => ['reasoning' => ['effort' => $this->effort]],
+            'gemini' => ['thinkingLevel' => $this->effort],
+            default => [],
+        };
+
+        return $options === [] ? $request : $request->withProviderOptions($options);
     }
 
     /**
