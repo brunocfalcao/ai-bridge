@@ -1,0 +1,2436 @@
+{
+    "issues": [
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\Classes\\ForbiddenPublicPropertySniff",
+            "file": "src/Agents/ResolvesConnectionOptions.php",
+            "line": 20,
+            "message": "Do not use public properties. Use method access instead.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\Classes\\ForbiddenPublicPropertySniff",
+            "file": "src/Chat/Models/Conversation.php",
+            "line": 14,
+            "message": "Do not use public properties. Use method access instead.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\Classes\\ForbiddenPublicPropertySniff",
+            "file": "src/Chat/Models/ConversationMessage.php",
+            "line": 14,
+            "message": "Do not use public properties. Use method access instead.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\Classes\\ForbiddenPublicPropertySniff",
+            "file": "src/Chat/ProcessBridgeChatMessage.php",
+            "line": 34,
+            "message": "Do not use public properties. Use method access instead.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\Classes\\ForbiddenPublicPropertySniff",
+            "file": "src/Chat/ProcessBridgeChatMessage.php",
+            "line": 36,
+            "message": "Do not use public properties. Use method access instead.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\Classes\\ForbiddenPublicPropertySniff",
+            "file": "src/Chat/ProcessChatMessage.php",
+            "line": 28,
+            "message": "Do not use public properties. Use method access instead.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\Classes\\ForbiddenPublicPropertySniff",
+            "file": "src/Chat/ProcessChatMessage.php",
+            "line": 29,
+            "message": "Do not use public properties. Use method access instead.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "NunoMaduro\\PhpInsights\\Domain\\Sniffs\\ForbiddenSetterSniff",
+            "file": "src/Knowledge/SystemContext.php",
+            "line": 13,
+            "message": "Setters are not allowed. Use constructor injection and behavior naming instead.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\Variables\\UnusedVariableSniff",
+            "file": "tests/Feature/Browser/SidecarIntegrationTest.php",
+            "line": 17,
+            "message": "Unused variable $probe.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "PHP_CodeSniffer\\Standards\\Generic\\Sniffs\\CodeAnalysis\\EmptyStatementSniff",
+            "file": "src/Chat/ProcessBridgeChatMessage.php",
+            "line": 163,
+            "message": "Empty CATCH statement detected",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "PHP_CodeSniffer\\Standards\\Generic\\Sniffs\\CodeAnalysis\\EmptyStatementSniff",
+            "file": "src/Chat/ProcessChatMessage.php",
+            "line": 226,
+            "message": "Empty CATCH statement detected",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "PHP_CodeSniffer\\Standards\\Generic\\Sniffs\\Strings\\UnnecessaryStringConcatSniff",
+            "file": "tests/Unit/Providers/ClaudeCliProviderTest.php",
+            "line": 11,
+            "message": "String concat is not required here; use a single string instead",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "PHP_CodeSniffer\\Standards\\Generic\\Sniffs\\Strings\\UnnecessaryStringConcatSniff",
+            "file": "tests/Unit/Providers/ClaudeCliProviderTest.php",
+            "line": 12,
+            "message": "String concat is not required here; use a single string instead",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "PHP_CodeSniffer\\Standards\\Generic\\Sniffs\\Strings\\UnnecessaryStringConcatSniff",
+            "file": "tests/Unit/Providers/OpenClawProviderTest.php",
+            "line": 32,
+            "message": "String concat is not required here; use a single string instead",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "PHP_CodeSniffer\\Standards\\Generic\\Sniffs\\Strings\\UnnecessaryStringConcatSniff",
+            "file": "tests/Unit/Providers/OpenClawProviderTest.php",
+            "line": 33,
+            "message": "String concat is not required here; use a single string instead",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\ControlStructures\\DisallowEmptySniff",
+            "file": "src/Chat/ConversationSummarizer.php",
+            "line": 37,
+            "message": "Use of empty() is disallowed.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\ControlStructures\\DisallowEmptySniff",
+            "file": "src/Chat/ProcessChatMessage.php",
+            "line": 170,
+            "message": "Use of empty() is disallowed.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\ControlStructures\\DisallowEmptySniff",
+            "file": "src/Knowledge/Mcp/Tools/SearchKnowledgeTool.php",
+            "line": 35,
+            "message": "Use of empty() is disallowed.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\ControlStructures\\DisallowEmptySniff",
+            "file": "src/Knowledge/Mcp/Tools/SearchKnowledgeTool.php",
+            "line": 56,
+            "message": "Use of empty() is disallowed.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\ControlStructures\\DisallowEmptySniff",
+            "file": "src/Knowledge/Mcp/Tools/StoreKnowledgeTool.php",
+            "line": 51,
+            "message": "Use of empty() is disallowed.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\ControlStructures\\DisallowEmptySniff",
+            "file": "src/Knowledge/Mcp/Tools/StoreKnowledgeTool.php",
+            "line": 51,
+            "message": "Use of empty() is disallowed.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\ControlStructures\\DisallowEmptySniff",
+            "file": "src/Models/AiApiConfig.php",
+            "line": 44,
+            "message": "Use of empty() is disallowed.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\ControlStructures\\DisallowEmptySniff",
+            "file": "src/Providers/ProviderResolver.php",
+            "line": 89,
+            "message": "Use of empty() is disallowed.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\ControlStructures\\DisallowEmptySniff",
+            "file": "src/Tools/SearchCode.php",
+            "line": 72,
+            "message": "Use of empty() is disallowed.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\ControlStructures\\DisallowEmptySniff",
+            "file": "src/Tools/SearchKnowledge.php",
+            "line": 53,
+            "message": "Use of empty() is disallowed.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\ControlStructures\\DisallowShortTernaryOperatorSniff",
+            "file": "src/Browser/BrowserSidecarClient.php",
+            "line": 68,
+            "message": "Use of short ternary operator is disallowed.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\ControlStructures\\DisallowShortTernaryOperatorSniff",
+            "file": "src/Browser/Mcp/Tools/CaptureScreenshotTool.php",
+            "line": 51,
+            "message": "Use of short ternary operator is disallowed.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\ControlStructures\\DisallowShortTernaryOperatorSniff",
+            "file": "src/Tools/RunCommand.php",
+            "line": 159,
+            "message": "Use of short ternary operator is disallowed.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\ControlStructures\\DisallowShortTernaryOperatorSniff",
+            "file": "src/Tools/TakeScreenshot.php",
+            "line": 33,
+            "message": "Use of short ternary operator is disallowed.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\Namespaces\\UseFromSameNamespaceSniff",
+            "file": "src/Chat/ProcessChatMessage.php",
+            "line": 7,
+            "message": "Use BrunoCFalcao\\AiBridge\\Chat\\ConversationSummarizer is from the same namespace \u2013 that is prohibited.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\PHP\\UselessParenthesesSniff",
+            "file": "src/Tools/RunCommand.php",
+            "line": 133,
+            "message": "Useless parentheses.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\DeclareStrictTypesSniff",
+            "file": "config/ai-bridge.php",
+            "line": 1,
+            "message": "Missing declare(strict_types=1).",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\DisallowMixedTypeHintSniff",
+            "file": "src/Agents/ResolvesConnectionOptions.php",
+            "line": 18,
+            "message": "Usage of \"mixed\" type hint is disallowed.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\DisallowMixedTypeHintSniff",
+            "file": "src/Agents/ResolvesConnectionOptions.php",
+            "line": 23,
+            "message": "Usage of \"mixed\" type hint is disallowed.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\DisallowMixedTypeHintSniff",
+            "file": "src/Agents/ResolvesConnectionOptions.php",
+            "line": 33,
+            "message": "Usage of \"mixed\" type hint is disallowed.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\DisallowMixedTypeHintSniff",
+            "file": "src/Browser/Mcp/Tools/CaptureScreenshotTool.php",
+            "line": 25,
+            "message": "Usage of \"mixed\" type hint is disallowed.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\DisallowMixedTypeHintSniff",
+            "file": "src/Chat/Events/ChatComplete.php",
+            "line": 14,
+            "message": "Usage of \"mixed\" type hint is disallowed.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\DisallowMixedTypeHintSniff",
+            "file": "src/Chat/Events/ChatDelta.php",
+            "line": 22,
+            "message": "Usage of \"mixed\" type hint is disallowed.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\DisallowMixedTypeHintSniff",
+            "file": "src/Chat/Events/ChatError.php",
+            "line": 22,
+            "message": "Usage of \"mixed\" type hint is disallowed.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\DisallowMixedTypeHintSniff",
+            "file": "src/Chat/Events/ChatInit.php",
+            "line": 23,
+            "message": "Usage of \"mixed\" type hint is disallowed.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\DisallowMixedTypeHintSniff",
+            "file": "src/Knowledge/Mcp/Tools/ListTopicsTool.php",
+            "line": 21,
+            "message": "Usage of \"mixed\" type hint is disallowed.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\DisallowMixedTypeHintSniff",
+            "file": "src/Knowledge/Mcp/Tools/SearchKnowledgeTool.php",
+            "line": 20,
+            "message": "Usage of \"mixed\" type hint is disallowed.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\DisallowMixedTypeHintSniff",
+            "file": "src/Knowledge/Mcp/Tools/StoreKnowledgeTool.php",
+            "line": 21,
+            "message": "Usage of \"mixed\" type hint is disallowed.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\DisallowMixedTypeHintSniff",
+            "file": "src/Providers/PrismChatProvider.php",
+            "line": 79,
+            "message": "Usage of \"mixed\" type hint is disallowed.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\DisallowMixedTypeHintSniff",
+            "file": "src/Resolver/AiResolver.php",
+            "line": 123,
+            "message": "Usage of \"mixed\" type hint is disallowed.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\DisallowMixedTypeHintSniff",
+            "file": "src/Resolver/AiResolver.php",
+            "line": 149,
+            "message": "Usage of \"mixed\" type hint is disallowed.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\DisallowMixedTypeHintSniff",
+            "file": "src/Resolver/AiResolver.php",
+            "line": 163,
+            "message": "Usage of \"mixed\" type hint is disallowed.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\DisallowMixedTypeHintSniff",
+            "file": "tests/Feature/Browser/McpProtocolV1Test.php",
+            "line": 35,
+            "message": "Usage of \"mixed\" type hint is disallowed.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ParameterTypeHintSniff",
+            "file": "src/Chat/ConversationSummarizer.php",
+            "line": 14,
+            "message": "Method \\BrunoCFalcao\\AiBridge\\Chat\\ConversationSummarizer::summarizeIfNeeded() does not have @param annotation for its traversable parameter $providerArray.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ParameterTypeHintSniff",
+            "file": "src/Chat/ProcessChatMessage.php",
+            "line": 37,
+            "message": "Method \\BrunoCFalcao\\AiBridge\\Chat\\ProcessChatMessage::__construct() does not have @param annotation for its traversable parameter $agentConfig.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ParameterTypeHintSniff",
+            "file": "src/Chat/ProcessChatMessage.php",
+            "line": 37,
+            "message": "Method \\BrunoCFalcao\\AiBridge\\Chat\\ProcessChatMessage::__construct() does not have @param annotation for its traversable parameter $embeddingConfig.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ParameterTypeHintSniff",
+            "file": "src/Chat/ProcessChatMessage.php",
+            "line": 37,
+            "message": "Method \\BrunoCFalcao\\AiBridge\\Chat\\ProcessChatMessage::__construct() does not have @param annotation for its traversable parameter $providerArray.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ParameterTypeHintSniff",
+            "file": "src/Chat/ProcessChatMessage.php",
+            "line": 37,
+            "message": "Method \\BrunoCFalcao\\AiBridge\\Chat\\ProcessChatMessage::__construct() does not have @param annotation for its traversable parameter $providerKeys.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ParameterTypeHintSniff",
+            "file": "src/Providers/BearerAnthropic.php",
+            "line": 19,
+            "message": "Method \\BrunoCFalcao\\AiBridge\\Providers\\BearerAnthropic::client() does not have @param annotation for its traversable parameter $options.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ParameterTypeHintSniff",
+            "file": "src/Providers/BearerAnthropic.php",
+            "line": 19,
+            "message": "Method \\BrunoCFalcao\\AiBridge\\Providers\\BearerAnthropic::client() does not have @param annotation for its traversable parameter $retry.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ParameterTypeHintSniff",
+            "file": "src/Providers/ClaudeCli/ClaudeCliProvider.php",
+            "line": 28,
+            "message": "Method \\BrunoCFalcao\\AiBridge\\Providers\\ClaudeCli\\ClaudeCliProvider::stream() does not have @param annotation for its traversable parameter $messages.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ParameterTypeHintSniff",
+            "file": "src/Providers/ClaudeCli/ClaudeCliProvider.php",
+            "line": 53,
+            "message": "Method \\BrunoCFalcao\\AiBridge\\Providers\\ClaudeCli\\ClaudeCliProvider::send() does not have @param annotation for its traversable parameter $messages.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ParameterTypeHintSniff",
+            "file": "src/Providers/ClaudeCli/ClaudeCliProvider.php",
+            "line": 98,
+            "message": "Method \\BrunoCFalcao\\AiBridge\\Providers\\ClaudeCli\\ClaudeCliProvider::injectSessionIdentity() does not have @param annotation for its traversable parameter $messages.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ParameterTypeHintSniff",
+            "file": "src/Providers/OpenClaw/OpenClawProvider.php",
+            "line": 29,
+            "message": "Method \\BrunoCFalcao\\AiBridge\\Providers\\OpenClaw\\OpenClawProvider::stream() does not have @param annotation for its traversable parameter $messages.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ParameterTypeHintSniff",
+            "file": "src/Providers/OpenClaw/OpenClawProvider.php",
+            "line": 53,
+            "message": "Method \\BrunoCFalcao\\AiBridge\\Providers\\OpenClaw\\OpenClawProvider::send() does not have @param annotation for its traversable parameter $messages.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ParameterTypeHintSniff",
+            "file": "src/Providers/PrismChatProvider.php",
+            "line": 30,
+            "message": "Method \\BrunoCFalcao\\AiBridge\\Providers\\PrismChatProvider::stream() does not have @param annotation for its traversable parameter $messages.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ParameterTypeHintSniff",
+            "file": "src/Providers/PrismChatProvider.php",
+            "line": 55,
+            "message": "Method \\BrunoCFalcao\\AiBridge\\Providers\\PrismChatProvider::send() does not have @param annotation for its traversable parameter $messages.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ParameterTypeHintSniff",
+            "file": "src/Providers/PrismChatProvider.php",
+            "line": 109,
+            "message": "Method \\BrunoCFalcao\\AiBridge\\Providers\\PrismChatProvider::applyMessages() does not have @param annotation for its traversable parameter $messages.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ParameterTypeHintSniff",
+            "file": "src/Providers/ProviderResolver.php",
+            "line": 83,
+            "message": "Method \\BrunoCFalcao\\AiBridge\\Providers\\ProviderResolver::injectIntoConfig() does not have @param annotation for its traversable parameter $resolved.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ParameterTypeHintSniff",
+            "file": "src/Resolver/AiResolver.php",
+            "line": 79,
+            "message": "Method \\BrunoCFalcao\\AiBridge\\Resolver\\AiResolver::agent() does not have @param annotation for its traversable parameter $messages.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ParameterTypeHintSniff",
+            "file": "src/Resolver/AiResolver.php",
+            "line": 79,
+            "message": "Method \\BrunoCFalcao\\AiBridge\\Resolver\\AiResolver::agent() does not have @param annotation for its traversable parameter $tools.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ParameterTypeHintSniff",
+            "file": "tests/TestCase.php",
+            "line": 13,
+            "message": "Method \\BrunoCFalcao\\AiBridge\\Tests\\TestCase::getPackageProviders() does not have parameter type hint nor @param annotation for its parameter $app.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ParameterTypeHintSniff",
+            "file": "tests/TestCase.php",
+            "line": 21,
+            "message": "Method \\BrunoCFalcao\\AiBridge\\Tests\\TestCase::defineEnvironment() does not have parameter type hint nor @param annotation for its parameter $app.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\PropertyTypeHintSniff",
+            "file": "src/Chat/Models/Conversation.php",
+            "line": 12,
+            "message": "Property \\BrunoCFalcao\\AiBridge\\Chat\\Models\\Conversation::$table does not have native type hint nor @var annotation for its value.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\PropertyTypeHintSniff",
+            "file": "src/Chat/Models/Conversation.php",
+            "line": 14,
+            "message": "Property \\BrunoCFalcao\\AiBridge\\Chat\\Models\\Conversation::$incrementing does not have native type hint nor @var annotation for its value.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\PropertyTypeHintSniff",
+            "file": "src/Chat/Models/Conversation.php",
+            "line": 16,
+            "message": "Property \\BrunoCFalcao\\AiBridge\\Chat\\Models\\Conversation::$keyType does not have native type hint nor @var annotation for its value.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\PropertyTypeHintSniff",
+            "file": "src/Chat/Models/Conversation.php",
+            "line": 18,
+            "message": "Property \\BrunoCFalcao\\AiBridge\\Chat\\Models\\Conversation::$fillable does not have native type hint nor @var annotation for its value.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\PropertyTypeHintSniff",
+            "file": "src/Chat/Models/ConversationMessage.php",
+            "line": 12,
+            "message": "Property \\BrunoCFalcao\\AiBridge\\Chat\\Models\\ConversationMessage::$table does not have native type hint nor @var annotation for its value.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\PropertyTypeHintSniff",
+            "file": "src/Chat/Models/ConversationMessage.php",
+            "line": 14,
+            "message": "Property \\BrunoCFalcao\\AiBridge\\Chat\\Models\\ConversationMessage::$incrementing does not have native type hint nor @var annotation for its value.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\PropertyTypeHintSniff",
+            "file": "src/Chat/Models/ConversationMessage.php",
+            "line": 16,
+            "message": "Property \\BrunoCFalcao\\AiBridge\\Chat\\Models\\ConversationMessage::$keyType does not have native type hint nor @var annotation for its value.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\PropertyTypeHintSniff",
+            "file": "src/Chat/Models/ConversationMessage.php",
+            "line": 18,
+            "message": "Property \\BrunoCFalcao\\AiBridge\\Chat\\Models\\ConversationMessage::$fillable does not have native type hint nor @var annotation for its value.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\PropertyTypeHintSniff",
+            "file": "src/Console/AiChatCommand.php",
+            "line": 12,
+            "message": "Property \\BrunoCFalcao\\AiBridge\\Console\\AiChatCommand::$signature does not have native type hint nor @var annotation for its value.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\PropertyTypeHintSniff",
+            "file": "src/Console/AiChatCommand.php",
+            "line": 17,
+            "message": "Property \\BrunoCFalcao\\AiBridge\\Console\\AiChatCommand::$description does not have native type hint nor @var annotation for its value.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\PropertyTypeHintSniff",
+            "file": "src/Knowledge/Models/KnowledgeChunk.php",
+            "line": 12,
+            "message": "Property \\BrunoCFalcao\\AiBridge\\Knowledge\\Models\\KnowledgeChunk::$fillable does not have native type hint nor @var annotation for its value.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\PropertyTypeHintSniff",
+            "file": "src/Models/AiApiConfig.php",
+            "line": 16,
+            "message": "Property \\BrunoCFalcao\\AiBridge\\Models\\AiApiConfig::$fillable does not have native type hint nor @var annotation for its value.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\PropertyTypeHintSniff",
+            "file": "src/Tools/RunCommand.php",
+            "line": 13,
+            "message": "@var annotation of property \\BrunoCFalcao\\AiBridge\\Tools\\RunCommand::$allowedCommands does not specify type hint for its items.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\PropertyTypeHintSniff",
+            "file": "src/Tools/RunCommand.php",
+            "line": 16,
+            "message": "@var annotation of property \\BrunoCFalcao\\AiBridge\\Tools\\RunCommand::$allowedSudoCommands does not specify type hint for its items.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\PropertyTypeHintSniff",
+            "file": "src/Tools/RunCommand.php",
+            "line": 18,
+            "message": "@var annotation of property \\BrunoCFalcao\\AiBridge\\Tools\\RunCommand::$dangerousPatterns does not specify type hint for its items.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "database/migrations/app/2026_03_13_100001_create_ai_conversations_table.php",
+            "line": 13,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "database/migrations/app/2026_03_13_100002_create_ai_conversation_messages_table.php",
+            "line": 13,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "database/migrations/app/2026_03_13_100003_create_ai_api_configs_table.php",
+            "line": 13,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "database/migrations/app/2026_03_13_200001_add_application_id_to_ai_api_configs_table.php",
+            "line": 13,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "database/migrations/app/2026_03_13_200001_add_application_id_to_ai_api_configs_table.php",
+            "line": 21,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "database/migrations/app/2026_03_13_200001_add_application_id_to_ai_api_configs_table.php",
+            "line": 36,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "database/migrations/knowledge/2026_01_01_000004_create_knowledge_chunks_table.php",
+            "line": 21,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "src/Chat/ProcessChatMessage.php",
+            "line": 138,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "src/Chat/ProcessChatMessage.php",
+            "line": 204,
+            "message": "Method \\BrunoCFalcao\\AiBridge\\Chat\\ProcessChatMessage::cheapProviderArray() does not have @return annotation for its traversable return value.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "src/Knowledge/ContentChunker.php",
+            "line": 9,
+            "message": "Method \\BrunoCFalcao\\AiBridge\\Knowledge\\ContentChunker::chunk() does not have @return annotation for its traversable return value.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "src/Providers/ClaudeCli/ClaudeCliProvider.php",
+            "line": 98,
+            "message": "Method \\BrunoCFalcao\\AiBridge\\Providers\\ClaudeCli\\ClaudeCliProvider::injectSessionIdentity() does not have @return annotation for its traversable return value.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "src/Providers/ClaudeCli/ClaudeCliProvider.php",
+            "line": 131,
+            "message": "Method \\BrunoCFalcao\\AiBridge\\Providers\\ClaudeCli\\ClaudeCliProvider::noopTool() does not have @return annotation for its traversable return value.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "src/Providers/ProviderResolver.php",
+            "line": 17,
+            "message": "Method \\BrunoCFalcao\\AiBridge\\Providers\\ProviderResolver::resolve() does not have @return annotation for its traversable return value.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "src/Providers/ProviderResolver.php",
+            "line": 51,
+            "message": "@return annotation of method \\BrunoCFalcao\\AiBridge\\Providers\\ProviderResolver::resolveForApplication() does not specify type hint for items of its traversable return value.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "src/Providers/ProviderResolver.php",
+            "line": 116,
+            "message": "Method \\BrunoCFalcao\\AiBridge\\Providers\\ProviderResolver::resolveEmbeddingConfig() does not have @return annotation for its traversable return value.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "src/Support/SecretDetector.php",
+            "line": 24,
+            "message": "Method \\BrunoCFalcao\\AiBridge\\Support\\SecretDetector::detect() does not have @return annotation for its traversable return value.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "src/Tools/ListDirectory.php",
+            "line": 71,
+            "message": "Method \\BrunoCFalcao\\AiBridge\\Tools\\ListDirectory::schema() does not have @return annotation for its traversable return value.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "src/Tools/ReadFile.php",
+            "line": 75,
+            "message": "Method \\BrunoCFalcao\\AiBridge\\Tools\\ReadFile::schema() does not have @return annotation for its traversable return value.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "src/Tools/RunCommand.php",
+            "line": 163,
+            "message": "Method \\BrunoCFalcao\\AiBridge\\Tools\\RunCommand::schema() does not have @return annotation for its traversable return value.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "src/Tools/SearchCode.php",
+            "line": 83,
+            "message": "Method \\BrunoCFalcao\\AiBridge\\Tools\\SearchCode::schema() does not have @return annotation for its traversable return value.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "src/Tools/SearchKnowledge.php",
+            "line": 64,
+            "message": "Method \\BrunoCFalcao\\AiBridge\\Tools\\SearchKnowledge::schema() does not have @return annotation for its traversable return value.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "src/Tools/TakeScreenshot.php",
+            "line": 49,
+            "message": "Method \\BrunoCFalcao\\AiBridge\\Tools\\TakeScreenshot::schema() does not have @return annotation for its traversable return value.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "src/Tools/WriteFile.php",
+            "line": 55,
+            "message": "Method \\BrunoCFalcao\\AiBridge\\Tools\\WriteFile::schema() does not have @return annotation for its traversable return value.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Feature/Browser/McpProtocolV1Test.php",
+            "line": 10,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Feature/Browser/McpProtocolV1Test.php",
+            "line": 23,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Feature/Browser/SidecarIntegrationTest.php",
+            "line": 11,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Feature/Browser/SidecarIntegrationTest.php",
+            "line": 31,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Feature/Browser/SidecarIntegrationTest.php",
+            "line": 43,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Feature/Browser/SidecarIntegrationTest.php",
+            "line": 62,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Feature/Browser/SidecarIntegrationTest.php",
+            "line": 83,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Feature/Browser/SidecarIntegrationTest.php",
+            "line": 101,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Feature/Browser/SidecarIntegrationTest.php",
+            "line": 108,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/TestCase.php",
+            "line": 13,
+            "message": "Method \\BrunoCFalcao\\AiBridge\\Tests\\TestCase::getPackageProviders() does not have @return annotation for its traversable return value.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Unit/Browser/BrowserSidecarClientTest.php",
+            "line": 8,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Unit/Browser/BrowserSidecarClientTest.php",
+            "line": 16,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Unit/Browser/BrowserSidecarClientTest.php",
+            "line": 39,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Unit/Browser/BrowserSidecarClientTest.php",
+            "line": 51,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Unit/Browser/BrowserSidecarClientTest.php",
+            "line": 62,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Unit/Browser/BrowserSidecarClientTest.php",
+            "line": 70,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Unit/Browser/BrowserSidecarClientTest.php",
+            "line": 79,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Unit/Browser/BrowserSidecarClientTest.php",
+            "line": 88,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Unit/Browser/BrowserSidecarClientTest.php",
+            "line": 96,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Unit/Browser/Mcp/CaptureScreenshotToolTest.php",
+            "line": 11,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Unit/Browser/Mcp/CaptureScreenshotToolTest.php",
+            "line": 16,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Unit/Browser/Mcp/CaptureScreenshotToolTest.php",
+            "line": 43,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Unit/Browser/Mcp/CaptureScreenshotToolTest.php",
+            "line": 54,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Unit/Browser/Mcp/CaptureScreenshotToolTest.php",
+            "line": 63,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Unit/Browser/Mcp/CaptureScreenshotToolTest.php",
+            "line": 72,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Unit/Browser/Mcp/CaptureScreenshotToolTest.php",
+            "line": 85,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Unit/Browser/Mcp/CaptureScreenshotToolTest.php",
+            "line": 96,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Unit/Browser/Mcp/CaptureScreenshotToolTest.php",
+            "line": 103,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Unit/Chat/ChatManagerTest.php",
+            "line": 13,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Unit/Chat/ChatManagerTest.php",
+            "line": 19,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Unit/Chat/ChatManagerTest.php",
+            "line": 25,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Unit/Chat/ChatManagerTest.php",
+            "line": 33,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Unit/Chat/ChatManagerTest.php",
+            "line": 67,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Unit/Chat/ChatManagerTest.php",
+            "line": 99,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Unit/Providers/ClaudeCliProviderTest.php",
+            "line": 9,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Unit/Providers/ClaudeCliProviderTest.php",
+            "line": 36,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Unit/Providers/ClaudeCliProviderTest.php",
+            "line": 65,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Unit/Providers/ClaudeCliProviderTest.php",
+            "line": 92,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Unit/Providers/ClaudeCliProviderTest.php",
+            "line": 108,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Unit/Providers/ClaudeCliProviderTest.php",
+            "line": 122,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Unit/Providers/OpenClawProviderTest.php",
+            "line": 9,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Unit/Providers/OpenClawProviderTest.php",
+            "line": 30,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Unit/Providers/OpenClawProviderTest.php",
+            "line": 57,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Unit/Providers/OpenClawProviderTest.php",
+            "line": 73,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Unit/Providers/OpenClawProviderTest.php",
+            "line": 87,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Unit/Resolver/AiResolverTest.php",
+            "line": 7,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Unit/Resolver/AiResolverTest.php",
+            "line": 16,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Unit/Resolver/AiResolverTest.php",
+            "line": 25,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Unit/Resolver/AiResolverTest.php",
+            "line": 35,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Unit/Resolver/AiResolverTest.php",
+            "line": 49,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Unit/Resolver/AiResolverTest.php",
+            "line": 56,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Unit/Resolver/AiResolverTest.php",
+            "line": 70,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Unit/Resolver/ConnectionSettingsTest.php",
+            "line": 11,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Unit/Resolver/ConnectionSettingsTest.php",
+            "line": 12,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Unit/Resolver/ConnectionSettingsTest.php",
+            "line": 24,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Unit/Resolver/ConnectionSettingsTest.php",
+            "line": 32,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Unit/Resolver/ConnectionSettingsTest.php",
+            "line": 41,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Unit/Resolver/ConnectionSettingsTest.php",
+            "line": 42,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Unit/Resolver/ConnectionSettingsTest.php",
+            "line": 57,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Unit/Resolver/ConnectionSettingsTest.php",
+            "line": 62,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Unit/Resolver/ConnectionSettingsTest.php",
+            "line": 74,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Unit/Resolver/ConnectionSettingsTest.php",
+            "line": 81,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Unit/Resolver/ConnectionSettingsTest.php",
+            "line": 82,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Unit/Resolver/ConnectionSettingsTest.php",
+            "line": 96,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Unit/Resolver/ConnectionSettingsTest.php",
+            "line": 97,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Unit/Tools/TakeScreenshotTest.php",
+            "line": 9,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Unit/Tools/TakeScreenshotTest.php",
+            "line": 14,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Unit/Tools/TakeScreenshotTest.php",
+            "line": 35,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Unit/Tools/TakeScreenshotTest.php",
+            "line": 47,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Unit/Tools/TakeScreenshotTest.php",
+            "line": 56,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Unit/Tools/TakeScreenshotTest.php",
+            "line": 67,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Unit/Tools/TakeScreenshotTest.php",
+            "line": 75,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\TypeHints\\ReturnTypeHintSniff",
+            "file": "tests/Unit/Tools/TakeScreenshotTest.php",
+            "line": 85,
+            "message": "Closure does not have void return type hint.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\Functions\\UnusedParameterSniff",
+            "file": "src/AiBridgeServiceProvider.php",
+            "line": 174,
+            "message": "Unused parameter $app.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\Functions\\UnusedParameterSniff",
+            "file": "src/Knowledge/Mcp/Resources/TopicsResource.php",
+            "line": 22,
+            "message": "Unused parameter $request.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\Functions\\UnusedParameterSniff",
+            "file": "src/Knowledge/Mcp/Tools/ListTopicsTool.php",
+            "line": 22,
+            "message": "Unused parameter $schema.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\Functions\\UnusedParameterSniff",
+            "file": "src/Knowledge/Mcp/Tools/ListTopicsTool.php",
+            "line": 27,
+            "message": "Unused parameter $request.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\Functions\\UnusedParameterSniff",
+            "file": "src/Providers/OpenClaw/OpenClawProvider.php",
+            "line": 29,
+            "message": "Unused parameter $conversationId.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\Functions\\UnusedParameterSniff",
+            "file": "src/Providers/OpenClaw/OpenClawProvider.php",
+            "line": 53,
+            "message": "Unused parameter $conversationId.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\Functions\\UnusedParameterSniff",
+            "file": "src/Providers/PrismChatProvider.php",
+            "line": 30,
+            "message": "Unused parameter $conversationId.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\Functions\\UnusedParameterSniff",
+            "file": "src/Providers/PrismChatProvider.php",
+            "line": 55,
+            "message": "Unused parameter $conversationId.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\Functions\\UnusedParameterSniff",
+            "file": "tests/TestCase.php",
+            "line": 13,
+            "message": "Unused parameter $app.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\Functions\\UnusedParameterSniff",
+            "file": "tests/Unit/Resolver/ConnectionSettingsTest.php",
+            "line": 75,
+            "message": "Unused parameter $schema.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\Functions\\StaticClosureSniff",
+            "file": "src/AiBridgeServiceProvider.php",
+            "line": 32,
+            "message": "Closure not using \"$this\" should be declared static.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\Functions\\StaticClosureSniff",
+            "file": "src/AiBridgeServiceProvider.php",
+            "line": 173,
+            "message": "Closure not using \"$this\" should be declared static.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\Functions\\StaticClosureSniff",
+            "file": "src/AiBridgeServiceProvider.php",
+            "line": 174,
+            "message": "Closure not using \"$this\" should be declared static.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\Functions\\StaticClosureSniff",
+            "file": "src/Chat/ConversationSummarizer.php",
+            "line": 31,
+            "message": "Closure not using \"$this\" should be declared static.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\Functions\\StaticClosureSniff",
+            "file": "src/Chat/ProcessChatMessage.php",
+            "line": 138,
+            "message": "Closure not using \"$this\" should be declared static.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\Functions\\StaticClosureSniff",
+            "file": "src/Knowledge/Mcp/Resources/TopicsResource.php",
+            "line": 27,
+            "message": "Closure not using \"$this\" should be declared static.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\Functions\\StaticClosureSniff",
+            "file": "src/Knowledge/Mcp/Tools/ListTopicsTool.php",
+            "line": 32,
+            "message": "Closure not using \"$this\" should be declared static.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\Functions\\StaticClosureSniff",
+            "file": "src/Knowledge/Mcp/Tools/SearchKnowledgeTool.php",
+            "line": 47,
+            "message": "Closure not using \"$this\" should be declared static.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\Functions\\StaticClosureSniff",
+            "file": "src/Providers/BearerAnthropic.php",
+            "line": 32,
+            "message": "Closure not using \"$this\" should be declared static.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\Functions\\StaticClosureSniff",
+            "file": "src/Tools/ListDirectory.php",
+            "line": 56,
+            "message": "Closure not using \"$this\" should be declared static.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "SlevomatCodingStandard\\Sniffs\\Functions\\StaticClosureSniff",
+            "file": "src/Tools/SearchKnowledge.php",
+            "line": 42,
+            "message": "Closure not using \"$this\" should be declared static.",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "PhpCsFixer\\Fixer\\FunctionNotation\\VoidReturnFixer",
+            "file": "database/migrations/app/2026_03_13_100001_create_ai_conversations_table.php",
+            "line": null,
+            "message": "@@ -12,3 +12,3 @@\n     {\n-        Schema::create('ai_conversations', function (Blueprint $table) {\n+        Schema::create('ai_conversations', function (Blueprint $table): void {\n             $table->uuid('id')->primary();",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "PhpCsFixer\\Fixer\\FunctionNotation\\VoidReturnFixer",
+            "file": "database/migrations/app/2026_03_13_100002_create_ai_conversation_messages_table.php",
+            "line": null,
+            "message": "@@ -12,3 +12,3 @@\n     {\n-        Schema::create('ai_conversation_messages', function (Blueprint $table) {\n+        Schema::create('ai_conversation_messages', function (Blueprint $table): void {\n             $table->uuid('id')->primary();",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "PhpCsFixer\\Fixer\\FunctionNotation\\VoidReturnFixer",
+            "file": "database/migrations/app/2026_03_13_100003_create_ai_api_configs_table.php",
+            "line": null,
+            "message": "@@ -12,3 +12,3 @@\n     {\n-        Schema::create('ai_api_configs', function (Blueprint $table) {\n+        Schema::create('ai_api_configs', function (Blueprint $table): void {\n             $table->id();",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "PhpCsFixer\\Fixer\\FunctionNotation\\VoidReturnFixer",
+            "file": "database/migrations/app/2026_03_13_200001_add_application_id_to_ai_api_configs_table.php",
+            "line": null,
+            "message": "@@ -12,3 +12,3 @@\n     {\n-        Schema::table('ai_api_configs', function (Blueprint $table) {\n+        Schema::table('ai_api_configs', function (Blueprint $table): void {\n             if (Schema::hasTable('applications')) {\n@@ -20,3 +20,3 @@\n \n-        Schema::table('ai_api_configs', function (Blueprint $table) {\n+        Schema::table('ai_api_configs', function (Blueprint $table): void {\n             // Drop old unique, add new one with application_id\n@@ -35,3 +35,3 @@\n     {\n-        Schema::table('ai_api_configs', function (Blueprint $table) {\n+        Schema::table('ai_api_configs', function (Blueprint $table): void {\n             if (Schema::hasTable('teams')) {",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "PhpCsFixer\\Fixer\\FunctionNotation\\VoidReturnFixer",
+            "file": "database/migrations/knowledge/2026_01_01_000004_create_knowledge_chunks_table.php",
+            "line": null,
+            "message": "@@ -20,3 +20,3 @@\n \n-        Schema::create('knowledge_chunks', function (Blueprint $table) {\n+        Schema::create('knowledge_chunks', function (Blueprint $table): void {\n             $table->id();",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "PhpCsFixer\\Fixer\\FunctionNotation\\VoidReturnFixer",
+            "file": "src/Chat/ProcessChatMessage.php",
+            "line": null,
+            "message": "@@ -137,3 +137,3 @@\n             $conversationId = $this->conversationId;\n-            dispatch(function () use ($conversationId, $cheapProvider) {\n+            dispatch(function () use ($conversationId, $cheapProvider): void {\n                 (new ConversationSummarizer)->summarizeIfNeeded(",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "PhpCsFixer\\Fixer\\FunctionNotation\\VoidReturnFixer",
+            "file": "tests/Feature/Browser/McpProtocolV1Test.php",
+            "line": null,
+            "message": "@@ -9,3 +9,3 @@\n \n-it('answers the MCP v1 discovery handshake over the registered browser route', function () {\n+it('answers the MCP v1 discovery handshake over the registered browser route', function (): void {\n     $payload = feature_ai_bridge_mcp_v1_discovery_payload();\n@@ -22,3 +22,3 @@\n \n-it('rejects an MCP v1 discovery request whose required transport headers are absent', function () {\n+it('rejects an MCP v1 discovery request whose required transport headers are absent', function (): void {\n     $this->postJson('/mcp/browser', feature_ai_bridge_mcp_v1_discovery_payload())",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "PhpCsFixer\\Fixer\\FunctionNotation\\VoidReturnFixer",
+            "file": "tests/Feature/Browser/SidecarIntegrationTest.php",
+            "line": null,
+            "message": "@@ -10,3 +10,3 @@\n \n-beforeEach(function () {\n+beforeEach(function (): void {\n     $url = 'http://127.0.0.1:3100';\n@@ -30,3 +30,3 @@\n \n-it('actually captures a PNG screenshot from the live sidecar', function () {\n+it('actually captures a PNG screenshot from the live sidecar', function (): void {\n     $base64 = $this->client->screenshot($this->targetUrl);\n@@ -42,3 +42,3 @@\n \n-it('resolves BrowserSidecarClient from the container with config defaults', function () {\n+it('resolves BrowserSidecarClient from the container with config defaults', function (): void {\n     config()->set('ai-bridge.browser', [\n@@ -61,3 +61,3 @@\n \n-it('runs the TakeScreenshot Laravel AI tool end-to-end', function () {\n+it('runs the TakeScreenshot Laravel AI tool end-to-end', function (): void {\n     $tool = new TakeScreenshot($this->client);\n@@ -82,3 +82,3 @@\n \n-it('runs the capture-screenshot MCP tool end-to-end against the live sidecar', function () {\n+it('runs the capture-screenshot MCP tool end-to-end against the live sidecar', function (): void {\n     $tool = new CaptureScreenshotTool;\n@@ -100,3 +100,3 @@\n \n-it('registers the /mcp/browser route via Laravel\\'s MCP facade', function () {\n+it('registers the /mcp/browser route via Laravel\\'s MCP facade', function (): void {\n     $registered = collect(app('router')->getRoutes())->pluck('uri');\n@@ -107,3 +107,3 @@\n \n-it('exposes CaptureScreenshotTool in the BrowserServer tools list', function () {\n+it('exposes CaptureScreenshotTool in the BrowserServer tools list', function (): void {\n     $reflection = new ReflectionClass(BrowserServer::class);",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "PhpCsFixer\\Fixer\\FunctionNotation\\VoidReturnFixer",
+            "file": "tests/Unit/Browser/BrowserSidecarClientTest.php",
+            "line": null,
+            "message": "@@ -7,3 +7,3 @@\n \n-beforeEach(function () {\n+beforeEach(function (): void {\n     $this->client = new BrowserSidecarClient(\n@@ -15,3 +15,3 @@\n \n-it('navigates then screenshots and returns the base64 payload', function () {\n+it('navigates then screenshots and returns the base64 payload', function (): void {\n     Http::fake([\n@@ -38,3 +38,3 @@\n \n-it('uses the configured default session id when none provided', function () {\n+it('uses the configured default session id when none provided', function (): void {\n     Http::fake([\n@@ -50,3 +50,3 @@\n \n-it('defaults full_page to false when omitted', function () {\n+it('defaults full_page to false when omitted', function (): void {\n     Http::fake([\n@@ -61,3 +61,3 @@\n \n-it('throws when navigate returns a non-2xx status', function () {\n+it('throws when navigate returns a non-2xx status', function (): void {\n     Http::fake([\n@@ -69,3 +69,3 @@\n \n-it('throws when screenshot returns a non-2xx status', function () {\n+it('throws when screenshot returns a non-2xx status', function (): void {\n     Http::fake([\n@@ -78,3 +78,3 @@\n \n-it('throws when sidecar returns a 200 with an empty base64 field', function () {\n+it('throws when sidecar returns a 200 with an empty base64 field', function (): void {\n     Http::fake([\n@@ -87,3 +87,3 @@\n \n-it('reports the sidecar as available when /status responds 200', function () {\n+it('reports the sidecar as available when /status responds 200', function (): void {\n     Http::fake([\n@@ -95,3 +95,3 @@\n \n-it('reports the sidecar as unavailable when /status errors', function () {\n+it('reports the sidecar as unavailable when /status errors', function (): void {\n     Http::fake([",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "PhpCsFixer\\Fixer\\FunctionNotation\\VoidReturnFixer",
+            "file": "tests/Unit/Browser/Mcp/CaptureScreenshotToolTest.php",
+            "line": null,
+            "message": "@@ -10,3 +10,3 @@\n \n-beforeEach(function () {\n+beforeEach(function (): void {\n     $this->client = Mockery::mock(BrowserSidecarClient::class);\n@@ -15,3 +15,3 @@\n \n-it('returns an MCP image response with the sidecar base64 payload on success', function () {\n+it('returns an MCP image response with the sidecar base64 payload on success', function (): void {\n     $binary = random_bytes(32);\n@@ -42,3 +42,3 @@\n \n-it('returns an error response when the sidecar payload is not valid base64', function () {\n+it('returns an error response when the sidecar payload is not valid base64', function (): void {\n     $this->client->shouldReceive('screenshot')\n@@ -53,3 +53,3 @@\n \n-it('passes null session_id to the client when param is omitted', function () {\n+it('passes null session_id to the client when param is omitted', function (): void {\n     $this->client->shouldReceive('screenshot')\n@@ -62,3 +62,3 @@\n \n-it('defaults full_page to false when omitted', function () {\n+it('defaults full_page to false when omitted', function (): void {\n     $this->client->shouldReceive('screenshot')\n@@ -71,3 +71,3 @@\n \n-it('returns an error response when url is missing', function () {\n+it('returns an error response when url is missing', function (): void {\n     $this->client->shouldNotReceive('screenshot');\n@@ -84,3 +84,3 @@\n \n-it('returns an error response when the sidecar client throws', function () {\n+it('returns an error response when the sidecar client throws', function (): void {\n     $this->client->shouldReceive('screenshot')\n@@ -95,3 +95,3 @@\n \n-it('marks the tool as read-only via the IsReadOnly annotation', function () {\n+it('marks the tool as read-only via the IsReadOnly annotation', function (): void {\n     $reflection = new ReflectionClass(CaptureScreenshotTool::class);\n@@ -102,3 +102,3 @@\n \n-it('declares url as a required schema property', function () {\n+it('declares url as a required schema property', function (): void {\n     $factory = Illuminate\\JsonSchema\\JsonSchema::object($this->tool->schema(...));",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "PhpCsFixer\\Fixer\\FunctionNotation\\VoidReturnFixer",
+            "file": "tests/Unit/Chat/ChatManagerTest.php",
+            "line": null,
+            "message": "@@ -12,3 +12,3 @@\n \n-it('resolves claude-cli to ClaudeCliProvider', function () {\n+it('resolves claude-cli to ClaudeCliProvider', function (): void {\n     $manager = app(ChatManager::class);\n@@ -18,3 +18,3 @@\n \n-it('resolves openclaw to OpenClawProvider', function () {\n+it('resolves openclaw to OpenClawProvider', function (): void {\n     $manager = app(ChatManager::class);\n@@ -24,3 +24,3 @@\n \n-it('resolves standard providers to PrismChatProvider', function () {\n+it('resolves standard providers to PrismChatProvider', function (): void {\n     $manager = app(ChatManager::class);\n@@ -32,3 +32,3 @@\n \n-it('falls back to next provider when primary throws ChatProviderException', function () {\n+it('falls back to next provider when primary throws ChatProviderException', function (): void {\n     config()->set('ai-bridge.resolver', [\n@@ -66,3 +66,3 @@\n \n-it('throws when all providers in chain fail', function () {\n+it('throws when all providers in chain fail', function (): void {\n     config()->set('ai-bridge.resolver', [\n@@ -98,3 +98,3 @@\n \n-it('delegates healthy check to primary provider', function () {\n+it('delegates healthy check to primary provider', function (): void {\n     $manager = app(ChatManager::class);",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "PhpCsFixer\\Fixer\\FunctionNotation\\VoidReturnFixer",
+            "file": "tests/Unit/Providers/ClaudeCliProviderTest.php",
+            "line": null,
+            "message": "@@ -8,3 +8,3 @@\n \n-it('streams SSE deltas correctly', function () {\n+it('streams SSE deltas correctly', function (): void {\n     $sseBody = \"data: {\\\"choices\\\":[{\\\"delta\\\":{\\\"content\\\":\\\"Hello\\\"}}]}\\n\\n\"\n@@ -35,3 +35,3 @@\n \n-it('injects agent name into system message', function () {\n+it('injects agent name into system message', function (): void {\n     Http::fake([\n@@ -64,3 +64,3 @@\n \n-it('includes noop tool in payload', function () {\n+it('includes noop tool in payload', function (): void {\n     Http::fake([\n@@ -91,3 +91,3 @@\n \n-it('detects API error in response and throws ChatProviderException', function () {\n+it('detects API error in response and throws ChatProviderException', function (): void {\n     Http::fake([\n@@ -107,3 +107,3 @@\n \n-it('returns true for healthy when bridge responds ok', function () {\n+it('returns true for healthy when bridge responds ok', function (): void {\n     Http::fake([\n@@ -121,3 +121,3 @@\n \n-it('returns false for healthy when bridge is down', function () {\n+it('returns false for healthy when bridge is down', function (): void {\n     Http::fake([",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "PhpCsFixer\\Fixer\\FunctionNotation\\VoidReturnFixer",
+            "file": "tests/Unit/Providers/OpenClawProviderTest.php",
+            "line": null,
+            "message": "@@ -8,3 +8,3 @@\n \n-it('sends Bearer auth header when token provided', function () {\n+it('sends Bearer auth header when token provided', function (): void {\n     Http::fake([\n@@ -29,3 +29,3 @@\n \n-it('streams SSE deltas correctly', function () {\n+it('streams SSE deltas correctly', function (): void {\n     $sseBody = \"data: {\\\"choices\\\":[{\\\"delta\\\":{\\\"content\\\":\\\"One\\\"}}]}\\n\\n\"\n@@ -56,3 +56,3 @@\n \n-it('detects API error in send response', function () {\n+it('detects API error in send response', function (): void {\n     Http::fake([\n@@ -72,3 +72,3 @@\n \n-it('reports healthy when /v1/models returns 200', function () {\n+it('reports healthy when /v1/models returns 200', function (): void {\n     Http::fake([\n@@ -86,3 +86,3 @@\n \n-it('reports unhealthy when /v1/models fails', function () {\n+it('reports unhealthy when /v1/models fails', function (): void {\n     Http::fake([",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "PhpCsFixer\\Fixer\\FunctionNotation\\VoidReturnFixer",
+            "file": "tests/Unit/Resolver/AiResolverTest.php",
+            "line": null,
+            "message": "@@ -6,3 +6,3 @@\n \n-it('resolves a named connection to provider:model', function () {\n+it('resolves a named connection to provider:model', function (): void {\n     $resolver = app(AiResolver::class);\n@@ -15,3 +15,3 @@\n \n-it('falls back to default when connection not found', function () {\n+it('falls back to default when connection not found', function (): void {\n     $resolver = app(AiResolver::class);\n@@ -24,3 +24,3 @@\n \n-it('walks the fallback chain correctly', function () {\n+it('walks the fallback chain correctly', function (): void {\n     $resolver = app(AiResolver::class);\n@@ -34,3 +34,3 @@\n \n-it('prevents circular fallback chains', function () {\n+it('prevents circular fallback chains', function (): void {\n     config()->set('ai-bridge.resolver.fallbacks', [\n@@ -48,3 +48,3 @@\n \n-it('rejects a different fallback model on the same provider instead of replacing the primary', function () {\n+it('rejects a different fallback model on the same provider instead of replacing the primary', function (): void {\n     config()->set('ai-bridge.resolver.fallbacks.gemini', 'gemini:gemini-3.1-pro-preview');\n@@ -55,3 +55,3 @@\n \n-it('parses model with slashes for openrouter', function () {\n+it('parses model with slashes for openrouter', function (): void {\n     $resolver = app(AiResolver::class);\n@@ -69,3 +69,3 @@\n \n-it('resolves __default__ to the default connection', function () {\n+it('resolves __default__ to the default connection', function (): void {\n     $resolver = app(AiResolver::class);",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "PhpCsFixer\\Fixer\\FunctionNotation\\VoidReturnFixer",
+            "file": "tests/Unit/Resolver/ConnectionSettingsTest.php",
+            "line": null,
+            "message": "@@ -10,4 +10,4 @@\n \n-describe('per-connection fallbacks', function () {\n-    it('uses the connection chain instead of the provider-level fallback', function () {\n+describe('per-connection fallbacks', function (): void {\n+    it('uses the connection chain instead of the provider-level fallback', function (): void {\n         config()->set('ai-bridge.resolver.connections.survey', 'openai:gpt-4.1-mini');\n@@ -23,3 +23,3 @@\n \n-    it('treats an empty connection chain as no fallback at all', function () {\n+    it('treats an empty connection chain as no fallback at all', function (): void {\n         config()->set('ai-bridge.resolver.connections.survey', 'openai:gpt-4.1-mini');\n@@ -31,3 +31,3 @@\n \n-    it('refuses a connection chain that repeats the primary provider with another model', function () {\n+    it('refuses a connection chain that repeats the primary provider with another model', function (): void {\n         config()->set('ai-bridge.resolver.connections.survey', 'openai:gpt-4.1-mini');\n@@ -40,4 +40,4 @@\n \n-describe('reasoning effort', function () {\n-    it('maps one effort to each provider request shape', function () {\n+describe('reasoning effort', function (): void {\n+    it('maps one effort to each provider request shape', function (): void {\n         config()->set('ai-bridge.resolver.efforts.analyst', [\n@@ -56,3 +56,3 @@\n \n-    it('returns no options when no effort is configured', function () {\n+    it('returns no options when no effort is configured', function (): void {\n         expect(app(AiResolver::class)->connectionOptions('cheap'))->toBe([])\n@@ -61,3 +61,3 @@\n \n-    it('builds agents that answer each provider with its own options', function () {\n+    it('builds agents that answer each provider with its own options', function (): void {\n         config()->set('ai-bridge.resolver.efforts.analyst', ['openai' => 'high', 'gemini' => 'low']);\n@@ -73,3 +73,3 @@\n \n-    it('builds a structured agent when a schema is given', function () {\n+    it('builds a structured agent when a schema is given', function (): void {\n         $agent = app(AiResolver::class)->agent('analyst', schema: fn ($schema) => []);\n@@ -80,4 +80,4 @@\n \n-describe('embedding size', function () {\n-    it('asks a smaller model for its own size and pads the vector to the stored size', function () {\n+describe('embedding size', function (): void {\n+    it('asks a smaller model for its own size and pads the vector to the stored size', function (): void {\n         config()->set('ai-bridge.resolver.embedding', 'voyageai:voyage-4');\n@@ -95,4 +95,4 @@\n \n-describe('fakes', function () {\n-    it('hands back the plain agent class when only that class is faked', function () {\n+describe('fakes', function (): void {\n+    it('hands back the plain agent class when only that class is faked', function (): void {\n         \\Laravel\\Ai\\AnonymousAgent::fake(['ok']);",
+            "function": null
+        },
+        {
+            "category": "Code",
+            "rule": "PhpCsFixer\\Fixer\\FunctionNotation\\VoidReturnFixer",
+            "file": "tests/Unit/Tools/TakeScreenshotTest.php",
+            "line": null,
+            "message": "@@ -8,3 +8,3 @@\n \n-beforeEach(function () {\n+beforeEach(function (): void {\n     $this->client = Mockery::mock(BrowserSidecarClient::class);\n@@ -13,3 +13,3 @@\n \n-it('returns JSON with url, mime type, full_page flag, and base64 payload on success', function () {\n+it('returns JSON with url, mime type, full_page flag, and base64 payload on success', function (): void {\n     $this->client->shouldReceive('screenshot')\n@@ -34,3 +34,3 @@\n \n-it('passes an explicit session_id through to the sidecar client', function () {\n+it('passes an explicit session_id through to the sidecar client', function (): void {\n     $this->client->shouldReceive('screenshot')\n@@ -46,3 +46,3 @@\n \n-it('passes null session_id to the client when the param is omitted', function () {\n+it('passes null session_id to the client when the param is omitted', function (): void {\n     $this->client->shouldReceive('screenshot')\n@@ -55,3 +55,3 @@\n \n-it('defaults full_page to false when omitted', function () {\n+it('defaults full_page to false when omitted', function (): void {\n     $this->client->shouldReceive('screenshot')\n@@ -66,3 +66,3 @@\n \n-it('returns an error JSON when url is missing', function () {\n+it('returns an error JSON when url is missing', function (): void {\n     $this->client->shouldNotReceive('screenshot');\n@@ -74,3 +74,3 @@\n \n-it('returns an error JSON when the sidecar client throws', function () {\n+it('returns an error JSON when the sidecar client throws', function (): void {\n     $this->client->shouldReceive('screenshot')\n@@ -84,3 +84,3 @@\n \n-it('exposes the url param as required in the schema', function () {\n+it('exposes the url param as required in the schema', function (): void {\n     $factory = Illuminate\\JsonSchema\\JsonSchema::object($this->tool->schema(...));",
+            "function": null
+        },
+        {
+            "category": "Complexity",
+            "rule": "NunoMaduro\\PhpInsights\\Domain\\Insights\\CyclomaticComplexityIsHigh",
+            "file": "src/AiBridgeServiceProvider.php",
+            "line": null,
+            "message": "12 cyclomatic complexity",
+            "function": null
+        },
+        {
+            "category": "Complexity",
+            "rule": "NunoMaduro\\PhpInsights\\Domain\\Insights\\CyclomaticComplexityIsHigh",
+            "file": "src/Browser/BrowserSidecarClient.php",
+            "line": null,
+            "message": "7 cyclomatic complexity",
+            "function": null
+        },
+        {
+            "category": "Complexity",
+            "rule": "NunoMaduro\\PhpInsights\\Domain\\Insights\\CyclomaticComplexityIsHigh",
+            "file": "src/Chat/ChatManager.php",
+            "line": null,
+            "message": "7 cyclomatic complexity",
+            "function": null
+        },
+        {
+            "category": "Complexity",
+            "rule": "NunoMaduro\\PhpInsights\\Domain\\Insights\\CyclomaticComplexityIsHigh",
+            "file": "src/Chat/ConversationSummarizer.php",
+            "line": null,
+            "message": "6 cyclomatic complexity",
+            "function": null
+        },
+        {
+            "category": "Complexity",
+            "rule": "NunoMaduro\\PhpInsights\\Domain\\Insights\\CyclomaticComplexityIsHigh",
+            "file": "src/Chat/ProcessBridgeChatMessage.php",
+            "line": null,
+            "message": "16 cyclomatic complexity",
+            "function": null
+        },
+        {
+            "category": "Complexity",
+            "rule": "NunoMaduro\\PhpInsights\\Domain\\Insights\\CyclomaticComplexityIsHigh",
+            "file": "src/Chat/ProcessChatMessage.php",
+            "line": null,
+            "message": "24 cyclomatic complexity",
+            "function": null
+        },
+        {
+            "category": "Complexity",
+            "rule": "NunoMaduro\\PhpInsights\\Domain\\Insights\\CyclomaticComplexityIsHigh",
+            "file": "src/Console/AiChatCommand.php",
+            "line": null,
+            "message": "7 cyclomatic complexity",
+            "function": null
+        },
+        {
+            "category": "Complexity",
+            "rule": "NunoMaduro\\PhpInsights\\Domain\\Insights\\CyclomaticComplexityIsHigh",
+            "file": "src/Knowledge/ContentChunker.php",
+            "line": null,
+            "message": "8 cyclomatic complexity",
+            "function": null
+        },
+        {
+            "category": "Complexity",
+            "rule": "NunoMaduro\\PhpInsights\\Domain\\Insights\\CyclomaticComplexityIsHigh",
+            "file": "src/Models/AiApiConfig.php",
+            "line": null,
+            "message": "7 cyclomatic complexity",
+            "function": null
+        },
+        {
+            "category": "Complexity",
+            "rule": "NunoMaduro\\PhpInsights\\Domain\\Insights\\CyclomaticComplexityIsHigh",
+            "file": "src/Providers/ClaudeCli/ClaudeCliProvider.php",
+            "line": null,
+            "message": "14 cyclomatic complexity",
+            "function": null
+        },
+        {
+            "category": "Complexity",
+            "rule": "NunoMaduro\\PhpInsights\\Domain\\Insights\\CyclomaticComplexityIsHigh",
+            "file": "src/Providers/Concerns/ParsesOpenAiSse.php",
+            "line": null,
+            "message": "15 cyclomatic complexity",
+            "function": null
+        },
+        {
+            "category": "Complexity",
+            "rule": "NunoMaduro\\PhpInsights\\Domain\\Insights\\CyclomaticComplexityIsHigh",
+            "file": "src/Providers/OpenClaw/OpenClawProvider.php",
+            "line": null,
+            "message": "8 cyclomatic complexity",
+            "function": null
+        },
+        {
+            "category": "Complexity",
+            "rule": "NunoMaduro\\PhpInsights\\Domain\\Insights\\CyclomaticComplexityIsHigh",
+            "file": "src/Providers/PrismChatProvider.php",
+            "line": null,
+            "message": "13 cyclomatic complexity",
+            "function": null
+        },
+        {
+            "category": "Complexity",
+            "rule": "NunoMaduro\\PhpInsights\\Domain\\Insights\\CyclomaticComplexityIsHigh",
+            "file": "src/Providers/ProviderResolver.php",
+            "line": null,
+            "message": "13 cyclomatic complexity",
+            "function": null
+        },
+        {
+            "category": "Complexity",
+            "rule": "NunoMaduro\\PhpInsights\\Domain\\Insights\\CyclomaticComplexityIsHigh",
+            "file": "src/Resolver/AiResolver.php",
+            "line": null,
+            "message": "38 cyclomatic complexity",
+            "function": null
+        },
+        {
+            "category": "Complexity",
+            "rule": "NunoMaduro\\PhpInsights\\Domain\\Insights\\CyclomaticComplexityIsHigh",
+            "file": "src/Tools/ListDirectory.php",
+            "line": null,
+            "message": "11 cyclomatic complexity",
+            "function": null
+        },
+        {
+            "category": "Complexity",
+            "rule": "NunoMaduro\\PhpInsights\\Domain\\Insights\\CyclomaticComplexityIsHigh",
+            "file": "src/Tools/ReadFile.php",
+            "line": null,
+            "message": "8 cyclomatic complexity",
+            "function": null
+        },
+        {
+            "category": "Complexity",
+            "rule": "NunoMaduro\\PhpInsights\\Domain\\Insights\\CyclomaticComplexityIsHigh",
+            "file": "src/Tools/RunCommand.php",
+            "line": null,
+            "message": "17 cyclomatic complexity",
+            "function": null
+        },
+        {
+            "category": "Complexity",
+            "rule": "NunoMaduro\\PhpInsights\\Domain\\Insights\\ClassMethodAverageCyclomaticComplexityIsHigh",
+            "file": "src/Console/AiChatCommand.php",
+            "line": null,
+            "message": "7.00 cyclomatic complexity",
+            "function": null
+        },
+        {
+            "category": "Complexity",
+            "rule": "NunoMaduro\\PhpInsights\\Domain\\Insights\\ClassMethodAverageCyclomaticComplexityIsHigh",
+            "file": "src/Knowledge/ContentChunker.php",
+            "line": null,
+            "message": "8.00 cyclomatic complexity",
+            "function": null
+        },
+        {
+            "category": "Complexity",
+            "rule": "NunoMaduro\\PhpInsights\\Domain\\Insights\\ClassMethodAverageCyclomaticComplexityIsHigh",
+            "file": "src/Providers/Concerns/ParsesOpenAiSse.php",
+            "line": null,
+            "message": "15.00 cyclomatic complexity",
+            "function": null
+        },
+        {
+            "category": "Complexity",
+            "rule": "NunoMaduro\\PhpInsights\\Domain\\Insights\\MethodCyclomaticComplexityIsHigh",
+            "file": "src/AiBridgeServiceProvider.php",
+            "line": null,
+            "message": "7 cyclomatic complexity",
+            "function": "registerMcpRoutes"
+        },
+        {
+            "category": "Complexity",
+            "rule": "NunoMaduro\\PhpInsights\\Domain\\Insights\\MethodCyclomaticComplexityIsHigh",
+            "file": "src/Chat/ProcessBridgeChatMessage.php",
+            "line": null,
+            "message": "9 cyclomatic complexity",
+            "function": "handle"
+        },
+        {
+            "category": "Complexity",
+            "rule": "NunoMaduro\\PhpInsights\\Domain\\Insights\\MethodCyclomaticComplexityIsHigh",
+            "file": "src/Console/AiChatCommand.php",
+            "line": null,
+            "message": "7 cyclomatic complexity",
+            "function": "handle"
+        },
+        {
+            "category": "Complexity",
+            "rule": "NunoMaduro\\PhpInsights\\Domain\\Insights\\MethodCyclomaticComplexityIsHigh",
+            "file": "src/Knowledge/ContentChunker.php",
+            "line": null,
+            "message": "8 cyclomatic complexity",
+            "function": "chunk"
+        },
+        {
+            "category": "Complexity",
+            "rule": "NunoMaduro\\PhpInsights\\Domain\\Insights\\MethodCyclomaticComplexityIsHigh",
+            "file": "src/Providers/ClaudeCli/ClaudeCliProvider.php",
+            "line": null,
+            "message": "7 cyclomatic complexity",
+            "function": "injectSessionIdentity"
+        },
+        {
+            "category": "Complexity",
+            "rule": "NunoMaduro\\PhpInsights\\Domain\\Insights\\MethodCyclomaticComplexityIsHigh",
+            "file": "src/Providers/Concerns/ParsesOpenAiSse.php",
+            "line": null,
+            "message": "15 cyclomatic complexity",
+            "function": "parseSseStream"
+        },
+        {
+            "category": "Complexity",
+            "rule": "NunoMaduro\\PhpInsights\\Domain\\Insights\\MethodCyclomaticComplexityIsHigh",
+            "file": "src/Resolver/AiResolver.php",
+            "line": null,
+            "message": "7 cyclomatic complexity",
+            "function": "agent"
+        },
+        {
+            "category": "Complexity",
+            "rule": "NunoMaduro\\PhpInsights\\Domain\\Insights\\MethodCyclomaticComplexityIsHigh",
+            "file": "src/Resolver/AiResolver.php",
+            "line": null,
+            "message": "7 cyclomatic complexity",
+            "function": "connectionOptions"
+        },
+        {
+            "category": "Complexity",
+            "rule": "NunoMaduro\\PhpInsights\\Domain\\Insights\\MethodCyclomaticComplexityIsHigh",
+            "file": "src/Resolver/AiResolver.php",
+            "line": null,
+            "message": "8 cyclomatic complexity",
+            "function": "using"
+        },
+        {
+            "category": "Complexity",
+            "rule": "NunoMaduro\\PhpInsights\\Domain\\Insights\\MethodCyclomaticComplexityIsHigh",
+            "file": "src/Tools/ReadFile.php",
+            "line": null,
+            "message": "8 cyclomatic complexity",
+            "function": "handle"
+        },
+        {
+            "category": "Complexity",
+            "rule": "NunoMaduro\\PhpInsights\\Domain\\Insights\\MethodCyclomaticComplexityIsHigh",
+            "file": "src/Tools/RunCommand.php",
+            "line": null,
+            "message": "17 cyclomatic complexity",
+            "function": "handle"
+        },
+        {
+            "category": "Architecture",
+            "rule": "SlevomatCodingStandard\\Sniffs\\Classes\\SuperfluousExceptionNamingSniff",
+            "file": "src/Chat/Exceptions/ChatProviderException.php",
+            "line": 9,
+            "message": "Superfluous suffix \"Exception\".",
+            "function": null
+        },
+        {
+            "category": "Architecture",
+            "rule": "SlevomatCodingStandard\\Sniffs\\Functions\\FunctionLengthSniff",
+            "file": "src/AiBridgeServiceProvider.php",
+            "line": 93,
+            "message": "Your function is too long. Currently using 33 lines. Can be up to 20 lines.",
+            "function": null
+        },
+        {
+            "category": "Architecture",
+            "rule": "SlevomatCodingStandard\\Sniffs\\Functions\\FunctionLengthSniff",
+            "file": "src/Chat/ConversationSummarizer.php",
+            "line": 14,
+            "message": "Your function is too long. Currently using 40 lines. Can be up to 20 lines.",
+            "function": null
+        },
+        {
+            "category": "Architecture",
+            "rule": "SlevomatCodingStandard\\Sniffs\\Functions\\FunctionLengthSniff",
+            "file": "src/Chat/ProcessBridgeChatMessage.php",
+            "line": 54,
+            "message": "Your function is too long. Currently using 48 lines. Can be up to 20 lines.",
+            "function": null
+        },
+        {
+            "category": "Architecture",
+            "rule": "SlevomatCodingStandard\\Sniffs\\Functions\\FunctionLengthSniff",
+            "file": "src/Chat/ProcessChatMessage.php",
+            "line": 50,
+            "message": "Your function is too long. Currently using 81 lines. Can be up to 20 lines.",
+            "function": null
+        },
+        {
+            "category": "Architecture",
+            "rule": "SlevomatCodingStandard\\Sniffs\\Functions\\FunctionLengthSniff",
+            "file": "src/Console/AiChatCommand.php",
+            "line": 19,
+            "message": "Your function is too long. Currently using 23 lines. Can be up to 20 lines.",
+            "function": null
+        },
+        {
+            "category": "Architecture",
+            "rule": "SlevomatCodingStandard\\Sniffs\\Functions\\FunctionLengthSniff",
+            "file": "src/Knowledge/ContentChunker.php",
+            "line": 9,
+            "message": "Your function is too long. Currently using 29 lines. Can be up to 20 lines.",
+            "function": null
+        },
+        {
+            "category": "Architecture",
+            "rule": "SlevomatCodingStandard\\Sniffs\\Functions\\FunctionLengthSniff",
+            "file": "src/Knowledge/Mcp/Tools/SearchKnowledgeTool.php",
+            "line": 31,
+            "message": "Your function is too long. Currently using 26 lines. Can be up to 20 lines.",
+            "function": null
+        },
+        {
+            "category": "Architecture",
+            "rule": "SlevomatCodingStandard\\Sniffs\\Functions\\FunctionLengthSniff",
+            "file": "src/Knowledge/Mcp/Tools/StoreKnowledgeTool.php",
+            "line": 44,
+            "message": "Your function is too long. Currently using 30 lines. Can be up to 20 lines.",
+            "function": null
+        },
+        {
+            "category": "Architecture",
+            "rule": "SlevomatCodingStandard\\Sniffs\\Functions\\FunctionLengthSniff",
+            "file": "src/Providers/ClaudeCli/ClaudeCliProvider.php",
+            "line": 53,
+            "message": "Your function is too long. Currently using 23 lines. Can be up to 20 lines.",
+            "function": null
+        },
+        {
+            "category": "Architecture",
+            "rule": "SlevomatCodingStandard\\Sniffs\\Functions\\FunctionLengthSniff",
+            "file": "src/Providers/ClaudeCli/ClaudeCliProvider.php",
+            "line": 98,
+            "message": "Your function is too long. Currently using 21 lines. Can be up to 20 lines.",
+            "function": null
+        },
+        {
+            "category": "Architecture",
+            "rule": "SlevomatCodingStandard\\Sniffs\\Functions\\FunctionLengthSniff",
+            "file": "src/Providers/Concerns/ParsesOpenAiSse.php",
+            "line": 18,
+            "message": "Your function is too long. Currently using 43 lines. Can be up to 20 lines.",
+            "function": null
+        },
+        {
+            "category": "Architecture",
+            "rule": "SlevomatCodingStandard\\Sniffs\\Functions\\FunctionLengthSniff",
+            "file": "src/Providers/OpenClaw/OpenClawProvider.php",
+            "line": 53,
+            "message": "Your function is too long. Currently using 22 lines. Can be up to 20 lines.",
+            "function": null
+        },
+        {
+            "category": "Architecture",
+            "rule": "SlevomatCodingStandard\\Sniffs\\Functions\\FunctionLengthSniff",
+            "file": "src/Providers/ProviderResolver.php",
+            "line": 17,
+            "message": "Your function is too long. Currently using 21 lines. Can be up to 20 lines.",
+            "function": null
+        },
+        {
+            "category": "Architecture",
+            "rule": "SlevomatCodingStandard\\Sniffs\\Functions\\FunctionLengthSniff",
+            "file": "src/Resolver/AiResolver.php",
+            "line": 30,
+            "message": "Your function is too long. Currently using 25 lines. Can be up to 20 lines.",
+            "function": null
+        },
+        {
+            "category": "Architecture",
+            "rule": "SlevomatCodingStandard\\Sniffs\\Functions\\FunctionLengthSniff",
+            "file": "src/Resolver/AiResolver.php",
+            "line": 248,
+            "message": "Your function is too long. Currently using 31 lines. Can be up to 20 lines.",
+            "function": null
+        },
+        {
+            "category": "Architecture",
+            "rule": "SlevomatCodingStandard\\Sniffs\\Functions\\FunctionLengthSniff",
+            "file": "src/Tools/ListDirectory.php",
+            "line": 25,
+            "message": "Your function is too long. Currently using 33 lines. Can be up to 20 lines.",
+            "function": null
+        },
+        {
+            "category": "Architecture",
+            "rule": "SlevomatCodingStandard\\Sniffs\\Functions\\FunctionLengthSniff",
+            "file": "src/Tools/ReadFile.php",
+            "line": 25,
+            "message": "Your function is too long. Currently using 35 lines. Can be up to 20 lines.",
+            "function": null
+        },
+        {
+            "category": "Architecture",
+            "rule": "SlevomatCodingStandard\\Sniffs\\Functions\\FunctionLengthSniff",
+            "file": "src/Tools/RunCommand.php",
+            "line": 52,
+            "message": "Your function is too long. Currently using 78 lines. Can be up to 20 lines.",
+            "function": null
+        },
+        {
+            "category": "Architecture",
+            "rule": "SlevomatCodingStandard\\Sniffs\\Functions\\FunctionLengthSniff",
+            "file": "src/Tools/SearchCode.php",
+            "line": 22,
+            "message": "Your function is too long. Currently using 45 lines. Can be up to 20 lines.",
+            "function": null
+        },
+        {
+            "category": "Architecture",
+            "rule": "SlevomatCodingStandard\\Sniffs\\Functions\\FunctionLengthSniff",
+            "file": "src/Tools/SearchKnowledge.php",
+            "line": 26,
+            "message": "Your function is too long. Currently using 27 lines. Can be up to 20 lines.",
+            "function": null
+        },
+        {
+            "category": "Architecture",
+            "rule": "SlevomatCodingStandard\\Sniffs\\Functions\\FunctionLengthSniff",
+            "file": "tests/TestCase.php",
+            "line": 21,
+            "message": "Your function is too long. Currently using 21 lines. Can be up to 20 lines.",
+            "function": null
+        },
+        {
+            "category": "Architecture",
+            "rule": "NunoMaduro\\PhpInsights\\Domain\\Insights\\ForbiddenTraits",
+            "file": "src/Agents/ResolvesConnectionOptions.php",
+            "line": null,
+            "message": null,
+            "function": null
+        },
+        {
+            "category": "Architecture",
+            "rule": "NunoMaduro\\PhpInsights\\Domain\\Insights\\ForbiddenTraits",
+            "file": "src/Providers/Concerns/ParsesOpenAiSse.php",
+            "line": null,
+            "message": null,
+            "function": null
+        },
+        {
+            "category": "Architecture",
+            "rule": "NunoMaduro\\PhpInsights\\Domain\\Insights\\ForbiddenTraits",
+            "file": "src/Tools/Concerns/ResolvesProjectPath.php",
+            "line": null,
+            "message": null,
+            "function": null
+        },
+        {
+            "category": "Style",
+            "rule": "PHP_CodeSniffer\\Standards\\Generic\\Sniffs\\Files\\LineLengthSniff",
+            "file": "database/migrations/app/2026_03_13_200001_add_application_id_to_ai_api_configs_table.php",
+            "line": 15,
+            "message": "Line exceeds maximum limit of 120 characters; contains 127 characters",
+            "function": null
+        },
+        {
+            "category": "Style",
+            "rule": "PHP_CodeSniffer\\Standards\\Generic\\Sniffs\\Files\\LineLengthSniff",
+            "file": "database/migrations/knowledge/2026_01_01_000004_create_knowledge_chunks_table.php",
+            "line": 34,
+            "message": "Line exceeds maximum limit of 120 characters; contains 152 characters",
+            "function": null
+        },
+        {
+            "category": "Style",
+            "rule": "PHP_CodeSniffer\\Standards\\Generic\\Sniffs\\Files\\LineLengthSniff",
+            "file": "src/Browser/Mcp/BrowserServer.php",
+            "line": 15,
+            "message": "Line exceeds maximum limit of 120 characters; contains 176 characters",
+            "function": null
+        },
+        {
+            "category": "Style",
+            "rule": "PHP_CodeSniffer\\Standards\\Generic\\Sniffs\\Files\\LineLengthSniff",
+            "file": "src/Browser/Mcp/Tools/CaptureScreenshotTool.php",
+            "line": 22,
+            "message": "Line exceeds maximum limit of 120 characters; contains 220 characters",
+            "function": null
+        },
+        {
+            "category": "Style",
+            "rule": "PHP_CodeSniffer\\Standards\\Generic\\Sniffs\\Files\\LineLengthSniff",
+            "file": "src/Chat/ChatManager.php",
+            "line": 34,
+            "message": "Line exceeds maximum limit of 120 characters; contains 126 characters",
+            "function": null
+        },
+        {
+            "category": "Style",
+            "rule": "PHP_CodeSniffer\\Standards\\Generic\\Sniffs\\Files\\LineLengthSniff",
+            "file": "src/Chat/ChatManager.php",
+            "line": 63,
+            "message": "Line exceeds maximum limit of 120 characters; contains 126 characters",
+            "function": null
+        },
+        {
+            "category": "Style",
+            "rule": "PHP_CodeSniffer\\Standards\\Generic\\Sniffs\\Files\\LineLengthSniff",
+            "file": "src/Chat/ConversationSummarizer.php",
+            "line": 50,
+            "message": "Line exceeds maximum limit of 120 characters; contains 154 characters",
+            "function": null
+        },
+        {
+            "category": "Style",
+            "rule": "PHP_CodeSniffer\\Standards\\Generic\\Sniffs\\Files\\LineLengthSniff",
+            "file": "src/Chat/ConversationSummarizer.php",
+            "line": 51,
+            "message": "Line exceeds maximum limit of 120 characters; contains 137 characters",
+            "function": null
+        },
+        {
+            "category": "Style",
+            "rule": "PHP_CodeSniffer\\Standards\\Generic\\Sniffs\\Files\\LineLengthSniff",
+            "file": "src/Chat/ConversationSummarizer.php",
+            "line": 53,
+            "message": "Line exceeds maximum limit of 120 characters; contains 208 characters",
+            "function": null
+        },
+        {
+            "category": "Style",
+            "rule": "PHP_CodeSniffer\\Standards\\Generic\\Sniffs\\Files\\LineLengthSniff",
+            "file": "src/Knowledge/Mcp/KnowledgeServer.php",
+            "line": 19,
+            "message": "Line exceeds maximum limit of 120 characters; contains 194 characters",
+            "function": null
+        },
+        {
+            "category": "Style",
+            "rule": "PHP_CodeSniffer\\Standards\\Generic\\Sniffs\\Files\\LineLengthSniff",
+            "file": "src/Providers/ClaudeCli/ClaudeCliProvider.php",
+            "line": 118,
+            "message": "Line exceeds maximum limit of 120 characters; contains 132 characters",
+            "function": null
+        },
+        {
+            "category": "Style",
+            "rule": "PHP_CodeSniffer\\Standards\\Generic\\Sniffs\\Files\\LineLengthSniff",
+            "file": "src/Resolver/AiResolver.php",
+            "line": 56,
+            "message": "Line exceeds maximum limit of 120 characters; contains 169 characters",
+            "function": null
+        },
+        {
+            "category": "Style",
+            "rule": "PHP_CodeSniffer\\Standards\\Generic\\Sniffs\\Files\\LineLengthSniff",
+            "file": "src/Resolver/AiResolver.php",
+            "line": 192,
+            "message": "Line exceeds maximum limit of 120 characters; contains 173 characters",
+            "function": null
+        },
+        {
+            "category": "Style",
+            "rule": "PHP_CodeSniffer\\Standards\\Generic\\Sniffs\\Files\\LineLengthSniff",
+            "file": "src/Support/SecretDetector.php",
+            "line": 21,
+            "message": "Line exceeds maximum limit of 120 characters; contains 121 characters",
+            "function": null
+        },
+        {
+            "category": "Style",
+            "rule": "PHP_CodeSniffer\\Standards\\Generic\\Sniffs\\Files\\LineLengthSniff",
+            "file": "src/Tools/ReadFile.php",
+            "line": 42,
+            "message": "Line exceeds maximum limit of 120 characters; contains 128 characters",
+            "function": null
+        },
+        {
+            "category": "Style",
+            "rule": "PHP_CodeSniffer\\Standards\\Generic\\Sniffs\\Files\\LineLengthSniff",
+            "file": "src/Tools/RunCommand.php",
+            "line": 49,
+            "message": "Line exceeds maximum limit of 120 characters; contains 259 characters",
+            "function": null
+        },
+        {
+            "category": "Style",
+            "rule": "PHP_CodeSniffer\\Standards\\Generic\\Sniffs\\Files\\LineLengthSniff",
+            "file": "src/Tools/RunCommand.php",
+            "line": 72,
+            "message": "Line exceeds maximum limit of 120 characters; contains 165 characters",
+            "function": null
+        },
+        {
+            "category": "Style",
+            "rule": "PHP_CodeSniffer\\Standards\\Generic\\Sniffs\\Files\\LineLengthSniff",
+            "file": "src/Tools/RunCommand.php",
+            "line": 81,
+            "message": "Line exceeds maximum limit of 120 characters; contains 151 characters",
+            "function": null
+        },
+        {
+            "category": "Style",
+            "rule": "PHP_CodeSniffer\\Standards\\Generic\\Sniffs\\Files\\LineLengthSniff",
+            "file": "src/Tools/RunCommand.php",
+            "line": 85,
+            "message": "Line exceeds maximum limit of 120 characters; contains 209 characters",
+            "function": null
+        },
+        {
+            "category": "Style",
+            "rule": "PHP_CodeSniffer\\Standards\\Generic\\Sniffs\\Files\\LineLengthSniff",
+            "file": "src/Tools/RunCommand.php",
+            "line": 168,
+            "message": "Line exceeds maximum limit of 120 characters; contains 138 characters",
+            "function": null
+        },
+        {
+            "category": "Style",
+            "rule": "PHP_CodeSniffer\\Standards\\Generic\\Sniffs\\Files\\LineLengthSniff",
+            "file": "src/Tools/SearchCode.php",
+            "line": 19,
+            "message": "Line exceeds maximum limit of 120 characters; contains 135 characters",
+            "function": null
+        },
+        {
+            "category": "Style",
+            "rule": "PHP_CodeSniffer\\Standards\\Generic\\Sniffs\\Files\\LineLengthSniff",
+            "file": "src/Tools/SearchCode.php",
+            "line": 92,
+            "message": "Line exceeds maximum limit of 120 characters; contains 125 characters",
+            "function": null
+        },
+        {
+            "category": "Style",
+            "rule": "PHP_CodeSniffer\\Standards\\Generic\\Sniffs\\Files\\LineLengthSniff",
+            "file": "src/Tools/TakeScreenshot.php",
+            "line": 21,
+            "message": "Line exceeds maximum limit of 120 characters; contains 176 characters",
+            "function": null
+        },
+        {
+            "category": "Style",
+            "rule": "PHP_CodeSniffer\\Standards\\Generic\\Sniffs\\Files\\LineLengthSniff",
+            "file": "src/Tools/WriteFile.php",
+            "line": 22,
+            "message": "Line exceeds maximum limit of 120 characters; contains 122 characters",
+            "function": null
+        },
+        {
+            "category": "Style",
+            "rule": "PhpCsFixer\\Fixer\\ClassNotation\\OrderedClassElementsFixer",
+            "file": "src/Chat/Models/Conversation.php",
+            "line": null,
+            "message": "@@ -11,3 +11,2 @@\n {\n-    protected $table = 'ai_conversations';\n \n@@ -14,2 +13,3 @@\n     public $incrementing = false;\n+    protected $table = 'ai_conversations';\n \n@@ -25,2 +25,7 @@\n     ];\n+\n+    public function messages(): HasMany\n+    {\n+        return $this->hasMany(ConversationMessage::class, 'conversation_id');\n+    }\n \n@@ -32,7 +37,2 @@\n         ];\n-    }\n-\n-    public function messages(): HasMany\n-    {\n-        return $this->hasMany(ConversationMessage::class, 'conversation_id');\n     }",
+            "function": null
+        },
+        {
+            "category": "Style",
+            "rule": "PhpCsFixer\\Fixer\\ClassNotation\\OrderedClassElementsFixer",
+            "file": "src/Chat/Models/ConversationMessage.php",
+            "line": null,
+            "message": "@@ -11,3 +11,2 @@\n {\n-    protected $table = 'ai_conversation_messages';\n \n@@ -14,2 +13,3 @@\n     public $incrementing = false;\n+    protected $table = 'ai_conversation_messages';\n \n@@ -29,2 +29,7 @@\n     ];\n+\n+    public function conversation(): BelongsTo\n+    {\n+        return $this->belongsTo(Conversation::class, 'conversation_id');\n+    }\n \n@@ -39,7 +44,2 @@\n         ];\n-    }\n-\n-    public function conversation(): BelongsTo\n-    {\n-        return $this->belongsTo(Conversation::class, 'conversation_id');\n     }",
+            "function": null
+        },
+        {
+            "category": "Style",
+            "rule": "PhpCsFixer\\Fixer\\ClassNotation\\OrderedClassElementsFixer",
+            "file": "src/Chat/ProcessBridgeChatMessage.php",
+            "line": null,
+            "message": "@@ -37,8 +37,2 @@\n \n-    /** @return array<int, int> */\n-    public function backoff(): array\n-    {\n-        return [30, 120, 300];\n-    }\n-\n     public function __construct(\n@@ -51,2 +45,8 @@\n         $this->onQueue(config('ai-bridge.chat.queue', 'chat'));\n+    }\n+\n+    /** @return array<int, int> */\n+    public function backoff(): array\n+    {\n+        return [30, 120, 300];\n     }",
+            "function": null
+        },
+        {
+            "category": "Style",
+            "rule": "PhpCsFixer\\Fixer\\ClassNotation\\OrderedClassElementsFixer",
+            "file": "src/Chat/ProcessChatMessage.php",
+            "line": null,
+            "message": "@@ -30,8 +30,2 @@\n \n-    /** @return array<int, int> */\n-    public function backoff(): array\n-    {\n-        return [30, 120, 300];\n-    }\n-\n     public function __construct(\n@@ -47,2 +41,8 @@\n         $this->onQueue('chat');\n+    }\n+\n+    /** @return array<int, int> */\n+    public function backoff(): array\n+    {\n+        return [30, 120, 300];\n     }",
+            "function": null
+        },
+        {
+            "category": "Style",
+            "rule": "PhpCsFixer\\Fixer\\ClassNotation\\OrderedClassElementsFixer",
+            "file": "src/Knowledge/Models/KnowledgeChunk.php",
+            "line": null,
+            "message": "@@ -20,2 +20,9 @@\n \n+    public function getConnectionName(): ?string\n+    {\n+        $context = app(SystemContext::class);\n+\n+        return $context->isSet() ? $context->getConnection() : parent::getConnectionName();\n+    }\n+\n     /** @return array<string, string> */\n@@ -27,9 +34,2 @@\n         ];\n-    }\n-\n-    public function getConnectionName(): ?string\n-    {\n-        $context = app(SystemContext::class);\n-\n-        return $context->isSet() ? $context->getConnection() : parent::getConnectionName();\n     }",
+            "function": null
+        },
+        {
+            "category": "Style",
+            "rule": "PhpCsFixer\\Fixer\\ClassNotation\\OrderedClassElementsFixer",
+            "file": "src/Models/AiApiConfig.php",
+            "line": null,
+            "message": "@@ -29,14 +29,2 @@\n \n-    /** @return array<string, string> */\n-    protected function casts(): array\n-    {\n-        return [\n-            'api_key' => 'encrypted',\n-            'oauth_access_token' => 'encrypted',\n-            'oauth_refresh_token' => 'encrypted',\n-            'oauth_expires_at' => 'datetime',\n-            'is_active' => 'boolean',\n-        ];\n-    }\n-\n     public function hasOAuthToken(): bool\n@@ -107,2 +95,14 @@\n         return $query->whereNull('team_id')->whereNull('application_id');\n+    }\n+\n+    /** @return array<string, string> */\n+    protected function casts(): array\n+    {\n+        return [\n+            'api_key' => 'encrypted',\n+            'oauth_access_token' => 'encrypted',\n+            'oauth_refresh_token' => 'encrypted',\n+            'oauth_expires_at' => 'datetime',\n+            'is_active' => 'boolean',\n+        ];\n     }",
+            "function": null
+        },
+        {
+            "category": "Style",
+            "rule": "PhpCsFixer\\Fixer\\ClassNotation\\OrderedClassElementsFixer",
+            "file": "src/Resolver/AiResolver.php",
+            "line": null,
+            "message": "@@ -175,31 +175,2 @@\n     /**\n-     * @param  list<string>  $entries  \"provider:model\" in order\n-     * @return array<string, string>\n-     */\n-    private function chainOf(array $entries): array\n-    {\n-        $providers = [];\n-\n-        foreach ($entries as $entry) {\n-            if ($entry === '') {\n-                continue;\n-            }\n-\n-            [$provider, $model] = $this->parse($entry);\n-\n-            if (isset($providers[$provider])) {\n-                if ($providers[$provider] !== $model) {\n-                    throw new InvalidArgumentException(\"Text fallback uses the same provider [{$provider}] with a different model; Laravel AI cannot represent that chain.\");\n-                }\n-\n-                continue;\n-            }\n-\n-            $providers[$provider] = $model;\n-        }\n-\n-        return $providers;\n-    }\n-\n-    /**\n      * Resolve only the primary provider+model for direct Prism usage.\n@@ -365,4 +336,4 @@\n     /**\n-     * @param  array<float>  $vector\n-     * @return array<float>\n+     * The config key where AI connection resolution lives.\n+     * Projects can override this by setting 'ai-bridge.ai_config_key'.\n      */\n@@ -368,3 +339,3 @@\n      */\n-    private function padVector(array $vector, int $dimensions): array\n+    protected function configKey(): string\n     {\n@@ -370,3 +341,4 @@\n     {\n-        $missing = $dimensions - count($vector);\n+        return config('ai-bridge.ai_config_key', 'ai-bridge.resolver');\n+    }\n \n@@ -372,3 +344,29 @@\n \n-        return $missing > 0 ? [...$vector, ...array_fill(0, $missing, 0.0)] : $vector;\n+    /**\n+     * @param  list<string>  $entries  \"provider:model\" in order\n+     * @return array<string, string>\n+     */\n+    private function chainOf(array $entries): array\n+    {\n+        $providers = [];\n+\n+        foreach ($entries as $entry) {\n+            if ($entry === '') {\n+                continue;\n+            }\n+\n+            [$provider, $model] = $this->parse($entry);\n+\n+            if (isset($providers[$provider])) {\n+                if ($providers[$provider] !== $model) {\n+                    throw new InvalidArgumentException(\"Text fallback uses the same provider [{$provider}] with a different model; Laravel AI cannot represent that chain.\");\n+                }\n+\n+                continue;\n+            }\n+\n+            $providers[$provider] = $model;\n+        }\n+\n+        return $providers;\n     }\n@@ -376,4 +374,4 @@\n     /**\n-     * The config key where AI connection resolution lives.\n-     * Projects can override this by setting 'ai-bridge.ai_config_key'.\n+     * @param  array<float>  $vector\n+     * @return array<float>\n      */\n@@ -379,3 +377,3 @@\n      */\n-    protected function configKey(): string\n+    private function padVector(array $vector, int $dimensions): array\n     {\n@@ -381,3 +379,5 @@\n     {\n-        return config('ai-bridge.ai_config_key', 'ai-bridge.resolver');\n+        $missing = $dimensions - count($vector);\n+\n+        return $missing > 0 ? [...$vector, ...array_fill(0, $missing, 0.0)] : $vector;\n     }",
+            "function": null
+        }
+    ]
+}

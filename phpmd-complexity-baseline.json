@@ -1,0 +1,23 @@
+{
+    "threshold": 10,
+    "methods": [
+        {
+            "file": "src/Providers/Concerns/ParsesOpenAiSse.php",
+            "class": "ParsesOpenAiSse",
+            "method": "parseSseStream",
+            "complexity": 15
+        },
+        {
+            "file": "src/Tools/ListDirectory.php",
+            "class": "ListDirectory",
+            "method": "handle",
+            "complexity": 11
+        },
+        {
+            "file": "src/Tools/RunCommand.php",
+            "class": "RunCommand",
+            "method": "handle",
+            "complexity": 17
+        }
+    ]
+}

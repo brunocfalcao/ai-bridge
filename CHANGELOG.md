@@ -9,6 +9,12 @@ All notable changes to this project will be documented in this file.
 - [NEW FEATURE] Configure reasoning effort per connection and provider, applied to chat, streaming and ad-hoc agents.
 - [NEW FEATURE] Let a connection name its own fallback chain, replacing the provider-level chain for that connection only.
 - [NEW FEATURE] Build ad-hoc agents for a named connection that carry the connection's provider options.
+- [NEW FEATURE] `composer quality` runs PHP Insights, PHPMD and PHPStan with Larastan, with frozen baselines for existing findings.
+
+### Fixes
+
+- [BUG FIX] Embedding request dimensions are read per model id, so ids containing a dot (such as `voyage-3.5`) no longer lose their configured size.
+- [BUG FIX] The file tools pass strict string paths to the filesystem.
 
 ## 1.4.3 - 2026-09-27
 

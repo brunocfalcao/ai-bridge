@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleset name="AI Bridge complexity"
+         xmlns="https://phpmd.org/xml/ruleset/1.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://phpmd.org/xml/ruleset/1.0.0 https://phpmd.org/xml/ruleset_xml_schema_1.0.0.xsd">
+    <description>Report methods with cyclomatic complexity above 10.</description>
+    <rule ref="rulesets/codesize.xml/CyclomaticComplexity">
+        <properties>
+            <property name="maximum" value="10"/>
+            <property name="showClassesComplexity" value="false"/>
+            <property name="showMethodsComplexity" value="true"/>
+        </properties>
+    </rule>
+</ruleset>

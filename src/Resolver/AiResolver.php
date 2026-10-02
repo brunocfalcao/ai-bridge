@@ -263,11 +263,11 @@ class AiResolver
                 // provider/model identity this method exists to report.
                 $request = Embeddings::for([$text]);
 
-                // A model that cannot produce the stored size is asked for
-                // its own size (`embedding_request_dimensions`) and the
-                // vector is zero-padded below; padding with zeros leaves
-                // cosine distances between that model's vectors unchanged.
-                $requested = (int) (config("{$configKey}.embedding_request_dimensions.{$candidate}") ?? $dimensions);
+                // A model that cannot produce the stored size is asked for its own
+                // size (`embedding_request_dimensions`, read as a map: model ids may
+                // hold dots) and the vector is zero-padded below; padding with zeros
+                // leaves cosine distances between that model's vectors unchanged.
+                $requested = (int) (config("{$configKey}.embedding_request_dimensions")[$candidate] ?? $dimensions);
 
                 // Only constrain dimensions when the host actually configured
                 // them. Passing 0 would override the provider's own default

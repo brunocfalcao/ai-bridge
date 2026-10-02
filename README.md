@@ -2,9 +2,9 @@
 
 Reusable AI bridge for Laravel: multi-provider connectivity, chat streaming, knowledge/MCP server, and agent tools.
 
-## Changes in v1.4.3
+## Changes in v1.5.0
 
-Text fallback chains now reject a second model on the same provider instead of replacing the primary model. The package continues to support Laravel AI v1.
+Connections can carry their own fallback chain and a reasoning effort per provider, and `AiResolver::agent()` builds ad-hoc agents for a named connection. Embedding request dimensions are now read per model id, and the file tools pass strict string paths. A `composer quality` command runs the quality gate.
 
 ## Requirements
 
@@ -121,6 +121,10 @@ Full specification docs are in the [docs/](docs/) directory:
 - [Contracts](docs/contracts.md)
 - [Security](docs/security.md)
 - [Browser (pooled screenshot & automation)](docs/browser.md)
+
+## Quality gate
+
+`composer quality` runs PHP Insights, PHPMD (cyclomatic complexity above 10 fails) and PHPStan/Larastan against `src`, `config`, `database` and `tests`. Pre-existing findings are frozen in `phpinsights-baseline.json`, `phpmd-complexity-baseline.json` and `phpstan-baseline.neon`; any new finding, or growth in a baselined method's complexity, fails the command.
 
 ## License
 

@@ -24,7 +24,7 @@ class ReadFile implements Tool
 
     public function handle(Request $request): string
     {
-        $path = $this->resolvePath($request->string('path'));
+        $path = $this->resolvePath($request->string('path')->toString());
 
         if (! $path) {
             return json_encode(['error' => 'Path is outside the project directory.']);

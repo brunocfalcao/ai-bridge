@@ -1,0 +1,21 @@
+includes:
+    - vendor/larastan/larastan/extension.neon
+    - vendor/pestphp/pest-plugin-phpstan/extension.neon
+    - vendor/phpstan/phpstan-mockery/extension.neon
+    - phpstan-baseline.neon
+
+parameters:
+    level: 5
+    reportUnmatchedIgnoredErrors: true
+    configDirectories:
+        - config
+    databaseMigrationsPath:
+        - database/migrations/app
+        - database/migrations/knowledge
+    paths:
+        - src
+        - config
+        - database
+        - tests
+        - phpinsights.php
+        - quality-gate.php

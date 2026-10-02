@@ -24,7 +24,7 @@ class ListDirectory implements Tool
 
     public function handle(Request $request): string
     {
-        $relativePath = $request->string('path', '.');
+        $relativePath = $request->string('path', '.')->toString();
         $path = $this->resolvePath($relativePath);
 
         if (! $path) {

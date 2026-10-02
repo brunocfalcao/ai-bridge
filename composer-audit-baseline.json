@@ -1,0 +1,14 @@
+{
+    "advisories": [
+        {
+            "package": "league/commonmark",
+            "advisoryId": "PKSA-m2dq-1fhr-29b1",
+            "title": "DisallowedRawHtml bypassed when a disallowed tag name ends the raw-HTML literal (transitive via laravel/framework; fixed in 2.10.2+)"
+        },
+        {
+            "package": "league/commonmark",
+            "advisoryId": "PKSA-m4t9-vsgq-8khn",
+            "title": "Quadratic-time denial of service in the GitHub Flavored Markdown Table extension (transitive via laravel/framework; fixed in 2.10.2+)"
+        }
+    ]
+}
