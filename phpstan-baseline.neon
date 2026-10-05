@@ -1,94 +1,22 @@
 parameters:
 	ignoreErrors:
 		-
-			message: '#^PHPDoc type array\<int, class\-string\> of property BrunoCFalcao\\AiBridge\\Browser\\Mcp\\BrowserServer\:\:\$tools is not covariant with PHPDoc type array\<int\|string, array\<int, class\-string\<Laravel\\Mcp\\Server\\Tool\>\|Laravel\\Mcp\\Server\\Tool\>\|class\-string\<Laravel\\Mcp\\Server\\Tool\>\|Laravel\\Mcp\\Server\\Tool\> of overridden property Laravel\\Mcp\\Server\:\:\$tools\.$#'
-			identifier: property.phpDocType
+			message: '#^Offset ''content'' on array\{role\: string, content\: string\} on left side of \?\? always exists and is not nullable\.$#'
+			identifier: nullCoalesce.offset
 			count: 1
-			path: src/Browser/Mcp/BrowserServer.php
+			path: src/Resolver/AiResolver.php
 
 		-
-			message: '#^Call to function is_array\(\) with string\|null will always evaluate to false\.$#'
-			identifier: function.impossibleType
+			message: '#^Offset ''role'' on array\{role\: string, content\: string\} on left side of \?\? always exists and is not nullable\.$#'
+			identifier: nullCoalesce.offset
 			count: 1
-			path: src/Chat/ConversationSummarizer.php
+			path: src/Resolver/AiResolver.php
 
 		-
-			message: '#^Function agent not found\.$#'
-			identifier: function.notFound
+			message: '#^Parameter \#1 \$array \(list\<Laravel\\Ai\\Messages\\AssistantMessage\|Laravel\\Ai\\Messages\\UserMessage\>\) of array_values is already a list, call has no effect\.$#'
+			identifier: arrayValues.list
 			count: 1
-			path: src/Chat/ConversationSummarizer.php
-
-		-
-			message: '#^Readonly property BrunoCFalcao\\AiBridge\\Chat\\Events\\ChatDelta\:\:\$conversationId is already assigned\.$#'
-			identifier: assign.readOnlyProperty
-			count: 1
-			path: src/Chat/Events/ChatDelta.php
-
-		-
-			message: '#^Readonly property BrunoCFalcao\\AiBridge\\Chat\\Events\\ChatDelta\:\:\$userId is already assigned\.$#'
-			identifier: assign.readOnlyProperty
-			count: 1
-			path: src/Chat/Events/ChatDelta.php
-
-		-
-			message: '#^Readonly property BrunoCFalcao\\AiBridge\\Chat\\Events\\ChatError\:\:\$conversationId is already assigned\.$#'
-			identifier: assign.readOnlyProperty
-			count: 1
-			path: src/Chat/Events/ChatError.php
-
-		-
-			message: '#^Readonly property BrunoCFalcao\\AiBridge\\Chat\\Events\\ChatError\:\:\$userId is already assigned\.$#'
-			identifier: assign.readOnlyProperty
-			count: 1
-			path: src/Chat/Events/ChatError.php
-
-		-
-			message: '#^Readonly property BrunoCFalcao\\AiBridge\\Chat\\Events\\ChatInit\:\:\$conversationId is already assigned\.$#'
-			identifier: assign.readOnlyProperty
-			count: 1
-			path: src/Chat/Events/ChatInit.php
-
-		-
-			message: '#^Readonly property BrunoCFalcao\\AiBridge\\Chat\\Events\\ChatInit\:\:\$userId is already assigned\.$#'
-			identifier: assign.readOnlyProperty
-			count: 1
-			path: src/Chat/Events/ChatInit.php
-
-		-
-			message: '#^Function agent not found\.$#'
-			identifier: function.notFound
-			count: 1
-			path: src/Chat/ProcessChatMessage.php
-
-		-
-			message: '#^PHPDoc type array\<int, class\-string\> of property BrunoCFalcao\\AiBridge\\Knowledge\\Mcp\\KnowledgeServer\:\:\$resources is not covariant with PHPDoc type array\<int, class\-string\<Laravel\\Mcp\\Server\\Resource\>\|Laravel\\Mcp\\Server\\Resource\> of overridden property Laravel\\Mcp\\Server\:\:\$resources\.$#'
-			identifier: property.phpDocType
-			count: 1
-			path: src/Knowledge/Mcp/KnowledgeServer.php
-
-		-
-			message: '#^PHPDoc type array\<int, class\-string\> of property BrunoCFalcao\\AiBridge\\Knowledge\\Mcp\\KnowledgeServer\:\:\$tools is not covariant with PHPDoc type array\<int\|string, array\<int, class\-string\<Laravel\\Mcp\\Server\\Tool\>\|Laravel\\Mcp\\Server\\Tool\>\|class\-string\<Laravel\\Mcp\\Server\\Tool\>\|Laravel\\Mcp\\Server\\Tool\> of overridden property Laravel\\Mcp\\Server\:\:\$tools\.$#'
-			identifier: property.phpDocType
-			count: 1
-			path: src/Knowledge/Mcp/KnowledgeServer.php
-
-		-
-			message: '#^Access to an undefined property BrunoCFalcao\\AiBridge\\Contracts\\ApplicationContract\:\:\$id\.$#'
-			identifier: property.notFound
-			count: 1
-			path: src/Providers/ProviderResolver.php
-
-		-
-			message: '#^Access to an undefined property BrunoCFalcao\\AiBridge\\Contracts\\ApplicationContract\:\:\$team_id\.$#'
-			identifier: property.notFound
-			count: 1
-			path: src/Providers/ProviderResolver.php
-
-		-
-			message: '#^Unsafe usage of new static\(\)\.$#'
-			identifier: new.static
-			count: 1
-			path: src/Providers/ProviderResolver.php
+			path: src/Resolver/AiResolver.php
 
 		-
 			message: '#^Parameter \#1 \$provider of class Laravel\\Ai\\Events\\ProviderFailedOver constructor expects Laravel\\Ai\\Providers\\Provider, Laravel\\Ai\\Contracts\\Providers\\EmbeddingProvider given\.$#'
@@ -97,31 +25,19 @@ parameters:
 			path: src/Resolver/AiResolver.php
 
 		-
-			message: '#^Parameter \#2 \$vector of method Illuminate\\Database\\Eloquent\\Builder\<BrunoCFalcao\\AiBridge\\Knowledge\\Models\\KnowledgeChunk\>\:\:whereVectorSimilarTo\(\) expects array\<int, float\>\|Illuminate\\Contracts\\Support\\Arrayable\|string, Illuminate\\Support\\Stringable given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/Tools/SearchKnowledge.php
-
-		-
-			message: '#^Calling toBeInstanceOf\(\) on Expectation\<BrunoCFalcao\\AiBridge\\Browser\\BrowserSidecarClient\>; assertion is redundant\.$#'
-			identifier: pest.expectation.redundant
-			count: 1
-			path: tests/Feature/Browser/SidecarIntegrationTest.php
-
-		-
-			message: '#^Calling toBeString\(\) on Expectation\<string\>; assertion is redundant\.$#'
-			identifier: pest.expectation.redundant
-			count: 1
-			path: tests/Feature/Browser/SidecarIntegrationTest.php
-
-		-
-			message: '#^Calling toBeBool\(\) on Expectation\<bool\>; assertion is redundant\.$#'
-			identifier: pest.expectation.redundant
-			count: 1
-			path: tests/Unit/Chat/ChatManagerTest.php
-
-		-
 			message: '#^Call to an undefined method Laravel\\Ai\\AnonymousAgent\:\:providerOptions\(\)\.$#'
 			identifier: method.notFound
 			count: 3
 			path: tests/Unit/Resolver/ConnectionSettingsTest.php
+
+		-
+			message: '#^Call to an undefined method Laravel\\Ai\\Contracts\\Agent\:\:messages\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: tests/Unit/Resolver/StreamTest.php
+
+		-
+			message: '#^Call to an undefined method Laravel\\Ai\\Contracts\\Agent\:\:providerOptions\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: tests/Unit/Resolver/StreamTest.php

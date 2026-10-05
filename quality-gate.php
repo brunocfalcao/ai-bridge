@@ -16,7 +16,6 @@ final class QualityGate
     private const SOURCE_PATHS = [
         'src',
         'config',
-        'database',
         'tests',
         'phpinsights.php',
         'quality-gate.php',

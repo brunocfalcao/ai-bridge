@@ -18,8 +18,8 @@ it('falls back to default when connection not found', function () {
 
     $chain = $resolver->using('nonexistent');
 
-    expect($chain)->toHaveKey('claude-cli')
-        ->and($chain['claude-cli'])->toBe('opus');
+    expect($chain)->toHaveKey('anthropic')
+        ->and($chain['anthropic'])->toBe('claude-opus-4-6');
 });
 
 it('walks the fallback chain correctly', function () {
@@ -27,23 +27,23 @@ it('walks the fallback chain correctly', function () {
 
     $chain = $resolver->using('bridge');
 
-    // claude-cli:opus → fallback openrouter:anthropic/claude-sonnet-4 → fallback gemini:gemini-3-flash-preview
+    // anthropic:claude-opus-4-6 → fallback openrouter:anthropic/claude-sonnet-4 → fallback gemini:gemini-3-flash-preview
     expect($chain)->toHaveCount(3)
-        ->and(array_keys($chain))->toBe(['claude-cli', 'openrouter', 'gemini']);
+        ->and(array_keys($chain))->toBe(['anthropic', 'openrouter', 'gemini']);
 });
 
 it('prevents circular fallback chains', function () {
     config()->set('ai-bridge.resolver.fallbacks', [
-        'claude-cli' => 'openrouter:auto',
-        'openrouter' => 'claude-cli:opus',
+        'anthropic' => 'openrouter:auto',
+        'openrouter' => 'anthropic:claude-opus-4-6',
     ]);
 
     $resolver = app(AiResolver::class);
     $chain = $resolver->using('bridge');
 
-    // Should stop after seeing claude-cli twice
+    // Should stop after seeing anthropic twice
     expect($chain)->toHaveCount(2)
-        ->and(array_keys($chain))->toBe(['claude-cli', 'openrouter']);
+        ->and(array_keys($chain))->toBe(['anthropic', 'openrouter']);
 });
 
 it('rejects a different fallback model on the same provider instead of replacing the primary', function () {
@@ -58,7 +58,7 @@ it('parses model with slashes for openrouter', function () {
 
     [$provider, $model] = $resolver->primary('bridge');
 
-    // bridge → claude-cli:opus, but let's test openrouter directly
+    // bridge → anthropic:claude-opus-4-6, but let's test openrouter directly
     config()->set('ai-bridge.resolver.connections.or', 'openrouter:anthropic/claude-sonnet-4');
 
     [$provider, $model] = $resolver->primary('or');
@@ -72,6 +72,6 @@ it('resolves __default__ to the default connection', function () {
 
     $chain = $resolver->using('__default__');
 
-    expect($chain)->toHaveKey('claude-cli')
-        ->and($chain['claude-cli'])->toBe('opus');
+    expect($chain)->toHaveKey('anthropic')
+        ->and($chain['anthropic'])->toBe('claude-opus-4-6');
 });

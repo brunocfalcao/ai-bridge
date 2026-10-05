@@ -2,6 +2,56 @@
 
 All notable changes to this project will be documented in this file.
 
+## 2.0.0 - 2026-10-05
+
+Laravel AI 1.0 covers what most of this package was built to cover. What is
+left is the part it does not: named connections, reasoning effort per
+connection and provider, and embedding identity with model-level failover.
+
+### Breaking changes
+
+- [REMOVED] `Chat\ChatManager`, `Contracts\ChatProvider` and the three chat
+  providers (`PrismChatProvider`, `ClaudeCli\ClaudeCliProvider`,
+  `OpenClaw\OpenClawProvider`). Use `AiResolver::stream()`, which takes the same
+  OpenAI-shaped message list and yields the same `delta` / `done` events on
+  Laravel AI's own streaming.
+- [REMOVED] The `Knowledge` subsystem — MCP knowledge server, its three tools
+  and two resources, `ContentChunker`, `SystemContext`, `AuthenticateApiKey`,
+  the `KnowledgeChunk` model and its publishable migration.
+- [REMOVED] The `Browser` subsystem — `BrowserSidecarClient`, `BrowserServer`,
+  `CaptureScreenshotTool` and the `TakeScreenshot` agent tool.
+- [REMOVED] All seven sandboxed agent tools (`ListDirectory`, `ReadFile`,
+  `WriteFile`, `RunCommand`, `SearchCode`, `SearchKnowledge`, `TakeScreenshot`)
+  and `Support\SecretDetector`. Laravel AI tools cover this.
+- [REMOVED] `Chat\ProcessChatMessage`, `Chat\ProcessBridgeChatMessage`,
+  `Chat\ConversationSummarizer`, the four chat broadcast events, the
+  `Conversation` / `ConversationMessage` models and the `ai_conversations` and
+  `ai_conversation_messages` migrations.
+- [REMOVED] `Models\AiApiConfig`, `Providers\ProviderResolver`,
+  `Providers\AnthropicOAuthService`, `Providers\BearerAnthropic`,
+  `Contracts\ApplicationContract`, `Contracts\TeamContract`, the
+  `ai_api_configs` migrations and the Prism OAuth provider extension. Provider
+  keys belong to Laravel AI's `ai.providers` config.
+- [REMOVED] `Console\AiChatCommand`.
+- [REMOVED] The `claude_cli`, `openclaw`, `chat`, `knowledge`, `tools`,
+  `browser`, `oauth`, `providers`, `models` and `mcp_systems` config blocks. Only
+  `resolver` remains.
+- [CHANGED] An installing application must drop the `ai_conversations`,
+  `ai_conversation_messages` and `ai_api_configs` tables itself if it created
+  them; this package no longer ships those migrations.
+
+### Added
+
+- [ADDED] `AiResolver::stream()` — streams a chat exchange through a named
+  connection on Laravel AI, applying its fallback chain and reasoning effort. The
+  leading system turn becomes the agent's instructions, the last user turn the
+  prompt, and the rest ad-hoc history.
+
+### Dependencies
+
+- [DEPENDENCIES] Dropped `prism-php/prism` and `laravel/mcp`.
+- [DEPENDENCIES] `laravel/ai` pinned to `^1.0` (was `^1.0 || 1.x-dev`).
+
 ## 1.5.0 - 2026-10-02
 
 ### Features

@@ -7,12 +7,16 @@ namespace BrunoCFalcao\AiBridge\Resolver;
 use BrunoCFalcao\AiBridge\Agents\ConfiguredAgent;
 use BrunoCFalcao\AiBridge\Agents\ConfiguredStructuredAgent;
 use Closure;
+use Generator;
 use InvalidArgumentException;
 use Laravel\Ai\Ai;
 use Laravel\Ai\AnonymousAgent;
 use Laravel\Ai\Embeddings;
 use Laravel\Ai\Events\ProviderFailedOver;
 use Laravel\Ai\Exceptions\FailoverableException;
+use Laravel\Ai\Messages\AssistantMessage;
+use Laravel\Ai\Messages\UserMessage;
+use Laravel\Ai\Streaming\Events\TextDelta;
 use Laravel\Ai\StructuredAnonymousAgent;
 
 class AiResolver
@@ -100,6 +104,74 @@ class AiResolver
             : new ConfiguredAgent($instructions, $messages, $tools);
 
         return $agent->withConnectionOptions($this->connectionOptions($connection));
+    }
+
+    /**
+     * Stream a chat exchange through a named connection.
+     *
+     * Messages arrive in the OpenAI shape every caller already builds
+     * (`[['role' => 'system'|'user'|'assistant', 'content' => '…'], …]`). The
+     * trailing user turn is the prompt; a leading system turn becomes the
+     * agent's instructions and everything between is carried as history, so
+     * the whole exchange reaches the provider in one agent call with the
+     * connection's fallback chain and reasoning effort applied.
+     *
+     * Yields `['type' => 'delta', 'content' => '…']` per text chunk and one
+     * closing `['type' => 'done', 'content' => null]`.
+     *
+     * @param  array<int, array{role: string, content: string}>  $messages
+     * @return Generator<int, array{type: string, content: ?string}>
+     */
+    public function stream(array $messages, string|\BackedEnum $connection): Generator
+    {
+        [$instructions, $history, $prompt] = $this->splitMessages($messages);
+
+        $response = $this->agent($connection, instructions: $instructions, messages: $history)
+            ->stream($prompt, provider: $this->using($connection));
+
+        foreach ($response as $event) {
+            if ($event instanceof TextDelta) {
+                yield ['type' => 'delta', 'content' => $event->delta];
+            }
+        }
+
+        yield ['type' => 'done', 'content' => null];
+    }
+
+    /**
+     * Split an OpenAI-shaped message list into the three parts an agent takes.
+     *
+     * @param  array<int, array{role: string, content: string}>  $messages
+     * @return array{0: string, 1: list<UserMessage|AssistantMessage>, 2: string}
+     */
+    private function splitMessages(array $messages): array
+    {
+        $instructions = '';
+        $history = [];
+        $prompt = '';
+
+        foreach ($messages as $message) {
+            $content = (string) ($message['content'] ?? '');
+
+            match ($message['role'] ?? '') {
+                'system' => $instructions = trim($instructions."\n\n".$content),
+                'assistant' => $history[] = new AssistantMessage($content),
+                default => $history[] = new UserMessage($content),
+            };
+        }
+
+        // The last user turn is the prompt, not history: an agent prompted with
+        // an empty string would ask the provider to answer nothing.
+        for ($i = count($history) - 1; $i >= 0; $i--) {
+            if ($history[$i] instanceof UserMessage) {
+                $prompt = $history[$i]->content;
+                array_splice($history, $i, 1);
+
+                break;
+            }
+        }
+
+        return [$instructions, array_values($history), $prompt];
     }
 
     /**

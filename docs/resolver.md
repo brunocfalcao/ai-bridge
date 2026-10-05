@@ -1,137 +1,118 @@
-# Resolver - Scope-Based AI Provider Resolution
+# Resolver
 
-## Overview
+`BrunoCFalcao\AiBridge\Resolver\AiResolver`, registered as a singleton.
 
-The `AiResolver` maps business scopes (e.g. "leads-discover", "study-full") to AI provider+model pairs with automatic fallback chains. It integrates with Laravel AI's `withModelFailover()` mechanism, which catches `FailoverableException` (quota exhaustion, rate limiting, billing errors) and cascades to the next provider.
-
-**Namespace:** `BrunoCFalcao\AiBridge\Resolver\AiResolver`
-**Registered as:** singleton via service provider
-
-## Configuration Format
-
-Connectivity strings use the `provider:model` format, split on the first colon:
+A **connection** is a stable name for one AI use. It resolves to a
+`provider:model` string, split on the first colon; the provider name must match
+a key in Laravel AI's `ai.providers` config.
 
 ```
-openrouter:google/gemini-3-flash-preview    -> provider: openrouter, model: google/gemini-3-flash-preview
-openai:gpt-4.1                        -> provider: openai, model: gpt-4.1
-gemini:gemini-3-flash-preview               -> provider: gemini, model: gemini-3-flash-preview
-openrouter:qwen/qwen3.6-plus:free     -> provider: openrouter, model: qwen/qwen3.6-plus:free
+openai:gpt-4.1                     -> openai      / gpt-4.1
+gemini:gemini-3-flash-preview      -> gemini      / gemini-3-flash-preview
+openrouter:qwen/qwen3.6-plus:free  -> openrouter  / qwen/qwen3.6-plus:free
 ```
 
-The provider name must match a key in Laravel's `config/ai.php` providers array.
+Every key below is read through `ai_config_key`, which defaults to
+`ai-bridge.resolver`.
 
-## Config Example
+## Text
+
+### `using(string|BackedEnum $connection): array`
+
+The ordered provider map for `Promptable::prompt(provider: …)` and
+`stream(provider: …)`: primary first, then the fallback chain. Laravel AI's
+`withModelFailover()` iterates it, catching `FailoverableException`
+(`InsufficientCreditsException`, `RateLimitedException`,
+`ProviderOverloadedException`) and trying the next provider.
+
+Chain resolution:
+
+1. `connections.{name}`, or `default` when the connection is not configured.
+2. `connection_fallbacks.{name}` — an ordered list that **replaces** the
+   provider-level chain for that connection only. Two connections on one
+   provider can therefore fail over to different places.
+3. Otherwise `fallbacks.{provider}`, followed hop by hop until `null` or a
+   repeat.
+
+Laravel AI keys the map by provider, so a chain that reuses one provider with a
+*different* model cannot be represented. That throws `InvalidArgumentException`
+rather than silently replacing the primary model.
+
+### `primary(string|BackedEnum $connection): array`
+
+`[$provider, $model]` for the primary only, no chain.
+
+### `agent(connection, instructions, messages, tools, schema): AnonymousAgent`
+
+An ad-hoc agent carrying the connection's provider options. Pass a `$schema`
+closure to get a `StructuredAnonymousAgent`. Prompt it with
+`->prompt($text, provider: $resolver->using($connection))`.
+
+When the host's tests fake the plain `AnonymousAgent` /
+`StructuredAnonymousAgent` class and not the configured subclass, the plain
+class is returned — options do not matter to a fake.
+
+### `stream(array $messages, string|BackedEnum $connection): Generator`
+
+Streams an OpenAI-shaped message list:
 
 ```php
-// config/ai-bridge.php (or published override)
-'resolver' => [
-    'scopes' => [
-        'leads-discover' => 'openrouter:qwen/qwen3.6-plus-preview:free',
-        'leads-osint'    => 'gemini:gemini-3-flash-preview',
-        'leads-dispatch' => 'openrouter:google/gemini-3-flash-preview',
-        'wizard'         => 'openrouter:qwen/qwen3.6-plus-preview:free',
-        'study-preview'  => 'openai:gpt-4.1',
-        'study-full'     => 'openai:gpt-4.1',
-        'study-ce'       => 'openai:gpt-4.1',
-    ],
-
-    'fallbacks' => [
-        'openai'     => 'openrouter:openai/gpt-4.1',
-        'openrouter' => 'gemini:gemini-3-flash-preview',
-        'gemini'     => null,  // terminal - throws exception on failure
-    ],
-
-    'default' => 'gemini:gemini-3-flash-preview',
-],
+[
+    ['role' => 'system',    'content' => '…'],  // -> agent instructions
+    ['role' => 'user',      'content' => '…'],  // -> history
+    ['role' => 'assistant', 'content' => '…'],  // -> history
+    ['role' => 'user',      'content' => '…'],  // -> the prompt (last user turn)
+]
 ```
 
-## API
+Yields `['type' => 'delta', 'content' => '…']` per text chunk and one closing
+`['type' => 'done', 'content' => null]`. The connection's fallback chain and
+reasoning effort both apply.
 
-### `resolve(string|\BackedEnum $scope): array`
+## Reasoning effort
 
-Returns an ordered associative array for use with `Promptable::prompt(provider: $array)`.
+### `effort(connection, provider): ?string`
 
-```php
-$resolver = app(AiResolver::class);
+`efforts.{connection}.{provider}` — `low`, `medium` or `high`, or null for the
+model's own default.
 
-$providers = $resolver->resolve('study-full');
-// ['openai' => 'gpt-4.1', 'openrouter' => 'openai/gpt-4.1', 'gemini' => 'gemini-3-flash-preview']
+### `connectionOptions(connection): array` / `providerOptions(connection, provider): array`
 
-// Pass directly to any Laravel AI agent:
-(new StudyAgent)->prompt($text, provider: $providers);
-```
+The configured effort in each provider's own request shape, merged with any raw
+`options.{connection}.{provider}` override:
 
-**Fallback chain algorithm:**
-1. Look up scope in `resolver.scopes`. If not found, use `resolver.default`.
-2. Parse the primary `provider:model` string.
-3. Look up `resolver.fallbacks.{provider}`. If non-null, parse and append.
-4. Repeat step 3 with the fallback provider. Stop on `null` or cycle detection.
+| Provider | Shape |
+|---|---|
+| `openai`, `openrouter` | `['reasoning' => ['effort' => …]]` |
+| `gemini` | `['thinking_level' => …]` |
+| `anthropic` | `['output_config' => ['effort' => …]]` |
+| anything else | `[]` |
 
-**Example walkthrough for `study-full`:**
-- Primary: `openai:gpt-4.1` -> `['openai' => 'gpt-4.1']`
-- Fallback of `openai`: `openrouter:openai/gpt-4.1` -> append `['openrouter' => 'openai/gpt-4.1']`
-- Fallback of `openrouter`: `gemini:gemini-3-flash-preview` -> append `['gemini' => 'gemini-3-flash-preview']`
-- Fallback of `gemini`: `null` -> stop
-- Result: 3-element array, tried in order
+## Embeddings
 
-### `resolveUsing(string|\BackedEnum $scope): array`
+### `embedWithMeta(string $text, ?int $dimensions = null): array`
 
-Returns only the primary provider and model as an indexed array. No fallback chain. Used for direct Prism integration (e.g. agents that use `Prism::text()->using($provider, $model)`).
+Returns `['vector' => …, 'provider' => …, 'model' => …, 'identity' => 'provider:model']`.
 
-```php
-[$provider, $model] = app(AiResolver::class)->resolveUsing('leads-osint');
-// $provider = 'gemini', $model = 'gemini-3-flash-preview'
+Vectors are only comparable within the model that produced them: cosine
+distance across two embedding spaces is noise that looks like a result. Any
+caller that persists a vector must persist this identity with it and refuse to
+compare across it.
 
-Prism::text()
-    ->using($provider, $model)
-    ->withPrompt($prompt)
-    ->asText();
-```
+`embed()` is the same call, returning only the vector.
 
-## Host App Integration
+### `embeddingProviders(): array`
 
-The package does NOT define scope values. The host app defines its own scopes using either:
+The embedding chain as an ordered list of `provider:model` strings — primary
+`embedding`, then `embedding_fallbacks` keyed by the full `provider:model` of
+the entry it follows (a bare provider key also matches any model of that
+provider).
 
-**Option A: String-backed enum (recommended)**
-```php
-// app/Ai/AiScope.php
-enum AiScope: string
-{
-    case LeadsDiscover = 'leads-discover';
-    case StudyFull = 'study-full';
-    // ...
-}
+It is a list, not a provider-keyed map, because a map cannot express two models
+of one provider — and a model-level fallback is the only kind available when a
+single embedding provider is enabled on an account. Each switch re-emits
+`ProviderFailedOver`.
 
-// Usage:
-$resolver->resolve(AiScope::LeadsDiscover);
-```
+### `embeddingConnection(): array`
 
-**Option B: Plain strings**
-```php
-$resolver->resolve('leads-discover');
-```
-
-Both work because `resolve()` accepts `string|\BackedEnum`.
-
-## Custom Config Path
-
-If your project stores AI config under a different key (e.g. `myapp.ai` instead of `ai-bridge.resolver`):
-
-```php
-// config/ai-bridge.php
-'ai_config_key' => 'myapp.ai',
-```
-
-The resolver will then read `config('myapp.ai.scopes.*')`, `config('myapp.ai.fallbacks.*')`, and `config('myapp.ai.default')`.
-
-## How Failover Works
-
-When the primary provider returns a quota/billing error, Laravel AI's `Promptable::withModelFailover()` catches it and tries the next provider in the array:
-
-1. `InsufficientCreditsException` (HTTP 402, "insufficient credits" in message)
-2. `RateLimitedException` (HTTP 429)
-3. `ProviderOverloadedException` (HTTP 503/529)
-
-All three implement `FailoverableException`. The resolver's ordered array maps directly to this failover mechanism.
-
-If all providers in the chain fail, the last exception propagates to the caller (step/job error handling).
+`[$provider, $model]` for the configured primary embedding model.

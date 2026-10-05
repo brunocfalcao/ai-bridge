@@ -5,11 +5,12 @@ declare(strict_types=1);
 use BrunoCFalcao\AiBridge\Agents\ConfiguredAgent;
 use BrunoCFalcao\AiBridge\Agents\ConfiguredStructuredAgent;
 use BrunoCFalcao\AiBridge\Resolver\AiResolver;
+use Laravel\Ai\AnonymousAgent;
 use Laravel\Ai\Embeddings;
 use Laravel\Ai\Enums\Lab;
 
-describe('per-connection fallbacks', function () {
-    it('uses the connection chain instead of the provider-level fallback', function () {
+describe('per-connection fallbacks', function (): void {
+    it('uses the connection chain instead of the provider-level fallback', function (): void {
         config()->set('ai-bridge.resolver.connections.survey', 'openai:gpt-4.1-mini');
         config()->set('ai-bridge.resolver.connections.analyst', 'openai:gpt-4.1');
         config()->set('ai-bridge.resolver.fallbacks.openai', 'gemini:gemini-3-flash-preview');
@@ -21,7 +22,7 @@ describe('per-connection fallbacks', function () {
             ->and($resolver->using('survey'))->toBe(['openai' => 'gpt-4.1-mini', 'gemini' => 'gemini-3-flash-preview']);
     });
 
-    it('treats an empty connection chain as no fallback at all', function () {
+    it('treats an empty connection chain as no fallback at all', function (): void {
         config()->set('ai-bridge.resolver.connections.survey', 'openai:gpt-4.1-mini');
         config()->set('ai-bridge.resolver.fallbacks.openai', 'gemini:gemini-3-flash-preview');
         config()->set('ai-bridge.resolver.connection_fallbacks.survey', []);
@@ -29,7 +30,7 @@ describe('per-connection fallbacks', function () {
         expect(app(AiResolver::class)->using('survey'))->toBe(['openai' => 'gpt-4.1-mini']);
     });
 
-    it('refuses a connection chain that repeats the primary provider with another model', function () {
+    it('refuses a connection chain that repeats the primary provider with another model', function (): void {
         config()->set('ai-bridge.resolver.connections.survey', 'openai:gpt-4.1-mini');
         config()->set('ai-bridge.resolver.connection_fallbacks.survey', ['openai:gpt-4.1']);
 
@@ -38,8 +39,8 @@ describe('per-connection fallbacks', function () {
     });
 });
 
-describe('reasoning effort', function () {
-    it('maps one effort to each provider request shape', function () {
+describe('reasoning effort', function (): void {
+    it('maps one effort to each provider request shape', function (): void {
         config()->set('ai-bridge.resolver.efforts.analyst', [
             'openai' => 'high',
             'gemini' => 'low',
@@ -54,12 +55,12 @@ describe('reasoning effort', function () {
         ]);
     });
 
-    it('returns no options when no effort is configured', function () {
+    it('returns no options when no effort is configured', function (): void {
         expect(app(AiResolver::class)->connectionOptions('cheap'))->toBe([])
             ->and(app(AiResolver::class)->effort('cheap', 'gemini'))->toBeNull();
     });
 
-    it('builds agents that answer each provider with its own options', function () {
+    it('builds agents that answer each provider with its own options', function (): void {
         config()->set('ai-bridge.resolver.efforts.analyst', ['openai' => 'high', 'gemini' => 'low']);
 
         $agent = app(AiResolver::class)->agent('analyst', instructions: 'Be brief.');
@@ -71,15 +72,15 @@ describe('reasoning effort', function () {
             ->and($agent->providerOptions('anthropic'))->toBe([]);
     });
 
-    it('builds a structured agent when a schema is given', function () {
+    it('builds a structured agent when a schema is given', function (): void {
         $agent = app(AiResolver::class)->agent('analyst', schema: fn ($schema) => []);
 
         expect($agent)->toBeInstanceOf(ConfiguredStructuredAgent::class);
     });
 });
 
-describe('embedding size', function () {
-    it('asks a smaller model for its own size and pads the vector to the stored size', function () {
+describe('embedding size', function (): void {
+    it('asks a smaller model for its own size and pads the vector to the stored size', function (): void {
         config()->set('ai-bridge.resolver.embedding', 'voyageai:voyage-4');
         config()->set('ai-bridge.resolver.embedding_dimensions', 6);
         config()->set('ai-bridge.resolver.embedding_request_dimensions', ['voyageai:voyage-4' => 4]);
@@ -93,13 +94,13 @@ describe('embedding size', function () {
     });
 });
 
-describe('fakes', function () {
-    it('hands back the plain agent class when only that class is faked', function () {
-        \Laravel\Ai\AnonymousAgent::fake(['ok']);
+describe('fakes', function (): void {
+    it('hands back the plain agent class when only that class is faked', function (): void {
+        AnonymousAgent::fake(['ok']);
 
         $agent = app(AiResolver::class)->agent('analyst', instructions: 'x');
 
-        expect($agent::class)->toBe(\Laravel\Ai\AnonymousAgent::class)
+        expect($agent::class)->toBe(AnonymousAgent::class)
             ->and($agent->prompt('hi')->text)->toBe('ok');
     });
 });

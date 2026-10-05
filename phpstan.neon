@@ -9,13 +9,9 @@ parameters:
     reportUnmatchedIgnoredErrors: true
     configDirectories:
         - config
-    databaseMigrationsPath:
-        - database/migrations/app
-        - database/migrations/knowledge
     paths:
         - src
         - config
-        - database
         - tests
         - phpinsights.php
         - quality-gate.php

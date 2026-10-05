@@ -1,14 +1,12 @@
 {
     "name": "brunocfalcao/ai-bridge",
-    "description": "Reusable AI bridge for Laravel: multi-provider connectivity, chat streaming, knowledge/MCP server, and agent tools.",
+    "description": "Named AI connections for Laravel AI: provider/model resolution, failover chains, reasoning effort and embedding identity.",
     "license": "MIT",
     "type": "library",
     "require": {
         "php": "^8.4",
         "laravel/framework": "^12.0 || ^13.0",
-        "laravel/ai": "^1.0 || 1.x-dev",
-        "laravel/mcp": "^1.0",
-        "prism-php/prism": "^0.71 || ^0.99"
+        "laravel/ai": "^1.0"
     },
     "require-dev": {
         "orchestra/testbench": "^11.0",

@@ -23,25 +23,13 @@ abstract class TestCase extends BaseTestCase
         $app['config']->set('ai-bridge.resolver', [
             'connections' => [
                 'cheap' => 'gemini:gemini-3-flash-preview',
-                'bridge' => 'claude-cli:opus',
+                'bridge' => 'anthropic:claude-opus-4-6',
             ],
             'fallbacks' => [
-                'claude-cli' => 'openrouter:anthropic/claude-sonnet-4',
+                'anthropic' => 'openrouter:anthropic/claude-sonnet-4',
                 'openrouter' => 'gemini:gemini-3-flash-preview',
             ],
-            'default' => 'claude-cli:opus',
-        ]);
-
-        $app['config']->set('ai-bridge.claude_cli', [
-            'url' => 'http://localhost:3456',
-            'timeout' => 120,
-            'agent_name' => 'TestAgent',
-        ]);
-
-        $app['config']->set('ai-bridge.openclaw', [
-            'url' => 'http://localhost:18789',
-            'token' => 'test-token',
-            'timeout' => 120,
+            'default' => 'anthropic:claude-opus-4-6',
         ]);
     }
 }
