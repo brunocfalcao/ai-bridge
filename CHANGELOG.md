@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## 2.1.0 - 2026-10-10
+
+### Added
+- Development-only `tools/QualityReports.php` shares report decoding, baseline
+  loading and PHPMD complexity comparison across owned quality gates.
+
+### Changed
+- The package gate consumes the shared parser while retaining its source paths,
+  score floors and advisory policy. Runtime AI resolution is unchanged.
+- Shared agent guidance is documented in PROJECT.md.
+
 ## 2.0.0 - 2026-10-05
 
 Laravel AI 1.0 covers what most of this package was built to cover. What is

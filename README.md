@@ -1,5 +1,12 @@
 # ai-bridge
 
+## Changes in v2.1.0
+
+A development-only report parser now serves this package and owned consumer
+quality gates. Require `tools/QualityReports.php` directly when building a gate;
+it is outside runtime autoloading. Each consumer keeps its own commands, score
+floors, source paths and advisory policy. Named AI connections are unchanged.
+
 Named AI connections for [Laravel AI](https://github.com/laravel/ai): one config
 layer that maps a business use to a `provider:model`, walks its failover chain,
 applies its reasoning effort, and reports which model produced an embedding.

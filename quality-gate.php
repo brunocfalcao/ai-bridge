@@ -4,12 +4,13 @@ declare(strict_types=1);
 
 namespace BrunoCFalcao\AiBridge\Quality;
 
-use JsonException;
+use AiBridgeTools\QualityReports;
 use RuntimeException;
 use Symfony\Component\Process\Process;
 use Throwable;
 
 require __DIR__.'/vendor/autoload.php';
+require __DIR__.'/tools/QualityReports.php';
 
 final class QualityGate
 {
@@ -53,20 +54,7 @@ final class QualityGate
         $process->setTimeout(300);
         $process->run();
 
-        try {
-            $report = json_decode($process->getOutput(), true, 512, JSON_THROW_ON_ERROR);
-        } catch (JsonException $exception) {
-            throw new RuntimeException(sprintf(
-                '%s produced no valid JSON: %s %s',
-                $command[1],
-                $exception->getMessage(),
-                trim($process->getErrorOutput()),
-            ), previous: $exception);
-        }
-
-        if (! is_array($report)) {
-            throw new RuntimeException($command[1].' produced an invalid report.');
-        }
+        $report = QualityReports::decode($process->getOutput(), $command[1], $process->getErrorOutput());
 
         return ['process' => $process, 'report' => $report];
     }
@@ -74,19 +62,7 @@ final class QualityGate
     /** @return array<string, mixed> */
     private static function baseline(string $file): array
     {
-        $contents = file_get_contents(__DIR__.'/'.$file);
-
-        if ($contents === false) {
-            throw new RuntimeException("Cannot read {$file}.");
-        }
-
-        $data = json_decode($contents, true, 512, JSON_THROW_ON_ERROR);
-
-        if (! is_array($data)) {
-            throw new RuntimeException("{$file} is not a JSON object.");
-        }
-
-        return $data;
+        return QualityReports::baseline(__DIR__, $file);
     }
 
     /**
@@ -256,52 +232,7 @@ final class QualityGate
      */
     private static function complexityFailures(array $report, array $existing): array
     {
-        $allowedComplexity = [];
-
-        foreach ($existing as $method) {
-            $key = json_encode([$method['file'], $method['class'], $method['method']], JSON_THROW_ON_ERROR);
-            $allowedComplexity[$key] = $method['complexity'];
-        }
-
-        $failures = [];
-        $violations = 0;
-
-        foreach ($report['files'] ?? [] as $file) {
-            foreach ($file['violations'] ?? [] as $violation) {
-                $violations++;
-                $key = json_encode([
-                    $file['relativePath'], $violation['class'], $violation['method'],
-                ], JSON_THROW_ON_ERROR);
-
-                if (! preg_match('/Cyclomatic Complexity of (\d+)/', $violation['description'], $matches)) {
-                    $failures[] = sprintf(
-                        'PHPMD returned an unrecognized complexity for %s:%d',
-                        $file['relativePath'],
-                        $violation['beginLine'],
-                    );
-
-                    continue;
-                }
-
-                $complexity = (int) $matches[1];
-
-                if (! isset($allowedComplexity[$key]) || $complexity > $allowedComplexity[$key]) {
-                    $failures[] = sprintf(
-                        'PHPMD %s:%d %s::%s complexity %d (baseline %s)',
-                        $file['relativePath'],
-                        $violation['beginLine'],
-                        $violation['class'],
-                        $violation['method'],
-                        $complexity,
-                        $allowedComplexity[$key] ?? 'none',
-                    );
-                }
-            }
-        }
-
-        printf("PHPMD: %d methods above complexity 10 checked\n", $violations);
-
-        return $failures;
+        return QualityReports::complexityFailures($report, $existing);
     }
 
     /** @return list<string> */

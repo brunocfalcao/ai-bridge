@@ -5,6 +5,8 @@ includes:
     - phpstan-baseline.neon
 
 parameters:
+    scanFiles:
+        - tools/QualityReports.php
     level: 5
     reportUnmatchedIgnoredErrors: true
     configDirectories:
