@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## 2.1.1 - 2026-10-11
+
+### Fixed
+- Preserve exact embedding `provider:model` fallback keys containing dots
+  through multi-hop chains, while retaining provider-wide fallback support,
+  exact-key precedence and cycle termination.
+
 ## 2.1.0 - 2026-10-10
 
 ### Added

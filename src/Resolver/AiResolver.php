@@ -404,6 +404,7 @@ class AiResolver
         $chain = [];
         $seen = [];
         $current = (string) config("{$configKey}.embedding");
+        $fallbacks = (array) config("{$configKey}.embedding_fallbacks", []);
 
         while ($current !== '' && ! isset($seen[$current])) {
             $chain[] = $current;
@@ -411,8 +412,7 @@ class AiResolver
 
             [$provider] = $this->parse($current);
 
-            $next = config("{$configKey}.embedding_fallbacks.{$current}")
-                ?? config("{$configKey}.embedding_fallbacks.{$provider}");
+            $next = $fallbacks[$current] ?? $fallbacks[$provider] ?? null;
 
             if ($next === null || $next === $current) {
                 break;

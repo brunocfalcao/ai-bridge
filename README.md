@@ -1,5 +1,12 @@
 # ai-bridge
 
+## Changes in v2.1.1
+
+Embedding fallback chains now preserve exact `provider:model` keys containing
+dots, such as `voyageai:voyage-3.5`, across every hop. Exact identity mappings
+still take precedence over provider-wide fallbacks, and provider-wide fallback
+configuration remains compatible.
+
 ## Changes in v2.1.0
 
 A development-only report parser now serves this package and owned consumer
